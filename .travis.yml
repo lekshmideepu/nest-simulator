@@ -124,7 +124,7 @@ deploy:
     secure: T7EM5neo1qF5dIlVAZXK9qd6Qu3SxdAQmUnuQbEZhadpxtvO43Q7/UyF8Yjz9wTOvIoWBJQqQVQ6wOBCX9RSHBGcFfAvNEZeEdNRCY0LwfaknGEB5jg6y4kOUOe0CTrM9JgSBZttjgA3/4iFY1zSfU2aTFmAd8KelIQvcm7Z+bk=
   bucket: "nest-travis-artefacts"
   skip_cleanup: true
-  local-dir: "$TRAVIS-BUILD_DIR/build"
+  local-dir: "$TRAVIS_BUILD_DIR/build"
   acl: bucket_owner_full_control
 
 
