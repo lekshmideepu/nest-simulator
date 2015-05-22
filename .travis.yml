@@ -119,15 +119,13 @@ script: ./build.sh
 
 deploy:
   provider: s3
-  access_key_id: AKIAIGKKBSJAWDMB34IA
+  access_key_id: AKIAIC2R6KWR5DF2W6WQ
   secret_access_key:
-    secure: CARBlB16Up/ZyrMJty32nolnBfSKvlBYJ9HD7KXEOqCL4L95QJdpH0XtfxwTfOYJ5XuTjVMOvnUmB6F/PKzVO01VTP5Fa9iRBo2UNHYP6zxKNW++z5658iPoFPVTag47M9grWDCfp7A/+1pFna7mHHJ0Iq/+pUPYblYTNMFfqJg=
+    secure: T7EM5neo1qF5dIlVAZXK9qd6Qu3SxdAQmUnuQbEZhadpxtvO43Q7/UyF8Yjz9wTOvIoWBJQqQVQ6wOBCX9RSHBGcFfAvNEZeEdNRCY0LwfaknGEB5jg6y4kOUOe0CTrM9JgSBZttjgA3/4iFY1zSfU2aTFmAd8KelIQvcm7Z+bk=
   bucket: "nest-travis-artefacts"
   skip_cleanup: true
-  local-dir: "$TRAVIS_BUILD_DIR/build"
+  local-dir: "$TRAVIS-BUILD_DIR/build"
   acl: bucket_owner_full_control
-  on:
-    repo: nest/nest-simulator
 
 
   
