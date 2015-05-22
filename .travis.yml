@@ -30,6 +30,8 @@ cache:
 #addons:
 #  artifacts:
  #  debug: true
+addons:
+  artifacts: true 
 
 before_install:
   - echo $LANG
