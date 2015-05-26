@@ -121,9 +121,9 @@ script: ./build.sh
 
 deploy:
   provider: s3
-  access_key_id: AKIAIC2R6KWR5DF2W6WQ
+  access_key_id: AKIAIGKKBSJAWDMB34IA
   secret_access_key:
-    secure: dfgF5j0ux+hVNKBAgiv4myd96a6DJgOzoFRJ2Yw9ZC88hJ0onUvQ5M3mx3VQXsmPJuzSq63w1uXDvgMD/2tmw0jnzCQ9TU+mlVrTtJuYKMxLFR+YDztfUX8WuWW/dQItCE7RAPs54DjSOon5PZ0hz6ERNQuLM2oESOQbcjWfo2E=
+    secure: CARBlB16Up/ZyrMJty32nolnBfSKvlBYJ9HD7KXEOqCL4L95QJdpH0XtfxwTfOYJ5XuTjVMOvnUmB6F/PKzVO01VTP5Fa9iRBo2UNHYP6zxKNW++z5658iPoFPVTag47M9grWDCfp7A/+1pFna7mHHJ0Iq/+pUPYblYTNMFfqJg=
   bucket: "nest-travis-artefacts"
   skip_cleanup: true
   local-dir: "$TRAVIS_BUILD_DIR/build"
