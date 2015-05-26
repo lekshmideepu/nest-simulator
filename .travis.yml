@@ -123,11 +123,11 @@ deploy:
   provider: s3
   access_key_id: AKIAIC2R6KWR5DF2W6WQ
   secret_access_key:
-    secure: T7EM5neo1qF5dIlVAZXK9qd6Qu3SxdAQmUnuQbEZhadpxtvO43Q7/UyF8Yjz9wTOvIoWBJQqQVQ6wOBCX9RSHBGcFfAvNEZeEdNRCY0LwfaknGEB5jg6y4kOUOe0CTrM9JgSBZttjgA3/4iFY1zSfU2aTFmAd8KelIQvcm7Z+bk=
+    secure: dfgF5j0ux+hVNKBAgiv4myd96a6DJgOzoFRJ2Yw9ZC88hJ0onUvQ5M3mx3VQXsmPJuzSq63w1uXDvgMD/2tmw0jnzCQ9TU+mlVrTtJuYKMxLFR+YDztfUX8WuWW/dQItCE7RAPs54DjSOon5PZ0hz6ERNQuLM2oESOQbcjWfo2E=
   bucket: "nest-travis-artefacts"
   skip_cleanup: true
   local-dir: "$TRAVIS_BUILD_DIR/build"
-  acl: bucket_owner_full_control
+  acl: bucket_owner_full_control  
 
 
   
