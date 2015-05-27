@@ -18,7 +18,7 @@ env:
   global:
     - ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
     - ARTIFACTS_DEBUG=1
-  matrix:
+matrix:
  # do notify immediately about it when a job of a build fails.
   fast_finish: true
 branches:
