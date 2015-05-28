@@ -128,7 +128,7 @@ deploy:
   #  secure: H/omZa5BH3x2rZZ1e3KDxpiUtzMucF9/t420IcrvHiNbSvju6DacOdq6etAW4bVnhK+5b5kDu4e/Ee4C+iu43YBNPdQscGIy0mT8ePSMgP+r9dw08ZIoMQsMm57SKljfQsVyw1tj+r6iwQ2AkE9fIb3xNM/Yj3z0sEVoDbIgRV0=
   access_key_id: AKIAIC2R6KWR5DF2W6WQ
   secret_access_key:
-    secure: IsVRcZf3U8CzwqkW9u9bF9eubXV+EKYEYW4VAI2C/Ex+UOdlIW0x+ogPFS5yJ5Sj4IuDre9dYi3oo+AfECBV5HSmqVz8nzz4cmVPve+2ty0qcl6e7/kKvALjE9ZLWiYR4TZbmAmRx8hkPrNeWJU412NwnkvqZwRDIcg5aAWna+0=
+    secure: Fb4wtqndAKpXThyHcE6Omeiozjhj/m6z2FwkYVBjE0+Ld20kz8tMVJNOjJNk5bxOtuaTkusGat6f8W4tDM9GvC+iLiY8JMNByeGCC3H3Sz5xa9THeZWiptyQX2d0B2zH7BJJmpIwnxEUpVewRk+/xJG3Cop4rxzH8JbeJNwRkSg=
   bucket: "nest-travis-artefacts"
   skip_cleanup: true
   endpoint: s3.eu-central-1.amazonaws.com
