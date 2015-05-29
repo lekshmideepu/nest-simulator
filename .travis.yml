@@ -1,3 +1,6 @@
+branches:
+  except:
+    - gh-pages
 language: cpp
 compiler:
   - gcc
