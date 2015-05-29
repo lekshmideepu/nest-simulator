@@ -19,8 +19,8 @@ env:
     - xGSL=0 xMPI=0 xPYTHON=1
     - xGSL=0 xMPI=0 xPYTHON=0
   global:
-    - ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
-    - ARTIFACTS_DEBUG=1
+   # - ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
+    #- ARTIFACTS_DEBUG=1
     - "ARTIFACTS_AWS_REGION=eu-central-1"
     - "ARTIFACTS_S3_BUCKET=nest-travis-artefacts"
     - SECURE: "cvyNpbJTTy+yGk76qH8Ibbp/gVmvN71Pe9pt+v2xxUKqBznJ3ruBLFKAkHLurYiAIuL/I/fo5cUiJBheu+LdUwBi36oJ8Z9hrojPdzLXzn3iRKbKrgLC0ZicjGl0Db97dQiOvXV90lZoMeGLypTNL90Hquj8ASA6W485HAEGgJI="
@@ -130,16 +130,17 @@ before_script:
 script: ./build.sh  
 
 after_script:
-  - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build"
+#  - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build"
+  - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build --target-path artifacts/$TRAVIS_BRANCH/$TRAVIS_BUILD_NUMBER"
  # - "travis-artifacts upload --path logs --path /home/travis/build/INM-6/nest-git-migration/build:build_logs"
-after_failure:
-  - "travis-artifacts upload --path debug/debug.log"
+#after_failure:
+#  - "travis-artifacts upload --path debug/debug.log"
 #after_success:
 #  - "travis-artifacts upload --path build/build.tar.gz"
   
-after_test:
+#after_test:
   #- "travis_artifacts upload --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID"
-  - "travis_artifacts upload --target-path ARTIFACTS_TARGET_PATHS"
+ # - "travis_artifacts upload --target-path ARTIFACTS_TARGET_PATHS"
 #S3 deployment    
 
 #deploy:
