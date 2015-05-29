@@ -16,7 +16,7 @@ env:
     - xGSL=0 xMPI=0 xPYTHON=1
     - xGSL=0 xMPI=0 xPYTHON=0
   global:
-    #- ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
+    - ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
     - ARTIFACTS_DEBUG=1
     - "ARTIFACTS_AWS_REGION=eu-central-1"
     - "ARTIFACTS_S3_BUCKET=nest-travis-artefacts"
@@ -134,7 +134,8 @@ after_success:
   - "travis-artifacts upload --path build/build.tar.gz"
   
 after_test:
-  - "travis_artifacts upload --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID"
+  #- "travis_artifacts upload --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID"
+  - "travis_artifacts upload --target-path ARTIFACTS_TARGET_PATHS"
 #S3 deployment    
 
 #deploy:
