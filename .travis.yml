@@ -16,8 +16,13 @@ env:
     - xGSL=0 xMPI=0 xPYTHON=1
     - xGSL=0 xMPI=0 xPYTHON=0
   global:
-    - ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
+    #- ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
     - ARTIFACTS_DEBUG=1
+    - "ARTIFACTS_AWS_REGION=eu-central-1"
+    - "ARTIFACTS_S3_BUCKET=nest-travis-artefacts"
+    - SECURE: "cvyNpbJTTy+yGk76qH8Ibbp/gVmvN71Pe9pt+v2xxUKqBznJ3ruBLFKAkHLurYiAIuL/I/fo5cUiJBheu+LdUwBi36oJ8Z9hrojPdzLXzn3iRKbKrgLC0ZicjGl0Db97dQiOvXV90lZoMeGLypTNL90Hquj8ASA6W485HAEGgJI="
+    - SECURE: "RFif0aY1uTjmjBLr2xJZVFcSnDOQVDeNeJSyRQnphxyhEY7tHS4h+r6/53YBEBE3MCWvnwsnamdrLAOcvwyuHSoRLgDzIMg2OyUDFHARcQypBjkYjlEemuwENX9r08RZPT71nkg0GRDWtF3OxiVdR64WL9u22ifPLj7knZf3UcM="
+
 matrix:
  # do notify immediately about it when a job of a build fails.
   fast_finish: true
@@ -117,9 +122,19 @@ install:
   - python --version
 before_script:
   - chmod +x build.sh 
+  - "gem install travis-artifacts"
 
 script: ./build.sh  
 
+after_script:
+  - "travis-artifactsupload --path logs --path /home/travis/build/INM-6/nest-git-migration/build:build_logs"
+after_failure:
+  - "travis_artifacts upload --path debug/debug.log"
+after_success:
+  - "travis_artifacts upload --path build/build.tar.gz"
+  
+after_test:
+  - "travis_artifacts upload --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID"
 #S3 deployment    
 
 deploy:
