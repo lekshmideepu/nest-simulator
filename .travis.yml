@@ -23,8 +23,8 @@ env:
     #- ARTIFACTS_DEBUG=1
     - "ARTIFACTS_AWS_REGION=eu-central-1"
     - "ARTIFACTS_S3_BUCKET=nest-travis-artefacts"
-    - SECURE: "cvyNpbJTTy+yGk76qH8Ibbp/gVmvN71Pe9pt+v2xxUKqBznJ3ruBLFKAkHLurYiAIuL/I/fo5cUiJBheu+LdUwBi36oJ8Z9hrojPdzLXzn3iRKbKrgLC0ZicjGl0Db97dQiOvXV90lZoMeGLypTNL90Hquj8ASA6W485HAEGgJI="
-    - SECURE: "RFif0aY1uTjmjBLr2xJZVFcSnDOQVDeNeJSyRQnphxyhEY7tHS4h+r6/53YBEBE3MCWvnwsnamdrLAOcvwyuHSoRLgDzIMg2OyUDFHARcQypBjkYjlEemuwENX9r08RZPT71nkg0GRDWtF3OxiVdR64WL9u22ifPLj7knZf3UcM="
+    - secure: "cvyNpbJTTy+yGk76qH8Ibbp/gVmvN71Pe9pt+v2xxUKqBznJ3ruBLFKAkHLurYiAIuL/I/fo5cUiJBheu+LdUwBi36oJ8Z9hrojPdzLXzn3iRKbKrgLC0ZicjGl0Db97dQiOvXV90lZoMeGLypTNL90Hquj8ASA6W485HAEGgJI="
+    - secure: "RFif0aY1uTjmjBLr2xJZVFcSnDOQVDeNeJSyRQnphxyhEY7tHS4h+r6/53YBEBE3MCWvnwsnamdrLAOcvwyuHSoRLgDzIMg2OyUDFHARcQypBjkYjlEemuwENX9r08RZPT71nkg0GRDWtF3OxiVdR64WL9u22ifPLj7knZf3UcM="
 
 matrix:
  # do notify immediately about it when a job of a build fails.
