@@ -21,10 +21,12 @@ env:
   global:
    # - ARTIFACTS_TARGET_PATHS="artifacts/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_COMMIT"
     #- ARTIFACTS_DEBUG=1
+    - "ARTIFACTS_TARGET_PATHS=nest-travis-artefacts/$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER:artifacts/$TRAVIS_REPO_SLUG/$TRAVIS_COMMIT"
     - "ARTIFACTS_AWS_REGION=eu-central-1"
     - "ARTIFACTS_S3_BUCKET=nest-travis-artefacts"
     - secure: "cvyNpbJTTy+yGk76qH8Ibbp/gVmvN71Pe9pt+v2xxUKqBznJ3ruBLFKAkHLurYiAIuL/I/fo5cUiJBheu+LdUwBi36oJ8Z9hrojPdzLXzn3iRKbKrgLC0ZicjGl0Db97dQiOvXV90lZoMeGLypTNL90Hquj8ASA6W485HAEGgJI="
     - secure: "RFif0aY1uTjmjBLr2xJZVFcSnDOQVDeNeJSyRQnphxyhEY7tHS4h+r6/53YBEBE3MCWvnwsnamdrLAOcvwyuHSoRLgDzIMg2OyUDFHARcQypBjkYjlEemuwENX9r08RZPT71nkg0GRDWtF3OxiVdR64WL9u22ifPLj7knZf3UcM="
+    - "ARTIFACTS_PATHS= $TRAVIS_BUILD_DIR/build"
 
 matrix:
  # do notify immediately about it when a job of a build fails.
@@ -36,22 +38,14 @@ cache:
   apt: true 
   ccache: true
   pip: true
-#virtualenv:
- # system_site_packages: true
-#addons:
- # artifacts:
- #  debug: true
-#addons:
-#  artifacts: true 
+addons:
+ artifacts:
+  debug: true
 
 before_install:
   - echo $LANG
   - echo $LC_ALL
 
-  #- if [ $TRAVIS_OS_NAME == linux ]; then sudo apt-get update && sudo apt-get install -y llvm-3.4 llvm-3.4-dev; fi
-  - sudo rm -rf /var/lib/apt/lists/*
-  - ls /etc/apt/sources.list.d/
- # - sudo rm /etc/apt/sources.list.d/docker-source.list
   # get repository for clang-3.6 stuff (including clang-format-3.6)
   - sudo sh -c 'echo -n "deb http://llvm.org/apt/trusty/ llvm-toolchain-trusty-3.6 main" >> /etc/apt/sources.list'
   # add key from ^ repository
@@ -60,7 +54,6 @@ before_install:
   # update repository status (-qq is more quiet)
   - sudo apt-get update -qq
   #Upgrade pip
-  #- pip install --upgrade pip
   - wget https://raw.github.com/pypa/pip/master/contrib/get-pip.py
   - sudo python get-pip.py
   
@@ -76,9 +69,7 @@ before_install:
   #Clang
   - sudo apt-get install -y clang indent
   
-  # Required by Topographica
-  #- sudo apt-get install xorg-x11-server-Xvfb pylint pyflakes
-  
+
   # Required by NEST, PyNN and Topographica
   - sudo apt-get install -y python-debian python-numpy python-scipy python-virtualenv python-matplotlib python-tk
   
@@ -100,15 +91,6 @@ before_install:
   - sudo apt-get install -y autoconf automake libtool libltdl-dev
   - sudo apt-get install -y libgsl0-dev  libghc-readline-dev gsl-bin libgsl0-dbg libgsl0ldbl
   
-  #Build dependencies for Sumatra
-  - sudo apt-get install -y python-django python-django-tagging python-httplib2 python-simplejson python-svn git-svn
-  
-  #Build dependencies for PyNN
-  - sudo apt-get install -y python-cheetah python-jinja2 python-mock
-  
-  #Build dependencies for Topographica
-  - sudo apt-get install -y python-tk python-gmpy python-imaging python-imaging-tk
-
   - sudo apt-get install -y cvs e2fsprogs gettext libpackagekit-glib2-dev groff libssh2-1-dev python-libssh2 slang-gsl libncurses5-dev check
 
   # for checking coding style (clang-format-3.6 depends on libllvm3.6)
@@ -130,7 +112,8 @@ before_script:
 script: ./build.sh  
 
 after_script:
-  - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build"
+  #- "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build"
+  - artifacts upload
  # - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build --target-path artifacts/$TRAVIS_BRANCH/$TRAVIS_BUILD_NUMBER"
  # - "travis-artifacts upload --path logs --path /home/travis/build/INM-6/nest-git-migration/build:build_logs"
 #after_failure:
