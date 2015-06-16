@@ -112,8 +112,8 @@ before_script:
 script: ./build.sh  
 
 after_script:
-  #- "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build"
-  - artifacts upload
+  - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build"
+  #- artifacts upload
  # - "travis-artifacts upload --path $TRAVIS_BUILD_DIR/build --target-path artifacts/$TRAVIS_BRANCH/$TRAVIS_BUILD_NUMBER"
  # - "travis-artifacts upload --path logs --path /home/travis/build/INM-6/nest-git-migration/build:build_logs"
 #after_failure:
