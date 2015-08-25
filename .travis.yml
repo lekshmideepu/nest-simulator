@@ -69,6 +69,7 @@ before_install:
 install: 
   - cython --version
   - python --version
+ # - "mkdir -p $TRAVIS_BUILD_DIR/build/artefacts_upload"
 before_script:
   - chmod +x build.sh 
 
@@ -84,3 +85,24 @@ after_failure:
       echo "File: $i"
       cat $i
     done
+
+before_deploy:
+  - cd $TRAVIS_BUILD_DIR/build
+  - tar -zcvf build.tar.gz ./*.* 
+  - mkdir -p $TRAVIS_BUILD_DIR/build/artefacts_upload
+  - cp build.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
+  #- tar -zcvf $TRAVIS_BUILD_DIR/*.*/nupic_core-${TRAVIS_COMMIT}-${PLATFORM}64.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
+
+#S3 deployment    
+
+deploy:
+  provider: s3
+  access_key_id: AKIAIC2R6KWR5DF2W6WQ
+  secret_access_key:
+    secure: IsVRcZf3U8CzwqkW9u9bF9eubXV+EKYEYW4VAI2C/Ex+UOdlIW0x+ogPFS5yJ5Sj4IuDre9dYi3oo+AfECBV5HSmqVz8nzz4cmVPve+2ty0qcl6e7/kKvALjE9ZLWiYR4TZbmAmRx8hkPrNeWJU412NwnkvqZwRDIcg5aAWna+0=
+  bucket: "nest-travis-artefacts"
+  region: eu-central-1
+  skip_cleanup: true
+  local-dir: "$TRAVIS_BUILD_DIR/build/artefacts_upload"
+  upload-dir: "nest-travis-artefacts"
+  acl: bucket_owner_full_control
