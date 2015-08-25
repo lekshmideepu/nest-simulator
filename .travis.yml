@@ -102,7 +102,9 @@ deploy:
     secure: IsVRcZf3U8CzwqkW9u9bF9eubXV+EKYEYW4VAI2C/Ex+UOdlIW0x+ogPFS5yJ5Sj4IuDre9dYi3oo+AfECBV5HSmqVz8nzz4cmVPve+2ty0qcl6e7/kKvALjE9ZLWiYR4TZbmAmRx8hkPrNeWJU412NwnkvqZwRDIcg5aAWna+0=
   bucket: "nest-travis-artefacts"
   region: eu-central-1
-  skip_cleanup: true
   local-dir: "$TRAVIS_BUILD_DIR/build/artefacts_upload"
   upload-dir: "nest-travis-artefacts"
+  skip_cleanup: true
+  on:
+    branch: s3_test
   acl: bucket_owner_full_control
