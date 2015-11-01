@@ -73,6 +73,10 @@ install:
   - which python
   - python --version
   - which pip
+  - sudo python --version
+  - pip --version
+  - sudo pip --version
+
 
 before_script:
   - chmod +x build.sh 
