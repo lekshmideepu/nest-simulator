@@ -1,6 +1,13 @@
 language: generic
 
+os:
+  - linux
+  - osx
 
+python:
+  - "2.7"
+  - "3.5"
+  
 #For Ubuntu Trusty (14.04 LTS)
 sudo: required
 dist: trusty
