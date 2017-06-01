@@ -71,7 +71,7 @@ before_install:
 
   # Install pip and Cython.
   - wget https://bootstrap.pypa.io/get-pip.py
-  - sudo python get-pip.py
+  - sudo -H  python get-pip.py
   - sudo pip install -U setuptools
   - pip install --user cython==0.23.4
 
