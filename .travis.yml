@@ -107,6 +107,7 @@ before_install:
   - cd $SOURCEDIR
 
 install:
+  - pip install pyopenssl
   - pip install tox-travis
   - which cython
   - cython --version
