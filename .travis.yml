@@ -62,35 +62,35 @@ before_install:
   - python --version # just for checking  
 
   # Remove automatically all unused packages.
-  - sudo apt-get autoremove
+  - apt-get autoremove
 
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
-  - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
+  - apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
 
   # Install Cython.
   - pip install --user cython==0.23.4
 
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
-  - sudo -H pip install terminaltables
+  - pip install terminaltables
 
   # Install OpenMPI.
-  - sudo apt-get install -y openmpi-bin libopenmpi-dev
+  - apt-get install -y openmpi-bin libopenmpi-dev
 
   # Install nose framework for the Python testsuite.
-  - sudo apt-get install -y python-nose
+  - apt-get install -y python-nose
 
   # Install VERA++ and pep8 for static code analysis.
-  - sudo apt-get install -y vera++ pep8
+  - apt-get install -y vera++ pep8
 
   # Required for building cppcheck-1.69.
-  - sudo apt-get install -y libpcre3 libpcre3-dev
+  - apt-get install -y libpcre3 libpcre3-dev
 
   # Install jq to process JSON output from GitHub API.
-  - sudo apt-get install -y jq
+  - apt-get install -y jq
 
   # Install current MUSIC version.
-  - sudo apt-get install -y python-mpi4py
+  - apt-get install -y python-mpi4py
   - git clone https://github.com/INCF/MUSIC.git music
   - cd music
   - ./autogen.sh
