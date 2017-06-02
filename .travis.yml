@@ -26,6 +26,12 @@ language: generic
 sudo: false  # To use travis container infrastructure
 dist: trusty
 
+addons:
+  apt:
+    sources:
+    - deadsnakes
+    - ubuntu-toolchain-r-test
+
 python:
   - "2.7"
   - "3.4"
@@ -63,7 +69,7 @@ before_install:
 
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
-  - pip install build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
+  - apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
 
   # Install Cython.
   - pip install --user cython==0.23.4
