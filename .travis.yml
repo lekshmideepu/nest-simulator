@@ -24,6 +24,7 @@
 language: generic
 
 sudo: false  # To use travis container infrastructure
+dist: trusty
 
 python:
   - "2.7"
