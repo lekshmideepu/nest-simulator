@@ -63,7 +63,7 @@ before_install:
 
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
-  - pip install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
+  - pip install build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
 
   # Install Cython.
   - pip install --user cython==0.23.4
@@ -72,22 +72,22 @@ before_install:
   - pip install terminaltables
 
   # Install OpenMPI.
-  - pip install -y openmpi-bin libopenmpi-dev
+  - pip install openmpi-bin libopenmpi-dev
 
   # Install nose framework for the Python testsuite.
-  - pip install -y python-nose
+  - pip install python-nose
 
   # Install VERA++ and pep8 for static code analysis.
-  - pip install -y vera++ pep8
+  - pip install vera++ pep8
 
   # Required for building cppcheck-1.69.
-  - pip install -y libpcre3 libpcre3-dev
+  - pip install libpcre3 libpcre3-dev
 
   # Install jq to process JSON output from GitHub API.
-  - pip install -y jq
+  - pip install jq
 
   # Install current MUSIC version.
-  - apt-get install -y python-mpi4py
+  - pip install  python-mpi4py
   - git clone https://github.com/INCF/MUSIC.git music
   - cd music
   - ./autogen.sh
