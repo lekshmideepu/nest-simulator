@@ -23,14 +23,8 @@
 
 language: generic
 
-sudo: false  # To use travis container infrastructure
+sudo: required
 dist: trusty
-
-addons:
-  apt:
-    sources:
-    - deadsnakes
-    - ubuntu-toolchain-r-test
 
 python:
   - "2.7"
@@ -69,7 +63,7 @@ before_install:
 
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
-  - apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
+  - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
 
   # Install Cython.
   - pip install --user cython==0.23.4
@@ -78,22 +72,22 @@ before_install:
   - pip install terminaltables
 
   # Install OpenMPI.
-  - pip install openmpi-bin libopenmpi-dev
+  - sudo apt-get install -y  openmpi-bin libopenmpi-dev
 
   # Install nose framework for the Python testsuite.
-  - pip install python-nose
+  - sudo apt-get install -y python-nose
 
   # Install VERA++ and pep8 for static code analysis.
-  - pip install vera++ pep8
+  - sudo apt-get install -y vera++ pep8
 
   # Required for building cppcheck-1.69.
-  - pip install libpcre3 libpcre3-dev
+  - sudo apt-get install -y libpcre3 libpcre3-dev
 
   # Install jq to process JSON output from GitHub API.
-  - pip install jq
+  - sudo apt-get install -y jq
 
   # Install current MUSIC version.
-  - pip install  python-mpi4py
+  - sudo apt-get install -y python-mpi4py
   - git clone https://github.com/INCF/MUSIC.git music
   - cd music
   - ./autogen.sh
@@ -106,7 +100,7 @@ before_install:
   - cd $SOURCEDIR
 
 install:
-  - pip install pyopenssl
+  #- pip install pyopenssl
   - pip install tox-travis
   - which cython
   - cython --version
