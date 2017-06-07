@@ -56,7 +56,6 @@ before_install:
   - cd $HOME/build
   - echo $PATH
 
-  - pip install --upgrade virtualenv
   - virtualenv venv
   - source venv/bin/activate
   - python --version # just for checking  
