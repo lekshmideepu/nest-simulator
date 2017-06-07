@@ -56,8 +56,6 @@ before_install:
   - cd $HOME/build
   - echo $PATH
 
-  - virtualenv venv
-  - source venv/bin/activate
   - python --version # just for checking  
   - pip install -U pip
   #To avoid the  InsecurePlatformWarning https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
