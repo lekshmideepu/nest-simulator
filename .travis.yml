@@ -21,9 +21,7 @@
 # This is the Travis CI top-level script to setup and run the NEST build and test environment. 
 
 
-language: 
-   - cpp
-   - python
+language: python 
 
 sudo: required
 dist: trusty
