@@ -55,7 +55,7 @@ before_install:
   - export SOURCEDIR=$PWD
   - cd $HOME/build
   - echo $PATH
-
+  - echo $LANG
   - python --version # just for checking  
   - pip install -U pip
   - pip install -U setuptools 
