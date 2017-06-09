@@ -57,9 +57,10 @@ before_install:
   - echo $PATH
 
   - python --version # just for checking  
-  #- pip install -U pip
-  #To avoid the  InsecurePlatformWarning https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  - pip install -U pyopenssl ndg-httpsclient 
+  - pip install -U pip
+  - pip install -U setuptools 
+ #To avoid the  InsecurePlatformWarning https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+ # - pip install -U pyopenssl ndg-httpsclient 
 
   # Update package repository status (-qq is more quiet).
   - sudo rm -rf /var/lib/apt/lists/*
