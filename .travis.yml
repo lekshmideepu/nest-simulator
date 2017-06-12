@@ -21,12 +21,15 @@
 # This is the Travis CI top-level script to setup and run the NEST build and test environment. 
 
 
-language: generic
+language: python
 
 # Required for Ubuntu Trusty (14.04 LTS).
 sudo: required
 dist: trusty
 
+python:
+  - "2.7"
+  - "3.4"
 env:
   matrix:
     # We don't have to run a full matrix here, because most of the options are
@@ -53,6 +56,8 @@ before_install:
   - export SOURCEDIR=$PWD
   - cd $HOME/build
   - echo $PATH
+  - pip install -U pip
+  - pip install -U setuptools
 
   # Update package repository status (-qq is more quiet).
   - sudo rm -rf /var/lib/apt/lists/*
@@ -66,14 +71,11 @@ before_install:
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
 
-  # Install pip and Cython.
-  - wget https://bootstrap.pypa.io/get-pip.py
-  - sudo python get-pip.py
-  - sudo pip install -U setuptools
-  - pip install --user cython==0.23.4
+  # Install Cython.
+  - pip install cython==0.23.4
 
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
-  - sudo pip install terminaltables
+  - pip install terminaltables
 
   # Install OpenMPI.
   - sudo apt-get install -y openmpi-bin libopenmpi-dev
@@ -104,6 +106,7 @@ before_install:
   - cd $SOURCEDIR
 
 install:
+  - pip install tox-travis
   - which cython
   - cython --version
   - which python
@@ -119,6 +122,7 @@ script:
   - set -o pipefail
   - ./build.sh 2>&1 | tee build.sh.log
   - python extras/parse_travis_log.py build.sh.log
+  - tox
 
 before_deploy:
   - cd $TRAVIS_BUILD_DIR/build

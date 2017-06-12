@@ -42,6 +42,7 @@ exclude_dirs = [
     'libltdl',
     '.git',
     'CMakeFiles',
+    '.tox',
 ]
 
 # match all file names against these regular expressions. if a match
