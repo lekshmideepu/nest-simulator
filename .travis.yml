@@ -106,7 +106,7 @@ before_install:
   - cd $SOURCEDIR
 
 install:
-  - pip install tox-travis
+#  - pip install tox-travis
   - which cython
   - cython --version
   - which python
@@ -122,7 +122,7 @@ script:
   - set -o pipefail
   - ./build.sh 2>&1 | tee build.sh.log
   - python extras/parse_travis_log.py build.sh.log
-  - tox
+ # - tox
 
 before_deploy:
   - cd $TRAVIS_BUILD_DIR/build
