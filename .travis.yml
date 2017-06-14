@@ -50,11 +50,14 @@ cache:
     - $HOME/.cache
 
 before_install:
+  - echo $PWD
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - export SOURCEDIR=$PWD
+  - echo $PWD
   - cd $HOME/build
+  - echo $PWD
   - echo $PATH
   - pip install -U pip
   - pip install -U setuptools
@@ -91,22 +94,27 @@ before_install:
 
   # Install jq to process JSON output from GitHub API.
   - sudo apt-get install -y jq
-
+  - echo $PWD
   # Install current MUSIC version.
   - sudo apt-get install -y python-mpi4py
   - git clone https://github.com/INCF/MUSIC.git music
+  - echo $PWD
   - cd music
   - ./autogen.sh
   - ./configure --prefix=$HOME/.cache/music.install
+  - echo $PWD
   - make
   - make install
+  - echo $PWD
   - cd $HOME/build
-
+  - echo $PWD
   # Change directory back to the NEST source code directory.
   - cd $SOURCEDIR
+  - echo $PWD
 
 install:
 #  - pip install tox-travis
+  - echo $PWD
   - which cython
   - cython --version
   - which python
@@ -116,15 +124,21 @@ install:
   - cmake --version
 
 before_script:
+  - echo $PWD
   - chmod +x build.sh
 
 script:
+  - echo $PWD
   - set -o pipefail
+  - echo $PWD
   - ./build.sh 2>&1 | tee build.sh.log
+  - echo $PWD
   - python extras/parse_travis_log.py build.sh.log
  # - tox
 
 before_deploy:
+  - echo $PWD
+  - echo $TRAVIS_BUILD_DIR
   - cd $TRAVIS_BUILD_DIR/build
   - tar -zcvf reports.tar.gz ./reports
   - tar -zcvf docs.tar.gz $TRAVIS_BUILD_DIR/result/share/doc/nest/*.*
