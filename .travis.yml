@@ -96,7 +96,8 @@ before_install:
   - sudo apt-get install -y jq
   - echo $PWD
   # Install current MUSIC version.
-  - sudo apt-get install -y python-mpi4py
+#  - sudo apt-get install -y python-mpi4py
+  - pip install mpi4py
   - git clone https://github.com/INCF/MUSIC.git music
   - echo $PWD
   - cd music
