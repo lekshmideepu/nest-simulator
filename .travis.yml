@@ -31,7 +31,7 @@ group: edge
 
 python:
   - "2.7"
-  - "3.4"
+  - "3.6"
 env:
   matrix:
     # We don't have to run a full matrix here, because most of the options are
@@ -48,12 +48,6 @@ env:
 matrix:
      # Notify immediately when a build job fails.
    fast_finish: true
-
-   exclude:
-     - python: 2.7
-       env: xPYTHON=0 
-     - python: 3.4
-       env: xPYTHON=0
 
 cache:
   directory:
@@ -98,6 +92,27 @@ before_install:
   # Required for building cppcheck-1.69.
   - sudo apt-get install -y libpcre3 libpcre3-dev
 
+  # Build cppcheck version 1.79
+  - git clone https://github.com/danmar/cppcheck.git
+  - cd cppcheck
+  - git checkout tags/1.79
+  - mkdir -p install
+  - make PREFIX=$HOME/.cache CFGDIR=$HOME/.cache/cfg HAVE_RULES=yes install
+  - cd ..
+
+  # Install CLANG-FORMAT
+  - wget --no-verbose http://llvm.org/releases/3.6.2/clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+  - tar xf clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+  # Copy and not move because '.cache' may aleady contain other subdirectories and files.
+  - cp -R clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04/* $HOME/.cache
+
+  # Remove these directories, otherwise the copyright-header check will complain.
+  - rm -rf ./cppcheck
+  - rm -rf ./clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04
+ 
+  # Ensure that the cppcheck and clang-format installation can be found.
+  - export PATH=$HOME/.cache/bin:$PATH
+  
   # Install jq to process JSON output from GitHub API.
   - pip install jq
 
