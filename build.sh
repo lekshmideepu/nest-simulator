@@ -97,15 +97,15 @@ echo "MSGBLD0010: Initializing VERA++ static code analysis."
 sudo cp ./extras/vera++.profile /usr/lib/vera++/profiles/nest
 echo "MSGBLD0020: VERA++ initialization completed."  
 
-echo "MSGBLD0030: Retrieving changed files."
+echo "MSGBLD0070: Retrieving changed files."
   # Note: BUG: Extracting the filenames may not work in all cases. 
   #            The commit range might not properly reflect the history.
   #            see https://github.com/travis-ci/travis-ci/issues/2668
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-   echo "MSGBLD0040: PULL REQUEST: Retrieving changed files using GitHub API."
+   echo "MSGBLD0080: PULL REQUEST: Retrieving changed files using GitHub API."
    file_names=`curl "https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST/files" | jq '.[] | .filename' | tr '\n' ' ' | tr '"' ' '`
 else
-   echo "MSGBLD0050: Retrieving changed files using git diff."    
+   echo "MSGBLD0090: Retrieving changed files using git diff."    
    file_names=`(git diff --name-only $TRAVIS_COMMIT_RANGE || echo "") | tr '\n' ' '`
 fi
 
@@ -113,10 +113,10 @@ printf '%s\n' "$file_names" | while IFS= read -r line
  do
    for single_file_name in $file_names
    do
-     echo "MSGBLD0055: File changed: $single_file_name"
+     echo "MSGBLD0095: File changed: $single_file_name"
    done
  done
-echo "MSGBLD060: Retrieving changed files completed."
+echo "MSGBLD0100: Retrieving changed files completed."
 echo
 
 

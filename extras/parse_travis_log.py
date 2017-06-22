@@ -706,8 +706,8 @@ def errors_table(summary):
 
 def printable_summary(list_of_changed_files,
                       status_vera_init,
-                      status_cppcheck_init,
-                      status_format_init,
+                   #   status_cppcheck_init,
+                   #   status_format_init,
                       status_cmake_configure,
                       status_make,
                       status_make_install,
@@ -805,10 +805,10 @@ def printable_summary(list_of_changed_files,
         ['', 'No files have been changed.'],
         ['Tools Initialization :', ''],
         ['VERA++', convert_bool_value_to_status_string(status_vera_init)],
-        ['Cppcheck',
-         convert_bool_value_to_status_string(status_cppcheck_init)],
-        ['clang-format',
-         convert_bool_value_to_status_string(status_format_init)],
+       # ['Cppcheck',
+        # convert_bool_value_to_status_string(status_cppcheck_init)],
+       # ['clang-format',
+       #  convert_bool_value_to_status_string(status_format_init)],
         ['Static Code Analysis :', ''],
         ['VERA++',
          convert_summary_to_status_string(summary_vera, ignore_vera) +
@@ -867,8 +867,8 @@ def printable_summary(list_of_changed_files,
 
 
 def build_return_code(status_vera_init,
-                      status_cppcheck_init,
-                      status_format_init,
+                   #   status_cppcheck_init,
+                   #   status_format_init,
                       status_cmake_configure,
                       status_make,
                       status_make_install,
@@ -918,8 +918,8 @@ def build_return_code(status_vera_init,
     0 (success) or 1.
     """
     if ((status_vera_init is None or status_vera_init) and
-       (status_cppcheck_init is None or status_cppcheck_init) and
-       (status_format_init is None or status_format_init) and
+      # (status_cppcheck_init is None or status_cppcheck_init) and
+      # (status_format_init is None or status_format_init) and
        (status_cmake_configure) and
        (status_make) and
        (status_make_install) and
@@ -952,11 +952,11 @@ if __name__ == '__main__':
     status_vera_init = \
         is_message_pair_in_logfile(log_filename, "MSGBLD0010", "MSGBLD0020")
 
-    status_cppcheck_init = \
-        is_message_pair_in_logfile(log_filename, "MSGBLD0030", "MSGBLD0040")
+#    status_cppcheck_init = \
+ #       is_message_pair_in_logfile(log_filename, "MSGBLD0030", "MSGBLD0040")
 
-    status_format_init = \
-        is_message_pair_in_logfile(log_filename, "MSGBLD0050", "MSGBLD0060")
+  #  status_format_init = \
+  #      is_message_pair_in_logfile(log_filename, "MSGBLD0050", "MSGBLD0060")
 
     status_cmake_configure = \
         is_message_pair_in_logfile(log_filename, "MSGBLD0230", "MSGBLD0240")
@@ -994,8 +994,8 @@ if __name__ == '__main__':
     # Determine the build result to tell Travis CI whether the build was
     # successful or not.
     exit_code = build_return_code(status_vera_init,
-                                  status_cppcheck_init,
-                                  status_format_init,
+                                 # status_cppcheck_init,
+                                 # status_format_init,
                                   status_cmake_configure,
                                   status_make,
                                   status_make_install,
@@ -1018,8 +1018,8 @@ if __name__ == '__main__':
 
     print(printable_summary(changed_files,
                             status_vera_init,
-                            status_cppcheck_init,
-                            status_format_init,
+                            #status_cppcheck_init,
+                           # status_format_init,
                             status_cmake_configure,
                             status_make,
                             status_make_install,
