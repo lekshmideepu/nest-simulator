@@ -58,9 +58,7 @@ before_install:
   - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - export SOURCEDIR=$PWD
-  - echo $PWD
   - cd $HOME/build
-  - echo $PWD
   - echo $PATH
   - pip install -U pip
   - pip install -U setuptools
@@ -77,8 +75,8 @@ before_install:
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
   - sudo apt-get install -y python-all-dev
-  - echo $PWD
-  - cp /usr/lib/python2.7/dist-packages/python* ./lib/python2.7/site-packages/
+  #- echo $/usr/lib/python*.*/dist-packages/
+  - cp /usr/lib/python*.*/dist-packages/python* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - pip install numpy scipy ipython matplotlib cython
   
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
