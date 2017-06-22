@@ -76,7 +76,7 @@ before_install:
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
   - sudo apt-get install -y python-all-dev
   #- echo $/usr/lib/python*.*/dist-packages/
-  - cp /usr/lib/python*.*/dist-packages/python* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp /usr/lib/python*.*/dist-packages/libpython* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - pip install numpy scipy ipython matplotlib cython
   
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
