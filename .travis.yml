@@ -78,10 +78,8 @@ before_install:
   #- echo $/usr/lib/python*.*/dist-packages/
   - ls /usr/lib/python*.*/dist-packages/
   - ls /usr/lib/
-  - ls /usr/lib/python2.7
-  - ls /usr/lib/python3
-  - ls /usr/lib/python3.4
-  - cp /usr/lib/python*.*/dist-packages/libpython* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - ls /usr/local/lib
+#  - cp /usr/lib/python*.*/dist-packages/libpython* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - pip install numpy scipy ipython matplotlib cython
   
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
