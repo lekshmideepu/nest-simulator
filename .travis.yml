@@ -79,6 +79,10 @@ before_install:
   - ls /usr/lib/python*.*/dist-packages/
   - ls /usr/lib/
   - ls /usr/local/lib
+  - ls /usr/local/lib/python2.7/
+  - ls /usr/local/lib/python3.4
+  - ls /usr/local/lib/python2.7/dist-packages/
+  - ls /usr/local/lib/python3.4/dist-packages/
 #  - cp /usr/lib/python*.*/dist-packages/libpython* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - pip install numpy scipy ipython matplotlib cython
   - apt list --installed  
