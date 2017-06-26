@@ -75,7 +75,8 @@ before_install:
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
   - sudo apt-get install -y python-all-dev
- # - dpkg -L python-all-dev
+  - ls /usr/lib/x86_64-linux-gnu/
+  - dpkg -L libreadline6-dev
 #  - ls /usr/share/doc
  # - ls /usr/share/
   #- ls /home/travis/.cache/
@@ -92,6 +93,12 @@ before_install:
  # - ls /usr/local/lib/python3.4/dist-packages/
   #- cp /usr/lib/python*.*/dist-packages/libpython*  ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - cp -r /usr/share/doc/libpython*  ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/libltdl-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/libreadline-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/libncurses5-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/libgsl0-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/build-essential ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/cmake ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - pip install numpy scipy ipython matplotlib cython
   - apt list --installed  
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
