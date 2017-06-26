@@ -76,6 +76,9 @@ before_install:
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
   - sudo apt-get install -y python-all-dev
   - dpkg -L python-all-dev
+  - ls /usr/share/doc
+  - ls /usr/share/
+  - ls /home/travis/.cache/
   - ls /usr/lib/python*.*/dist-packages/
   - ls /usr/lib/
   - ls /usr/lib/python2.7/
