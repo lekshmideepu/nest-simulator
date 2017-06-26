@@ -76,21 +76,7 @@ before_install:
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
   - sudo apt-get install -y python-all-dev
   - ls /usr/lib/x86_64-linux-gnu/
-  - dpkg -L libreadline6-dev
-#  - ls /usr/share/doc
- # - ls /usr/share/
-  #- ls /home/travis/.cache/
-  #- ls /usr/lib/python*.*/dist-packages/
-  #- ls /usr/lib/
-  #- ls /usr/lib/python2.7/
-  #- ls /usr/lib/python3.4/
-  #- ls /usr/lib/python*.*/dist-packages/
-  #- ls /usr/local/lib/
-  #- ls /usr/local/lib/python2.7/
- # - ls /usr/local/lib/python3.4/
- # - ls /usr/local/lib/python2.7/dist-packages/
- # - ls /usr/local/lib/python2.7/site-packages/
- # - ls /usr/local/lib/python3.4/dist-packages/
+  - ls ~/virtualenv/python*.*.*/lib/
   #- cp /usr/lib/python*.*/dist-packages/libpython*  ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - cp -r /usr/share/doc/libpython*  ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - cp -r /usr/share/doc/libltdl-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
