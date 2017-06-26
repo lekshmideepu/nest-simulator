@@ -139,6 +139,8 @@ before_install:
 
   # Change directory back to the NEST source code directory.
   - cd $SOURCEDIR
+  - echo $PYTHON_LIBRARY
+  - echo $PYTHON_INCLUDE_DIR
 
 install:
   - which cython
