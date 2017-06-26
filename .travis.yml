@@ -58,9 +58,7 @@ before_install:
   - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - export SOURCEDIR=$PWD
-  - echo $PWD
   - cd $HOME/build
-  - echo $PWD
   - echo $PATH
   - pip install -U pip
   - pip install -U setuptools
@@ -77,21 +75,10 @@ before_install:
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
   - sudo apt-get install -y python-all-dev
-  - ls /usr/lib/x86_64-linux-gnu/
-  - ls ~/virtualenv/python*.*.*/lib/
-  - ls ~/virtualenv/python*.*.*/lib/python2.7/
-  - ls ~/virtualenv/python*.*.*/lib/python3.6/
-  - ls ~/virtualenv/python*.*.*/lib/python*.*/
-  #- cp /usr/lib/python*.*/dist-packages/libpython*  ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/libpython*  ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/libltdl-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/libreadline-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/libncurses5-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/libgsl0-dev ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/build-essential ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
-  - cp -r /usr/share/doc/cmake ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp -r /usr/share/doc/{libpython*,libltdl-dev,libreadline-dev,libncurses5-dev,libgsl0-dev,build-essential,cmake} ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+
   - pip install numpy scipy ipython matplotlib cython
-  - apt list --installed  
+
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
   - pip install terminaltables
 
@@ -144,9 +131,6 @@ before_install:
 
   # Change directory back to the NEST source code directory.
   - cd $SOURCEDIR
-  - echo $PWD
-  - echo $PYTHON_LIBRARY
-  - echo $PYTHON_INCLUDE_DIR
 
 install:
   - which cython
