@@ -74,8 +74,8 @@ before_install:
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
   - sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev
-  - sudo apt-get install -y python-all-dev
-  - dpkg -L python-all-dev
+#  - sudo apt-get install -y python-all-dev
+ # - dpkg -L python-all-dev
   - ls /usr/share/doc
   - ls /usr/share/
   - ls /home/travis/.cache/
@@ -91,6 +91,7 @@ before_install:
   - ls /usr/local/lib/python2.7/site-packages/
   - ls /usr/local/lib/python3.4/dist-packages/
   #- cp /usr/lib/python*.*/dist-packages/libpython* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
+  - cp /usr/share/doc/libpython* ~/virtualenv/python*.*.*/lib/python*.*/site-packages/
   - pip install numpy scipy ipython matplotlib cython
   - apt list --installed  
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
