@@ -26,6 +26,7 @@ language: python
 # Using the container infrastructure for Ubuntu Trusty (14.04 LTS).
 sudo: false
 dist: trusty
+
 #https://blog.travis-ci.com/2017-06-19-trusty-updates-2017-Q2
 group: edge
 
@@ -54,7 +55,7 @@ matrix:
    #   - r-packages-trusty
 cache:
   directory:
-    - $HOME/.cache
+   - $HOME/.cache
 
 before_install:
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
