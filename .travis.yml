@@ -58,7 +58,7 @@ addons:
   # - $HOME/.cache
 
 before_install:
-  - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+ # - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - export SOURCEDIR=$PWD
