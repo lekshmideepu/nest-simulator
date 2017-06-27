@@ -49,13 +49,13 @@ matrix:
   # Notify immediately when a build job fails.
   fast_finish: true
 
-#addons:
- # apt:
-  #  sources:
-   #   - r-packages-trusty
-cache:
-  directory:
-   - $HOME/.cache
+addons:
+ apt:
+  sources:
+   - r-packages-trusty
+#cache:
+ # directory:
+  # - $HOME/.cache
 
 before_install:
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
