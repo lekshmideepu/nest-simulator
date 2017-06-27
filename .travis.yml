@@ -51,7 +51,7 @@ matrix:
 addons:
   apt:
     sources:
-    - r-packages-trusty
+      - r-packages-trusty
 cache:
   directory:
     - $HOME/.cache
