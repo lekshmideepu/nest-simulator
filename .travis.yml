@@ -142,7 +142,8 @@ before_install:
    - pip install jq
 
 install:
-   - ./.travis/music_install.sh
+   - echo $PWD
+   - ./$HOME/music_install.sh
    - which cython
    - cython --version
    - which python
