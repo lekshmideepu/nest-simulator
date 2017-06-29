@@ -140,7 +140,8 @@ before_install:
 
   # Install jq to process JSON output from GitHub API.
    - pip install jq
-
+   - echo $PWD
+   
 install:
    - echo $PWD
    - ./$HOME/music_install.sh
