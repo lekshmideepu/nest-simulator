@@ -20,7 +20,6 @@
 
 # This is the Travis CI top-level script to setup and run the NEST build and test environment. 
 
-
 language: python
 
 # Using the container infrastructure for Ubuntu Trusty (14.04 LTS).
@@ -84,82 +83,82 @@ before_install:
    - pip install numpy scipy ipython matplotlib cython
   
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
-  - pip install terminaltables
+   - pip install terminaltables
 
   # Install OpenMPI.
   #- sudo apt-get install -y openmpi-bin libopenmpi-dev
 
   # Install nose framework for the Python testsuite.
-  - pip install nose
+   - pip install nose
 
   # Install VERA++ and pep8 for static code analysis.
  # - sudo apt-get install -y vera++ pep8
-  - pip install pep8
+   - pip install pep8
 
   # Required for building cppcheck-1.69.
-  - sudo apt-get install -y libpcre3 libpcre3-dev
+   - sudo apt-get install -y libpcre3 libpcre3-dev
 
   # Build cppcheck version 1.79
-  - git clone https://github.com/danmar/cppcheck.git
-  - cd cppcheck
-  - git checkout tags/1.79
-  - mkdir -p install
-  - make PREFIX=$HOME/.cache CFGDIR=$HOME/.cache/cfg HAVE_RULES=yes install
-  - cd ..
-  - echo $PWD
+   - git clone https://github.com/danmar/cppcheck.git
+   - cd cppcheck
+   - git checkout tags/1.79
+   - mkdir -p install
+   - make PREFIX=$HOME/.cache CFGDIR=$HOME/.cache/cfg HAVE_RULES=yes install
+   - cd ..
+   - echo $PWD
   # Install CLANG-FORMAT
-  - wget --no-verbose http://llvm.org/releases/3.6.2/clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-  - tar xf clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+   - wget --no-verbose http://llvm.org/releases/3.6.2/clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+   - tar xf clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
   # Copy and not move because '.cache' may aleady contain other subdirectories and files.
-  - cp -R clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04/* $HOME/.cache
+   - cp -R clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04/* $HOME/.cache
 
   # Remove these directories, otherwise the copyright-header check will complain.
-  - rm -rf ./cppcheck
-  - rm -rf ./clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04
+   - rm -rf ./cppcheck
+   - rm -rf ./clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04
  
   # Ensure that the cppcheck and clang-format installation can be found.
-  - export PATH=$HOME/.cache/bin:$PATH
+   - export PATH=$HOME/.cache/bin:$PATH
 
   # Install jq to process JSON output from GitHub API.
-  - pip install jq
+   - pip install jq
 
   # Install current MUSIC version.
-  - pip install mpi4py
-  - git clone https://github.com/INCF/MUSIC.git music
-  - cd music
-  - ./autogen.sh
-  - ./configure --prefix=$HOME/.cache/music.install
-  - make
-  - make install
-  - cd $HOME/build
+   - pip install mpi4py
+   - git clone https://github.com/INCF/MUSIC.git music
+   - cd music
+   - ./autogen.sh
+   - ./configure --prefix=$HOME/.cache/music.install
+   - make
+   - make install
+   - cd $HOME/build
 
   # Change directory back to the NEST source code directory.
-  - cd $SOURCEDIR
+   - cd $SOURCEDIR
 
 install:
-  - which cython
-  - cython --version
-  - which python
-  - python --version
-  - which pip
-  - which cmake
-  - cmake --version
+   - which cython
+   - cython --version
+   - which python
+   - python --version
+   - which pip
+   - which cmake
+   - cmake --version
 
 before_script:
-  - chmod +x build.sh
+   - chmod +x build.sh
 
 script:
-  - set -o pipefail
-  - ./build.sh 2>&1 | tee build.sh.log
-  - python extras/parse_travis_log.py build.sh.log
+   - set -o pipefail
+   - ./build.sh 2>&1 | tee build.sh.log
+   - python extras/parse_travis_log.py build.sh.log
 
 before_deploy:
-  - cd $TRAVIS_BUILD_DIR/build
-  - tar -zcvf reports.tar.gz ./reports
-  - tar -zcvf docs.tar.gz $TRAVIS_BUILD_DIR/result/share/doc/nest/*.*
-  - mkdir -p $TRAVIS_BUILD_DIR/build/artefacts_upload
-  - mv docs.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
-  - mv reports.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
+   - cd $TRAVIS_BUILD_DIR/build
+   - tar -zcvf reports.tar.gz ./reports
+   - tar -zcvf docs.tar.gz $TRAVIS_BUILD_DIR/result/share/doc/nest/*.*
+   - mkdir -p $TRAVIS_BUILD_DIR/build/artefacts_upload
+   - mv docs.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
+   - mv reports.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
 
 # S3 Deployment (Uploading the Travis CI build artefacts to Amazon S3).
 deploy:
