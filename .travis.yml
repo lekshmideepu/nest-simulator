@@ -53,9 +53,28 @@ addons:
    apt:
     sources:
      - r-packages-trusty
-#cache:
- # directory:
-  # - $HOME/.cache
+    packages:
+     - build-essential
+     - cmake
+     - libltdl-dev
+     - libreadline6-dev
+     - libncurses5-dev 
+     - libgsl0-dev
+     - python-all-dev
+     - python-numpy
+     - python-scipy 
+     - python-matplotlib
+     - ipython
+     - pkg-config
+     - openmpi-bin
+     - libopenmpi-dev
+     - python-nose
+     - libpcre3
+     - libpcre3-dev
+     - python-mpi4py
+cache:
+   directory:
+     - $HOME/.cache
 
 before_install:
    - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
@@ -80,7 +99,7 @@ before_install:
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
   #- sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
-   - pip install numpy scipy ipython matplotlib cython
+ # - pip install numpy scipy ipython matplotlib cython
   
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
    - pip install terminaltables
@@ -89,7 +108,7 @@ before_install:
   #- sudo apt-get install -y openmpi-bin libopenmpi-dev
 
   # Install nose framework for the Python testsuite.
-   - pip install nose
+ # - pip install nose
 
   # Install VERA++ and pep8 for static code analysis.
  # - sudo apt-get install -y vera++ pep8
@@ -123,7 +142,7 @@ before_install:
    - pip install jq
 
   # Install current MUSIC version.
-   - pip install mpi4py
+  #- pip install mpi4py
    - git clone https://github.com/INCF/MUSIC.git music
    - cd music
    - ./autogen.sh
