@@ -51,24 +51,24 @@ matrix:
   fast_finish: true
 
 addons:
- apt:
-  sources:
-   - r-packages-trusty
+   apt:
+    sources:
+     - r-packages-trusty
 #cache:
  # directory:
   # - $HOME/.cache
 
 before_install:
- # - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
-  - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
-  - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
-  - export SOURCEDIR=$PWD
-  - cd $HOME/build
-  - echo $PATH
+   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+   - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
+   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+   - export SOURCEDIR=$PWD
+   - cd $HOME/build
+   - echo $PATH
 
   # Upgrade pip and setuptools
-  - pip install -U pip
-  - pip install -U setuptools
+   - pip install -U pip
+   - pip install -U setuptools
 
   # Update package repository status (-qq is more quiet).
  # - sudo rm -rf /var/lib/apt/lists/*
