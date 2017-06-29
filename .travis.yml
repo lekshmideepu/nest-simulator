@@ -141,9 +141,9 @@ before_install:
   # Install jq to process JSON output from GitHub API.
    - pip install jq
    - echo $PWD
-   
-install:
    - cd $HOME
+
+install:
    - ./music_install.sh
    - which cython
    - cython --version
