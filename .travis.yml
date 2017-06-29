@@ -141,20 +141,8 @@ before_install:
   # Install jq to process JSON output from GitHub API.
    - pip install jq
 
-  # Install current MUSIC version.
-  #- pip install mpi4py
-   - git clone https://github.com/INCF/MUSIC.git music
-   - cd music
-   - ./autogen.sh
-   - ./configure --prefix=$HOME/.cache/music.install
-   - make
-   - make install
-   - cd $HOME/build
-
-  # Change directory back to the NEST source code directory.
-   - cd $SOURCEDIR
-
 install:
+   - ./music_install.sh
    - which cython
    - cython --version
    - which python
