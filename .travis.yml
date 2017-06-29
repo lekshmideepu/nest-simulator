@@ -144,7 +144,7 @@ before_install:
    #- cd $HOME
 
 install:
-   - ./music_install.sh
+#   - ./music_install.sh
    - which cython
    - cython --version
    - which python
