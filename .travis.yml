@@ -143,8 +143,8 @@ before_install:
    - echo $PWD
    
 install:
-   - echo $PWD
-   - ./$HOME/music_install.sh
+   - cd $HOME
+   - ./music_install.sh
    - which cython
    - cython --version
    - which python
