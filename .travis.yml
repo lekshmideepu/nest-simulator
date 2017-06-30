@@ -85,8 +85,8 @@ before_install:
    - cp music_install.sh $HOME
    - cd $HOME/build
    - echo $PATH
-   - ls ~/virtualenv/python*.*/lib
-   - ls ~/virtualenv/python*.*/include
+   - ls ~/virtualenv/python*.*.*/lib/python*.*
+   - ls ~/virtualenv/python*.*/include/python*.*
   # Upgrade pip and setuptools
    - pip install -U pip
    - pip install -U setuptools
