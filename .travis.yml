@@ -85,7 +85,8 @@ before_install:
    - cp music_install.sh $HOME
    - cd $HOME/build
    - echo $PATH
-
+   - ls ~/virtualenv/python*.*/lib
+   - ls ~/virtualenv/python*.*/include
   # Upgrade pip and setuptools
    - pip install -U pip
    - pip install -U setuptools
@@ -168,7 +169,7 @@ install:
 before_script:
    - cd $SOURCEDIR
    - chmod +x build.sh
-
+   - if [[ "xPYTHON" == "1" ]] then export PYTHON_LIBRARY= ~/virtualenv/python*.*/lib; export PYTHON_INCLUDE_DIR=~/virtualenv/python*.*/include; fi
 script:
    - set -o pipefail
    - ./build.sh 2>&1 | tee build.sh.log
