@@ -169,7 +169,7 @@ install:
 before_script:
    - cd $SOURCEDIR
    - chmod +x build.sh
-   - if [[ "xPYTHON" == "1" ]]; then export PYTHON_LIBRARY= ~/virtualenv/python*.*/lib; export PYTHON_INCLUDE_DIR=~/virtualenv/python*.*/include; fi
+ # - if [[ "xPYTHON" == "1" ]]; then export PYTHON_LIBRARY= ~/virtualenv/python*.*/lib; export PYTHON_INCLUDE_DIR=~/virtualenv/python*.*/include; fi
 script:
    - set -o pipefail
    - ./build.sh 2>&1 | tee build.sh.log
