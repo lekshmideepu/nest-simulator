@@ -23,7 +23,7 @@
 language: python
 
 # Using the container infrastructure for Ubuntu Trusty (14.04 LTS).
-sudo: false
+sudo: required
 dist: trusty
 
 #https://blog.travis-ci.com/2017-06-19-trusty-updates-2017-Q2
@@ -114,14 +114,15 @@ before_install:
 
   # Install VERA++ and pep8 for static code analysis.
  # - sudo apt-get install -y vera++ pep8
-   - git clone https://bitbucket.org/verateam/vera.git
-   - cd vera
-   - mkdir build
-   - cd build
-   - cmake ..
-   - make -j
-   - make install
-   - cd ..
+   - sudo apt-get install -y vera++
+ #  - git clone https://bitbucket.org/verateam/vera.git
+ #  - cd vera
+ #  - mkdir build
+ #  - cd build
+ #  - cmake ..
+ #  - make -j
+ #  - make install
+ #  - cd ..
    - pip install pep8
 
   # Required for building cppcheck-1.69.
