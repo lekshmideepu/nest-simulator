@@ -96,7 +96,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 
 echo "MSGBLD0010: Initializing VERA++ static code analysis."
  # Add the NEST profile to the VERA++ profiles.
-cp ./extras/vera++.profile /usr/lib/vera++/profiles/nest
+sudo cp ./extras/vera++.profile /usr/lib/vera++/profiles/nest
 echo "MSGBLD0020: VERA++ initialization completed."  
 
 echo "MSGBLD0070: Retrieving changed files."
