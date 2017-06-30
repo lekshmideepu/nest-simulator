@@ -81,7 +81,10 @@ before_install:
    - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
    - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
    - export SOURCEDIR=$PWD
+   - echo $PWD
+   - ls $PWD
    - cp music_install.sh $HOME
+   - ls $HOME
    - cd $HOME/build
    - echo $PATH
 
@@ -144,7 +147,9 @@ before_install:
    - echo $PWD
 
 install:
-   - ./$HOME/music_install.sh
+   - cd $HOME
+   - chmod +x music_install.sh
+   - ./music_install.sh
    - which cython
    - cython --version
    - which python
