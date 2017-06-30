@@ -94,7 +94,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 
 echo "MSGBLD0010: Initializing VERA++ static code analysis."
  # Add the NEST profile to the VERA++ profiles.
-sudo cp ./extras/vera++.profile /usr/lib/vera++/profiles/nest
+cp ./extras/vera++.profile /usr/lib/vera++/profiles/nest
 echo "MSGBLD0020: VERA++ initialization completed."  
 
 echo "MSGBLD0070: Retrieving changed files."
@@ -145,7 +145,7 @@ IGNORE_MSG_PEP8=false
 RUNS_ON_TRAVIS=true
 INCREMENTAL=false
 
-sudo chmod +x ./extras/static_code_analysis.sh
+chmod +x ./extras/static_code_analysis.sh
 ./extras/static_code_analysis.sh "$RUNS_ON_TRAVIS" "$INCREMENTAL" "$file_names" "$NEST_VPATH" \
 "$VERA" "$CPPCHECK" "$CLANG_FORMAT" "$PEP8" \
 "$PERFORM_VERA" "$PERFORM_CPPCHECK" "$PERFORM_CLANG_FORMAT" "$PERFORM_PEP8" \
