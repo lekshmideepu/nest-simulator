@@ -82,9 +82,7 @@ before_install:
    - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
    - export SOURCEDIR=$PWD
    - echo $PWD
-   - ls $PWD
    - cp music_install.sh $HOME
-   - ls $HOME
    - cd $HOME/build
    - echo $PATH
 
@@ -144,8 +142,7 @@ before_install:
 
   # Install jq to process JSON output from GitHub API.
    - pip install jq
-   - echo $PWD
-
+   
 install:
    - cd $HOME
    - chmod +x music_install.sh
@@ -159,6 +156,7 @@ install:
    - cmake --version
 
 before_script:
+   - cd $SOURCEDIR
    - chmod +x build.sh
 
 script:
