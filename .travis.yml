@@ -151,7 +151,8 @@ before_install:
 
   # Install jq to process JSON output from GitHub API.
    - pip install jq
-   
+   - pip install mpi4py
+
 install:
    - cd $HOME
    - chmod +x music_install.sh
