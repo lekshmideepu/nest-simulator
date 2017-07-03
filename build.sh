@@ -51,7 +51,13 @@ else
 fi
 
 if [ "$xPYTHON" = "1" ] ; then
-    CONFIGURE_PYTHON="-Dwith-python=ON -DPYTHON-LIBRARY=~/virtualenv/python*.*/lib -DPYTHON_INCLUDE_DIR=~/virtualenv/python*.*.*/include/python*.*/"
+   # CONFIGURE_PYTHON="-Dwith-python=ON"
+   # CONFIGURE_PYTHON="-Dwith-python=ON -DPYTHON-LIBRARY=~/virtualenv/python*.*/lib -DPYTHON_INCLUDE_DIR=~/virtualenv/python*.*.*/include/python*.*/"
+   if [ "$TRAVIS_PYTHON_VERSION" == "2.7.13" ]; then
+      CONFIGURE_PYTHON="-Dwith-python=2"
+   else if [ "$TRAVIS_PYTHON_VERSION" == "3.6.0" ]; then 
+      CONFIGURE_PYTHON="-Dwith-python=3"
+   fi
 else
     CONFIGURE_PYTHON="-Dwith-python=OFF"
 fi
