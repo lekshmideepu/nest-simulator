@@ -51,7 +51,7 @@ else
 fi
 
 if [ "$xPYTHON" = "1" ] ; then
-    CONFIGURE_PYTHON="-Dwith-python=ON -DPYTHON-LIBRARY=~/virtualenv/python*.*/lib -DPYTHON_INCLUDE_DIR=~/virtualenv/python*.*/include"
+    CONFIGURE_PYTHON="-Dwith-python=ON -DPYTHON-LIBRARY=~/virtualenv/python*.*/lib -DPYTHON_INCLUDE_DIR=~/virtualenv/python*.*.*/include/python*.*/"
 else
     CONFIGURE_PYTHON="-Dwith-python=OFF"
 fi
