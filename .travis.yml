@@ -31,7 +31,7 @@ group: edge
 
 python:
    - "2.7.13"
-   - "3.6"
+   - "3.6.0"
 env:
   matrix:
     # We don't have to run a full matrix here, because most of the options are
