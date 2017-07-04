@@ -71,7 +71,7 @@ addons:
      - python-nose
      - libpcre3
      - libpcre3-dev
-     - python-mpi4py
+    # - python-mpi4py
 cache:
    directory:
      - $HOME/.cache
