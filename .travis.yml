@@ -116,15 +116,15 @@ before_install:
 
   # Install VERA++ and pep8 for static code analysis.
  # - sudo apt-get install -y vera++ pep8
- #  - sudo apt-get install -y vera++
-   - git clone https://bitbucket.org/verateam/vera.git
-   - cd vera
-   - mkdir build
-   - cd build
-   - cmake ..
-   - make -j
-   - make install
-   - cd ../..
+   - sudo apt-get install -y vera++
+ #  - git clone https://bitbucket.org/verateam/vera.git
+  # - cd vera
+  # - mkdir build
+  # - cd build
+  # - cmake ..
+  # - make -j
+  # - make install
+  # - cd ../..
    - ls /usr/lib/
    - ls	/usr/lib/vera++/profiles/
    - ls	/usr/lib/vera++/profiles/nest
