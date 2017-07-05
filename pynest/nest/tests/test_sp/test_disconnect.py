@@ -33,7 +33,9 @@ else:
     # Test with MPI
     mpi_test = 1
 
+
 print ("mpi_test: " + mpi_test)
+
 
 class TestDisconnectSingle(unittest.TestCase):
 
