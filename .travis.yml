@@ -116,21 +116,23 @@ before_install:
 
   # Install VERA++ and pep8 for static code analysis.
  # - sudo apt-get install -y vera++ pep8
-  # - sudo apt-get install -y vera++
-   - git clone https://bitbucket.org/verateam/vera.git
-   - cd vera
-   - mkdir build
-   - cd build
-   - make -j
-   - make install
-   - cd ../..
+   - sudo apt-get install -y vera++
+  # - git clone https://bitbucket.org/verateam/vera.git
+  # - cd vera
+  # - mkdir build
+  # - cd build
+  # - cmake  
+ # - make -j
+ #  - make install
+ #  - cd ../..
    - pip install pep8
 
   # Required for building cppcheck-1.69.
  # - sudo apt-get install -y libpcre3 libpcre3-dev
 
   # Build cppcheck version 1.79
-   - git clone https://github.com/danmar/cppcheck.git
+   - git clone https://github.com/verateam/vera
+#   - git clone https://github.com/danmar/cppcheck.git
    - cd cppcheck
    - git checkout tags/1.79
    - mkdir -p install
