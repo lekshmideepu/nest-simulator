@@ -91,7 +91,7 @@ before_install:
   # Upgrade pip and setuptools
    - pip install -U pip
    - pip install -U setuptools
-
+  # - ls /usr/lib/vera++/profiles/nest
   # Update package repository status (-qq is more quiet).
  # - sudo rm -rf /var/lib/apt/lists/*
  # - ls /etc/apt/sources.list.d/
@@ -116,7 +116,18 @@ before_install:
 
   # Install VERA++ and pep8 for static code analysis.
  # - sudo apt-get install -y vera++ pep8
-   - sudo apt-get install -y vera++
+ #  - sudo apt-get install -y vera++
+   - git clone https://bitbucket.org/verateam/vera.git
+   - cd vera
+   - mkdir build
+   - cd build
+   - cmake ..
+   - make -j
+   - make install
+   - cd ../..
+   - ls /usr/lib/
+   - ls	/usr/lib/vera++/profiles/
+   - ls	/usr/lib/vera++/profiles/nest
    - pip install pep8
 
   # Required for building cppcheck-1.69.
