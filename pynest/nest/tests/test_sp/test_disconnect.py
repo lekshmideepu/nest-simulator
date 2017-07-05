@@ -34,7 +34,7 @@ else:
     mpi_test = 1
 
 
-print ("mpi_test: " + mpi_test)
+mpi_test = nest.sli_func("is_mpi") & mpi_test 
 
 
 class TestDisconnectSingle(unittest.TestCase):
@@ -44,7 +44,6 @@ class TestDisconnectSingle(unittest.TestCase):
         nest.set_verbosity('M_ERROR')
         self.num_procs = 1
         if mpi_test:
-            print ("i am here1: " + mpi_test)
             self.comm = MPI.COMM_WORLD
             self.rank = self.comm.Get_rank()
             assert(nest.Rank() == self.rank)
@@ -79,7 +78,6 @@ class TestDisconnectSingle(unittest.TestCase):
                 conns = nest.GetConnections(
                     [neurons[0]], [neurons[2]], syn_model)
                 if mpi_test:
-                    print ("i am here2: " + mpi_test)
                     connstotal = None
                     conns = self.comm.allgather(conns, connstotal)
                     conns = filter(None, conns)
@@ -88,7 +86,6 @@ class TestDisconnectSingle(unittest.TestCase):
                 conns = nest.GetConnections(
                     [neurons[0]], [neurons[2]], syn_model)
                 if mpi_test:
-                    print ("i am here3: " + mpi_test)
                     connstotal = None
                     conns = self.comm.allgather(conns, connstotal)
                     conns = filter(None, conns)
