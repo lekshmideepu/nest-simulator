@@ -72,6 +72,7 @@ addons:
      - libpcre3
      - libpcre3-dev
     # - python-mpi4py
+     - llvm-3.6-dev
 cache:
    directory:
      - $HOME/.cache
@@ -130,14 +131,14 @@ before_install:
    - cd ..
    - echo $PWD
   # Install CLANG-FORMAT
-   - wget --no-verbose http://llvm.org/releases/3.6.2/clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-   - tar xf clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+   #- wget --no-verbose http://llvm.org/releases/3.6.2/clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+   #- tar xf clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
   # Copy and not move because '.cache' may aleady contain other subdirectories and files.
-   - cp -R clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04/* $HOME/.cache
+   #- cp -R clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04/* $HOME/.cache
 
   # Remove these directories, otherwise the copyright-header check will complain.
    - rm -rf ./cppcheck
-   - rm -rf ./clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04
+  # - rm -rf ./clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04
  
   # Ensure that the cppcheck and clang-format installation can be found.
    - export PATH=$HOME/.cache/bin:$PATH
