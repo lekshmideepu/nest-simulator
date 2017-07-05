@@ -118,6 +118,7 @@ before_install:
  # - sudo apt-get install -y vera++ pep8
    - sudo apt-get install -y vera++
   # - git clone https://bitbucket.org/verateam/vera.git
+#   - git clone https://github.com/verateam/vera
   # - cd vera
   # - mkdir build
   # - cd build
@@ -131,8 +132,7 @@ before_install:
  # - sudo apt-get install -y libpcre3 libpcre3-dev
 
   # Build cppcheck version 1.79
-   - git clone https://github.com/verateam/vera
-#   - git clone https://github.com/danmar/cppcheck.git
+   - git clone https://github.com/danmar/cppcheck.git
    - cd cppcheck
    - git checkout tags/1.79
    - mkdir -p install
