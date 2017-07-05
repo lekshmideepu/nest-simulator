@@ -33,7 +33,7 @@ else:
     # Test with MPI
     mpi_test = 1
 
-
+print mpi_test
 class TestDisconnectSingle(unittest.TestCase):
 
     def setUp(self):
@@ -41,6 +41,7 @@ class TestDisconnectSingle(unittest.TestCase):
         nest.set_verbosity('M_ERROR')
         self.num_procs = 1
         if mpi_test:
+            print "I am 1"
             self.comm = MPI.COMM_WORLD
             self.rank = self.comm.Get_rank()
             assert(nest.Rank() == self.rank)
