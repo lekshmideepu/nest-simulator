@@ -29,9 +29,8 @@ if HAVE_MPI:
     # Test with MPI
     mpi_test = 1
 else
-    # Test with MPI  
+    #Test without MPI
     mpi_test = 0
-
 
 class TestDisconnectSingle(unittest.TestCase):
 
