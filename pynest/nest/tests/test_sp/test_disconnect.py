@@ -19,17 +19,17 @@
 # You should have received a copy of the GNU General Public License
 # along with NEST.  If not, see <http://www.gnu.org/licenses/>.
 
-__author__ = 'naveau'
-
 import nest
 import unittest
 
+__author__ = 'naveau'
+
 HAVE_MPI = nest.sli_func("statusdict/have_mpi ::")
 if HAVE_MPI:
-    # Test with MPI 
+    # Test with MPI
     mpi_test = 1
 else
-    # Test without MPI
+    # Test with MPI  
     mpi_test = 0
 
 
