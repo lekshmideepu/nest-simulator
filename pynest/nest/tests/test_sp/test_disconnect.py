@@ -24,17 +24,16 @@ __author__ = 'naveau'
 import nest
 import unittest
 
-try:
-    from mpi4py import MPI
-except ImportError:
-    # Test without MPI
-    mpi_test = 0
-else:
-    # Test with MPI
-    mpi_test = 1
-
-
-mpi_test = nest.sli_func("is_mpi") & mpi_test 
+HAVE_MPI = nest.sli_func("statusdict/have_mpi ::")
+if HAVE_MPI:
+    try:
+        from mpi4py import MPI
+    except ImportError:
+        # Test without MPI
+        mpi_test = 0
+    else
+        # Test with MPI 
+        mpi_test = 1
 
 
 class TestDisconnectSingle(unittest.TestCase):
