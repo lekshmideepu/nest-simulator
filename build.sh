@@ -51,21 +51,19 @@ else
 fi
 
 if [ "$xPYTHON" = "1" ] ; then
-   # CONFIGURE_PYTHON="-Dwith-python=ON"
-   # CONFIGURE_PYTHON="-Dwith-python=ON -DPYTHON-LIBRARY=~/virtualenv/python*.*/lib -DPYTHON_INCLUDE_DIR=~/virtualenv/python*.*.*/include/python*.*/"
    if [ "$TRAVIS_PYTHON_VERSION" == "2.7.13" ]; then
-      CONFIGURE_PYTHON="-Dwith-python=2 -DPYTHON-LIBRARY=~/virtualenv/python2.7.13/lib/python2.7 -DPYTHON_INCLUDE_DIR=~/virtualenv/python2.7.13/include/python2.7"
+      CONFIGURE_PYTHON="-DPYTHON-LIBRARY=~/virtualenv/python2.7.13/lib/python2.7 -DPYTHON_INCLUDE_DIR=~/virtualenv/python2.7.13/include/python2.7"
    elif [ "$TRAVIS_PYTHON_VERSION" == "3.6.0" ]; then
-       CONFIGURE_PYTHON="-DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so -DPYTHON_INCLUDE_DIR=~/virtualenv/python3.6.0/include/python3.6m -DPYTHON_INCLUDE_DIR2=/usr/include/x86_64-linux-gnu/python3.6m"
+       CONFIGURE_PYTHON="-DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so -DPYTHON_INCLUDE_DIR=~/virtualenv/python3.6.0/include/python3.6m"
    fi
 else
     CONFIGURE_PYTHON="-Dwith-python=OFF"
 fi
 
 if [ "$xMUSIC" = "1" ] ; then
+    CONFIGURE_MUSIC="-Dwith-music=$HOME/.cache/music.install"
     chmod +x music_install.sh
     ./music_install.sh
-    CONFIGURE_MUSIC="-Dwith-music=$HOME/.cache/music.install"
 else
     CONFIGURE_MUSIC="-Dwith-music=OFF"
 fi

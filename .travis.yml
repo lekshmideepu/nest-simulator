@@ -27,7 +27,7 @@ sudo: required
 dist: trusty
 
 #https://blog.travis-ci.com/2017-06-19-trusty-updates-2017-Q2
-group: edge
+group: deprecated-2017Q2
 
 python:
    - "2.7.13"
@@ -66,12 +66,12 @@ addons:
      - python-matplotlib
      - ipython
      - pkg-config
-   #  - openmpi-bin
-   #  - libopenmpi-dev
-    # - python-nose
+     - openmpi-bin
+     - libopenmpi-dev
+     - python-nose
      - libpcre3
      - libpcre3-dev
-    # - python-mpi4py
+     - python-mpi4py
      - llvm-3.6-dev
 cache:
    directory:
@@ -91,41 +91,18 @@ before_install:
   # Upgrade pip and setuptools
    - pip install -U pip
    - pip install -U setuptools
-  # - ls /usr/lib/vera++/profiles/nest
-  # Update package repository status (-qq is more quiet).
- # - sudo rm -rf /var/lib/apt/lists/*
- # - ls /etc/apt/sources.list.d/
- # - sudo apt-get update -qq
-
-  # Remove automatically all unused packages.
- # - sudo apt-get autoremove
-
+  
   # Install packages required by NEST.
   # (Please see also: http://www.nest-simulator.org/installation/#standard-configuration)
-  #- sudo apt-get install -y build-essential cmake libltdl7-dev libreadline6-dev libncurses5-dev libgsl0-dev python-all-dev python-numpy python-scipy python-matplotlib ipython
- # - pip install numpy scipy ipython matplotlib cython
-   - pip install cython scipy matplotlib
+  # - pip install cython scipy matplotlib
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
    - pip install terminaltables
 
-  # Install OpenMPI.
-   - sudo apt-get install -y openmpi-bin libopenmpi-dev
-
   # Install nose framework for the Python testsuite.
-   - pip install nose
+  # - pip install nose
 
   # Install VERA++ and pep8 for static code analysis.
- # - sudo apt-get install -y vera++ pep8
    - sudo apt-get install -y vera++
-  # - git clone https://bitbucket.org/verateam/vera.git
-#   - git clone https://github.com/verateam/vera
-  # - cd vera
-  # - mkdir build
-  # - cd build
-  # - cmake  
- # - make -j
- #  - make install
- #  - cd ../..
    - pip install pep8
 
   # Required for building cppcheck-1.69.
@@ -138,28 +115,21 @@ before_install:
    - mkdir -p install
    - make PREFIX=$HOME/.cache CFGDIR=$HOME/.cache/cfg HAVE_RULES=yes install
    - cd ..
-   - echo $PWD
-  # Install CLANG-FORMAT
-   #- wget --no-verbose http://llvm.org/releases/3.6.2/clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-   #- tar xf clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-  # Copy and not move because '.cache' may aleady contain other subdirectories and files.
-   #- cp -R clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04/* $HOME/.cache
-
+ 
   # Remove these directories, otherwise the copyright-header check will complain.
    - rm -rf ./cppcheck
-  # - rm -rf ./clang+llvm-3.6.2-x86_64-linux-gnu-ubuntu-14.04
- 
+  
   # Ensure that the cppcheck and clang-format installation can be found.
    - export PATH=$HOME/.cache/bin:$PATH
 
   # Install jq to process JSON output from GitHub API.
    - pip install jq
-   - pip install mpi4py
+ #  - pip install mpi4py
 
 install:
-   - cd $HOME
-   - chmod +x music_install.sh
-   - ./music_install.sh
+ #  - cd $HOME
+#   - chmod +x music_install.sh
+#   - ./music_install.sh
    - which cython
    - cython --version
    - which python
@@ -171,7 +141,6 @@ install:
 before_script:
    - cd $SOURCEDIR
    - chmod +x build.sh
- # - if [[ "xPYTHON" == "1" ]]; then export PYTHON_LIBRARY= ~/virtualenv/python*.*/lib; export PYTHON_INCLUDE_DIR=~/virtualenv/python*.*/include; fi
 script:
    - set -o pipefail
    - ./build.sh 2>&1 | tee build.sh.log
