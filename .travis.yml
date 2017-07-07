@@ -123,7 +123,7 @@ before_install:
 
   # Install jq to process JSON output from GitHub API.
    - pip install jq
- #  - pip install mpi4py
+   - pip install mpi4py
 
 install:
  #  - cd $HOME
