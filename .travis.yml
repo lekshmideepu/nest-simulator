@@ -97,7 +97,8 @@ before_install:
   # - pip install cython scipy matplotlib
   # Install package terminaltables required by parse_travis_log.py to create the build summary.
    - pip install terminaltables
-
+  #Install Cython
+   - pip install cython
   # Install nose framework for the Python testsuite.
   # - pip install nose
 
