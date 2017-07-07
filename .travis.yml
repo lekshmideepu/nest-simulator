@@ -31,7 +31,7 @@ group: deprecated-2017Q2
 
 python:
    - "2.7.13"
-   - "3.6.0"
+   - "3.4.4"
 env:
   matrix:
     # We don't have to run a full matrix here, because most of the options are
@@ -88,7 +88,7 @@ before_install:
    - echo $PATH
    - ls ~/virtualenv/python*.*.*/lib/python*.*
    - ls ~/virtualenv/python*.*/include/python*.*
-   - ls /home/travis/virtualenv/python3.6.0/lib/python3.6/config-3.6m-x86_64-linux-gnu
+  # - ls /home/travis/virtualenv/python3.6.0/lib/python3.6/config-3.6m-x86_64-linux-gnu
   # Upgrade pip and setuptools
    - pip install -U pip
    - pip install -U setuptools
