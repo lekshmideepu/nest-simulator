@@ -88,6 +88,7 @@ before_install:
    - echo $PATH
    - ls ~/virtualenv/python*.*.*/lib/python*.*
    - ls ~/virtualenv/python*.*/include/python*.*
+   - ls /home/travis/virtualenv/python3.6.0/lib/python3.6/config-3.6m-x86_64-linux-gnu
   # Upgrade pip and setuptools
    - pip install -U pip
    - pip install -U setuptools
