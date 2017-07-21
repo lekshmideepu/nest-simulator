@@ -27,7 +27,7 @@ sudo: required
 dist: trusty
 
 #https://blog.travis-ci.com/2017-06-19-trusty-updates-2017-Q2
-group: deprecated-2017Q2
+group: edge
 
 env:
   matrix:
