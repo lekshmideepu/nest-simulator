@@ -27,7 +27,7 @@ sudo: required
 dist: trusty
 
 #https://blog.travis-ci.com/2017-06-19-trusty-updates-2017-Q2
-group: edge
+group: deprecated-2017Q2
 
 env:
   matrix:
@@ -74,17 +74,17 @@ addons:
      - libgsl0-dev
      - python-all-dev
      - python-numpy
-     - python-scipy 
-     - python-matplotlib
+   #  - python-scipy 
+   #  - python-matplotlib
      - ipython
-     - cython
+   #  - cython
      - pkg-config
      - openmpi-bin
      - libopenmpi-dev
      - python-nose
      - libpcre3
      - libpcre3-dev
-     - python-mpi4py
+    # - python-mpi4py
      - llvm-3.6-dev
      - jq
      - cppcheck
@@ -121,7 +121,9 @@ install:
    - which python
    - which cmake
    - cmake --version
-
+   - which llvm-3.6-dev
+   - clang-format --version
+   - which clang-format
 before_script:
    - cd $SOURCEDIR
    - chmod +x build.sh
