@@ -121,7 +121,6 @@ install:
    - which python
    - which cmake
    - cmake --version
-   - which llvm-3.6-dev
    - clang-format --version
    - which clang-format
 before_script:
