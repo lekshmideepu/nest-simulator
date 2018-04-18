@@ -27,6 +27,9 @@ language: python
 sudo: required
 dist: trusty
 
+compiler:
+  - gcc
+  - clang
 env:
   matrix:
    # We don't have to run a full matrix here, because most of the options are
@@ -115,6 +118,8 @@ before_install:
    - pip install cython scipy matplotlib terminaltables mpi4py
     
 install:
+   - if [[ $CXX = g++ ]]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+   - if [[ $CXX = clang++ ]]; then export CXX="clang++-3.5" CC="clang-3.5"; fi
    - which cython
    - cython --version
    - which python
