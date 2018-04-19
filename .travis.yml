@@ -65,22 +65,21 @@ matrix:
     include:
     - compiler: gcc
       addons:
-	apt:
-	  sources:
-	    - ubuntu-toolchain-r-test
-	  packages:
-	    - g++-5
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
       env: COMPILER=g++-5
     - compiler: clang
       addons:
-	apt:
-	  sources: 
-	    - ubuntu-toolchain-r-test
-	    - llvm-toolchain-trusty-3.7
-	  packages:
-	    - clang-3.7
+        apt:
+          sources: 
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-trusty-3.7
+          packages:
+            - clang-3.7
       env: COMPILER= CLANG++-3.7
-	    	         	     
     # Notify immediately when a build job fails.
     fast_finish: true
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
