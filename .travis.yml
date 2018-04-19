@@ -69,6 +69,8 @@ addons:
    apt:
     sources:
      - r-packages-trusty
+     - llvm-toolchain-trusty
+     - ubuntu-toolchain-r-test
     packages:
      - build-essential
      - cmake
@@ -93,6 +95,9 @@ addons:
      - libboost-wave-dev
      - libboost-python-dev
      - libboost-program-options-dev
+     - clang-3.7
+     - g++-5
+     - gcc-5
 cache:
    directory:
      - $HOME/.cache
@@ -118,8 +123,10 @@ before_install:
    - pip install cython scipy matplotlib terminaltables mpi4py
     
 install:
-   - if [[ $CXX = g++ ]]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
-   - if [[ $CXX = clang++ ]]; then export CXX="clang++-3.5" CC="clang-3.5"; fi
+   #- if [[ $CXX = g++ ]]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
+   #- if [[ $CXX = clang++ ]]; then export CXX="clang++-3.5" CC="clang-3.5"; fi
+   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
    - which cython
    - cython --version
    - which python
