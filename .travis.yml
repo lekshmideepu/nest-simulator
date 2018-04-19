@@ -61,7 +61,26 @@ matrix:
       python: 3.4.4
     - env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=1 CACHE_NAME=JOB   # only Python
       python: 3.4.4
-       	     
+      
+    include:
+    - compiler: gcc
+      addons:
+	apt:
+	  sources:
+	    - ubuntu-toolchain-r-test
+	  packages:
+	    - g++-5
+      env: COMPILER=g++-5
+    - compiler: clang
+      addons:
+	apt:
+	  sources: 
+	    - ubuntu-toolchain-r-test
+	    - llvm-toolchain-trusty-3.7
+	  packages:
+	    - clang-3.7
+      env: COMPILER= CLANG++-3.7
+	    	         	     
     # Notify immediately when a build job fails.
     fast_finish: true
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
@@ -69,8 +88,6 @@ addons:
    apt:
     sources:
      - r-packages-trusty
-     - llvm-toolchain-trusty
-     - ubuntu-toolchain-r-test
     packages:
      - build-essential
      - cmake
@@ -95,9 +112,9 @@ addons:
      - libboost-wave-dev
      - libboost-python-dev
      - libboost-program-options-dev
-     - clang-3.7
-     - g++-5
-     - gcc-5
+    # - clang-3.7
+    # - g++-5
+    # - gcc-5
 cache:
    directory:
      - $HOME/.cache
