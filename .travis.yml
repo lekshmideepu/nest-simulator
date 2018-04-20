@@ -87,6 +87,8 @@ addons:
    apt:
     sources:
      - r-packages-trusty
+     - ubuntu-toolchain-r-test
+     - llvm-toolchain-trusty-3.7
     packages:
      - build-essential
      - cmake
@@ -111,9 +113,9 @@ addons:
      - libboost-wave-dev
      - libboost-python-dev
      - libboost-program-options-dev
-    # - clang-3.7
-    # - g++-5
-    # - gcc-5
+     - clang-3.7
+     - g++-5
+     - gcc-5
 cache:
    directory:
      - $HOME/.cache
