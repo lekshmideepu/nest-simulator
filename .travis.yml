@@ -27,9 +27,6 @@ language: python
 sudo: required
 dist: trusty
 
-compiler:
-  - gcc
-  - clang
 env:
   matrix:
    # We don't have to run a full matrix here, because most of the options are
@@ -63,7 +60,8 @@ matrix:
       python: 3.4.4
       
     include:
-    - compiler: gcc
+    - language: cpp
+      compiler: gcc
       addons:
         apt:
           sources:
@@ -71,7 +69,8 @@ matrix:
           packages:
             - g++-5
       env: COMPILER=g++-5
-    - compiler: clang
+    - language: cpp
+      compiler: clang
       addons:
         apt:
           sources: 
