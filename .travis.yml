@@ -138,13 +138,14 @@ before_install:
   # outdated versions in the Travis package whitelist.
   # terminaltables is required by parse_travis_log.py to create
   # the build summary.
-   - pip install cython scipy matplotlib terminaltables mpi4py
+#   - pip install cython scipy matplotlib terminaltables mpi4py
     
 install:
    #- if [[ $CXX = g++ ]]; then export CXX="g++-4.9" CC="gcc-4.9"; fi
    #- if [[ $CXX = clang++ ]]; then export CXX="clang++-3.5" CC="clang-3.5"; fi
    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
    - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+   - pip install cython scipy matplotlib terminaltables mpi4py
    - which cython
    - cython --version
    - which python
