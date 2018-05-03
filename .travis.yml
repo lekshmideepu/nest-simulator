@@ -125,7 +125,7 @@ matrix:
             - llvm-toolchain-trusty-3.7
           packages:
             - clang-3.7
-	    - build-essential
+            - build-essential
             - cmake
             - libltdl-dev
             - libreadline6-dev
