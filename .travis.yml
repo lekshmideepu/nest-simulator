@@ -27,9 +27,6 @@ language: python
 sudo: required
 dist: trusty
 
-compiler:
-  - gcc
-  - clang
 env:
   matrix:
    # We don't have to run a full matrix here, because most of the options are
@@ -63,7 +60,8 @@ matrix:
       python: 3.4.4
       
     include:
-    - compiler: gcc
+    - language: cpp
+      compiler: gcc
       addons:
         apt:
           sources:
@@ -71,7 +69,29 @@ matrix:
           packages:
             - g++-5
       env: COMPILER=g++-5
-    - compiler: clang
+      before_install:
+        - pyenv install -s 2.7.13
+        - pyenv global 2.7.13
+        - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
+        - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        - export SOURCEDIR=$PWD
+        - echo $PWD
+        - ls $PWD
+        - cp extras/install_music.sh extras/install_csa-libneurosim.sh $HOME
+        - cd $HOME/build
+        - echo $PATH
+        # Upgrade pip and setuptools
+        - pip install -U pip
+        - pip install -U setuptools
+
+        # Installing additional packages using pip as they only have
+        # outdated versions in the Travis package whitelist.
+        # terminaltables is required by parse_travis_log.py to create
+        # the build summary.
+        - pip install cython scipy matplotlib terminaltables
+    - language: cpp
+      compiler: clang
       addons:
         apt:
           sources: 
@@ -80,6 +100,27 @@ matrix:
           packages:
             - clang-3.7
       env: COMPILER= CLANG++-3.7
+      before_install:
+        - pyenv install -s 2.7.13
+        - pyenv global 2.7.13
+        - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
+        - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        - export SOURCEDIR=$PWD
+        - echo $PWD
+        - ls $PWD
+        - cp extras/install_music.sh extras/install_csa-libneurosim.sh $HOME
+        - cd $HOME/build
+        - echo $PATH
+        # Upgrade pip and setuptools
+        - pip install -U pip
+        - pip install -U setuptools
+
+        # Installing additional packages using pip as they only have
+        # outdated versions in the Travis package whitelist.
+        # terminaltables is required by parse_travis_log.py to create
+        # the build summary.
+        - pip install cython scipy matplotlib terminaltables
     # Notify immediately when a build job fails.
     fast_finish: true
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
