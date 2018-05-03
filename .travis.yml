@@ -121,14 +121,14 @@ matrix:
         apt:
           sources: 
             - ubuntu-toolchain-r-test
-	    - r-packages-trusty
+            - r-packages-trusty
             - llvm-toolchain-trusty-3.7
           packages:
             - clang-3.7
 	    - build-essential
-	    - cmake
-	    - libltdl-dev
-     	    - libreadline6-dev
+            - cmake
+            - libltdl-dev
+            - libreadline6-dev
      	    - libncurses5-dev
      	    - libgsl0-dev
      	    - python-all-dev
