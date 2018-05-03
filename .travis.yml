@@ -65,9 +65,34 @@ matrix:
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
+            - r-packages-trusty
+	    - ubuntu-toolchain-r-test
           packages:
             - g++-5
+	    - build-essential
+	    - cmake
+	    - libltdl-dev
+	    - libreadline6-dev
+	    - libncurses5-dev
+	    - libgsl0-dev
+	    - python-all-dev
+	    - python-numpy
+	    - ipython
+	    - pkg-config
+	    - openmpi-bin
+	    - libopenmpi-dev
+	    - python-nose
+	    - libpcre3
+	    - libpcre3-dev
+	    - llvm-3.6-dev
+	    - jq
+	    - pep8
+	    - libboost-filesystem-dev
+	    - libboost-regex-dev
+	    - libboost-wave-dev
+	    - libboost-python-dev
+	    - libboost-program-options-dev
+	    - python-mpi4py
       env: COMPILER=g++-5
       before_install:
         - pyenv install -s 2.7.13
@@ -96,9 +121,34 @@ matrix:
         apt:
           sources: 
             - ubuntu-toolchain-r-test
+	    - r-packages-trusty
             - llvm-toolchain-trusty-3.7
           packages:
             - clang-3.7
+	    - build-essential
+	    - cmake
+	    - libltdl-dev
+     	    - libreadline6-dev
+     	    - libncurses5-dev
+     	    - libgsl0-dev
+     	    - python-all-dev
+     	    - python-numpy
+     	    - ipython
+     	    - pkg-config
+     	    - openmpi-bin
+     	    - libopenmpi-dev
+     	    - python-nose
+     	    - libpcre3
+     	    - libpcre3-dev
+     	    - llvm-3.6-dev
+     	    - jq
+    	    - pep8
+     	    - libboost-filesystem-dev
+     	    - libboost-regex-dev
+     	    - libboost-wave-dev
+     	    - libboost-python-dev
+     	    - libboost-program-options-dev
+     	    - python-mpi4py
       env: COMPILER= CLANG++-3.7
       before_install:
         - pyenv install -s 2.7.13
