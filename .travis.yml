@@ -127,8 +127,8 @@ matrix:
             - clang-3.7
             - build-essential
             - cmake
-            - libltdl-dev
      	    - libncurses5-dev
+            - libltdl-dev
             - libreadline6-dev
      	    - libgsl0-dev
      	    - python-all-dev
