@@ -127,7 +127,28 @@ matrix:
             - clang-3.7
             - build-essential
             - cmake
-     	    - libncurses5-dev
+            - libltdl-dev
+            - libreadline6-dev
+            - libncurses5-dev
+            - libgsl0-dev
+            - python-all-dev
+            - python-numpy
+            - ipython
+            - pkg-config
+            - openmpi-bin
+            - libopenmpi-dev
+            - python-nose
+            - libpcre3
+            - libpcre3-dev
+            - llvm-3.6-dev
+            - jq
+            - pep8
+            - libboost-filesystem-dev
+            - libboost-regex-dev
+            - libboost-wave-dev
+            - libboost-python-dev
+            - libboost-program-options-dev
+            - python-mpi4py
       env: COMPILER= CLANG++-3.7
       before_install:
         - pyenv install -s 2.7.13
