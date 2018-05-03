@@ -93,7 +93,9 @@ matrix:
             - libboost-python-dev
             - libboost-program-options-dev
             - python-mpi4py
-      env: COMPILER=g++-5
+     # env: COMPILER=g++-5
+      env:
+        - MATRIX_EVAL="CMAKE_CXX_COMPILER=g++-5 && CMAKE_C_COMPILER=gcc-5"
       before_install:
         - pyenv install -s 2.7.13
         - pyenv global 2.7.13
@@ -149,7 +151,9 @@ matrix:
             - libboost-python-dev
             - libboost-program-options-dev
             - python-mpi4py
-      env: COMPILER= CLANG++-3.7
+      #env: COMPILER= CLANG++-3.7
+      env:
+        - MATRIX_EVAL="CMAKE_CXX_COMPILER=clang++-3.7 &&  CMAKE_C_COMPILER=clang-3.7"
       before_install:
         - pyenv install -s 2.7.13
         - pyenv global 2.7.13
@@ -204,9 +208,9 @@ addons:
      - libboost-wave-dev
      - libboost-python-dev
      - libboost-program-options-dev
-     - clang-3.7
-     - g++-5
-     - gcc-5
+     #- clang-3.7
+     #- g++-5
+     #- gcc-5
      - python-mpi4py
 cache:
    directory:
@@ -239,8 +243,9 @@ install:
    - echo $CC
 #   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 #   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
-   - if [ "$CXX" = "g++" ]; then export CMAKE_CXX_COMPILER="g++-5" CMAKE_C_COMPILER="gcc-5"; fi
-   - if [ "$CXX" = "clang++" ]; then export CMAKE_CXX_COMPILER="clang++-3.7" CMAKE_C_COMPILER="clang-3.7"; fi
+#   - if [ "$CXX" = "g++" ]; then export CMAKE_CXX_COMPILER="g++-5" CMAKE_C_COMPILER="gcc-5"; fi
+#   - if [ "$CXX" = "clang++" ]; then export CMAKE_CXX_COMPILER="clang++-3.7" CMAKE_C_COMPILER="clang-3.7"; fi
+   - eval "${MATRIX_EVAL}"
    - echo $CXX
    - echo $CC
    #- pip install cython scipy matplotlib terminaltables mpi4py
