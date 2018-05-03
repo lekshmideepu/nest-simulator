@@ -128,8 +128,8 @@ matrix:
             - build-essential
             - cmake
             - libltdl-dev
-            - libreadline6-dev
      	    - libncurses5-dev
+            - libreadline6-dev
      	    - libgsl0-dev
      	    - python-all-dev
      	    - python-numpy
