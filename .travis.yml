@@ -93,7 +93,7 @@ matrix:
             - libboost-python-dev
             - libboost-program-options-dev
             - python-mpi4py
-      env: COMPILER=g++-5 CXX=g++-5 CC=gcc-5
+      env: COMPILER=g++-5
       before_install:
         - pyenv install -s 2.7.13
         - pyenv global 2.7.13
@@ -149,7 +149,7 @@ matrix:
             - libboost-python-dev
             - libboost-program-options-dev
             - python-mpi4py
-      env: COMPILER= CLANG++-3.7 CXX=clang++-3.8 CC=clang-3.8
+      env: COMPILER= CLANG++-3.7
       before_install:
         - pyenv install -s 2.7.13
         - pyenv global 2.7.13
@@ -237,8 +237,12 @@ install:
    #- if [[ $CXX = clang++ ]]; then export CXX="clang++-3.5" CC="clang-3.5"; fi
    - echo $CXX
    - echo $CC
-   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+#   - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+#   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-3.7" CC="clang-3.7"; fi
+   - if [ "$CXX" = "g++" ]; then export CMAKE_CXX_COMPILER="g++-5" CMAKE_C_COMPILER="gcc-5"; fi
+   - if [ "$CXX" = "clang++" ]; then export CMAKE_CXX_COMPILER="clang++-3.7" CMAKE_C_COMPILER="clang-3.7"; fi
+   - echo $CXX
+   - echo $CC
    #- pip install cython scipy matplotlib terminaltables mpi4py
    - which cython
    - cython --version
