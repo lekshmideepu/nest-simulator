@@ -74,9 +74,9 @@ include:
            - ubuntu-toolchain-r-test
          packages:
            - g++-5
-           - build-essentil
+           - build-essential
            - cmake
-     	   - libltdl-dev
+           - libltdl-dev
      	   - libreadline6-dev
      	   - libncurses5-dev 
      	   - libgsl0-dev
@@ -118,10 +118,10 @@ include:
         - pip install -U pip
         - pip install -U setuptools
   
-	# Installing additional packages using pip as they only have
-  	# outdated versions in the Travis package whitelist.
-  	# terminaltables is required by parse_travis_log.py to create
-  	# the build summary.
+       # Installing additional packages using pip as they only have
+       # outdated versions in the Travis package whitelist.
+       # terminaltables is required by parse_travis_log.py to create
+       # the build summary.
         - pip install cython scipy matplotlib terminaltables mpi4py
     - language: cpp
       compiler: clang
