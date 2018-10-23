@@ -44,7 +44,8 @@ env:
 python:
   - 2.7.13
   - 3.4.4
-
+virtualenv:
+  system_site_packages: true
 matrix:
     exclude:
     - env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=1 CACHE_NAME=JOB   # minimal
