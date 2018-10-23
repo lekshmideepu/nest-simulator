@@ -73,7 +73,6 @@ matrix:
             - r-packages-trusty
             - ubuntu-toolchain-r-test
           packages:
-           # - g++-5
             - build-essential
             - cmake
             - libltdl-dev
@@ -99,9 +98,7 @@ matrix:
             - libboost-program-options-dev
             - libboost-test-dev
             - python-mpi4py
-      #env:
-      #  - MATRIX_EVAL="CMAKE_CXX_COMPILER=g++-5 && CMAKE_C_COMPILER=gcc-5"     
-
+      
       before_install:
         - pyenv install -s 2.7.13
         - pyenv global 2.7.13
@@ -130,9 +127,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
             - r-packages-trusty
-           # - llvm-toolchain-trusty-3.7
           packages:
-           # - clang-3.7
             - build-essential
             - cmake
             - libltdl-dev
@@ -156,10 +151,9 @@ matrix:
             - libboost-wave-dev
             - libboost-python-dev
             - libboost-program-options-dev
-	    - libboost-test-dev
+            - libboost-test-dev
             - python-mpi4py
-      #env:
-      #  - MATRIX_EVAL="CMAKE_CXX_COMPILER=clang++-3.7 &&  CMAKE_C_COMPILER=clang-3.7"
+      
       before_install:
         - pyenv install -s 2.7.13
         - pyenv global 2.7.13
@@ -189,8 +183,7 @@ addons:
     sources:
      - r-packages-trusty
      - ubuntu-toolchain-r-test
-     #- llvm-toolchain-trusty-3.7
-    packages:
+   packages:
      - build-essential
      - cmake
      - libltdl-dev
@@ -215,9 +208,6 @@ addons:
      - libboost-python-dev
      - libboost-program-options-dev
      - libboost-test-dev
-     #- clang-3.7
-     #- g++-5
-     #- gcc-5
      - python-mpi4py
 cache:
    directory:
