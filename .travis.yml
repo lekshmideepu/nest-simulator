@@ -207,6 +207,7 @@ addons:
      - libboost-python-dev
      - libboost-program-options-dev
      - libboost-test-dev
+     - libboost-all-dev
      - python-mpi4py
 cache:
    directory:
