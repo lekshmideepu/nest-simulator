@@ -118,7 +118,9 @@ matrix:
         # Upgrade pip and setuptools
         - pip install -U pip
         - pip install -U setuptools
-  
+      script:
+        - export CXXFLAGS=${CI_CXX_FLAGS}  
+
        # Installing additional packages using pip as they only have
        # outdated versions in the Travis package whitelist.
        # terminaltables is required by parse_travis_log.py to create
@@ -184,6 +186,8 @@ matrix:
         # terminaltables is required by parse_travis_log.py to create
         # the build summary.
         - pip install cython scipy matplotlib terminaltables
+      script:
+        - export CXXFLAGS=${CI_CXX_FLAGS}
     # Notify immediately when a build job fails.
     fast_finish: true
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
