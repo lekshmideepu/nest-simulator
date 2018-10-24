@@ -118,8 +118,8 @@ matrix:
         # Upgrade pip and setuptools
         - pip install -U pip
         - pip install -U setuptools
-      script:
-        - export CXXFLAGS=${CI_CXX_FLAGS}  
+     # script:
+     #   - export CXXFLAGS=${CI_CXX_FLAGS}  
 
        # Installing additional packages using pip as they only have
        # outdated versions in the Travis package whitelist.
@@ -186,8 +186,8 @@ matrix:
         # terminaltables is required by parse_travis_log.py to create
         # the build summary.
         - pip install cython scipy matplotlib terminaltables
-      script:
-        - export CXXFLAGS=${CI_CXX_FLAGS}
+     # script:
+     #   - export CXXFLAGS=${CI_CXX_FLAGS}
     # Notify immediately when a build job fails.
     fast_finish: true
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
@@ -231,6 +231,7 @@ before_install:
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
      - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+     - export CXXFLAGS=${CI_CXX_FLAGS}
      - export SOURCEDIR=$PWD
      - echo $PWD
      - ls $PWD
@@ -265,6 +266,7 @@ before_script:
    - chmod +x extras/travis_build.sh
 script:
    - set -o pipefail
+   - export CXXFLAGS=${CI_CXX_FLAGS}
    - ./extras/travis_build.sh 2>&1 | tee travis_build.sh.log
    - python extras/parse_travis_log.py travis_build.sh.log
 
