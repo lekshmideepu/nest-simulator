@@ -68,8 +68,8 @@ matrix:
     - language: cpp
       compiler: gcc-8
       env:
-        - C_COMPILER=gcc-8
-        - CXX_COMPILER=g++-8
+       # - C_COMPILER=gcc-8
+       # - CXX_COMPILER=g++-8
         - MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"      
       addons:
         apt:
@@ -130,8 +130,8 @@ matrix:
     - language: cpp
       compiler: clang-7.0
       env:
-        - C_COMPILER=clang-7
-        - CXX_COMPILER=clang++-7
+       # - C_COMPILER=clang-7
+       # - CXX_COMPILER=clang++-7
         - MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
       addons:
         apt:
@@ -235,6 +235,7 @@ before_install:
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
      - echo $CC
      - echo $CXX
+     - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
      - export CXXFLAGS=${CI_CXX_FLAGS}
      - echo $CC
