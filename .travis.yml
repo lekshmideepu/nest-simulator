@@ -267,6 +267,11 @@ install:
    - nosetests --plugins
    - which cmake
    - cmake --version
+   - if [ "$CXX" = "g++" ]; then export CXX="g++-8" CC="gcc-8"; fi
+   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-7" CC="clang-7"; fi
+   - echo ${CC}
+   - echo ${CXX}
+   - ${CXX} --version
   
 before_script:
    # Change directory back to the NEST source code directory.
