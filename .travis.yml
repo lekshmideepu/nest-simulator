@@ -110,6 +110,8 @@ matrix:
         - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
         - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
         - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        - echo ${MATRIX_EVAL}
+        - eval "${MATRIX_EVAL}"
         - export SOURCEDIR=$PWD
         - echo $PWD
         - ls $PWD
@@ -173,6 +175,8 @@ matrix:
         - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
         - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
         - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        - echo ${MATRIX_EVAL}
+        - eval "${MATRIX_EVAL}"
         - export SOURCEDIR=$PWD
         - echo $PWD
         - ls $PWD
@@ -235,8 +239,6 @@ before_install:
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
      - echo $CC
      - echo $CXX
-     - echo ${MATRIX_EVAL}
-     - eval "${MATRIX_EVAL}"
      - export CXXFLAGS=${CI_CXX_FLAGS}
      - echo $CC
      - echo $CXX
@@ -267,8 +269,8 @@ install:
    - nosetests --plugins
    - which cmake
    - cmake --version
-   - if [ "$CXX" = "g++" ]; then export CXX="g++-8" CC="gcc-8"; ${CXX} --version; fi
-   - if [ "$CXX" = "clang++" ]; then export CXX="clang++-7" CC="clang-7"; ${CXX} --version; fi
+   #- if [ "$CXX" = "g++" ]; then export CXX="g++-8" CC="gcc-8"; ${CXX} --version; fi
+   #- if [ "$CXX" = "clang++" ]; then export CXX="clang++-7" CC="clang-7"; ${CXX} --version; fi
    - echo ${CC}
    - echo ${CXX}
      
