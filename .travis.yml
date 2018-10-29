@@ -62,6 +62,38 @@ jobs:
       python: 2.7.13
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # full
 
+#https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
+addons:
+   apt:
+    sources:
+     - r-packages-trusty
+     - ubuntu-toolchain-r-test
+    packages:
+     - build-essential
+     - cmake
+     - libltdl-dev
+     - libreadline6-dev
+     - libncurses5-dev
+     - libgsl0-dev
+     - python-all-dev
+     - python-numpy
+     - ipython
+     - pkg-config
+     - openmpi-bin
+     - libopenmpi-dev
+     - python-nose
+     - libpcre3
+     - libpcre3-dev
+     - llvm-3.6-dev
+     - jq
+     - pep8
+     - libboost-filesystem-dev
+     - libboost-regex-dev
+     - libboost-wave-dev
+     - libboost-python-dev
+     - libboost-program-options-dev
+     - libboost-test-dev
+     - python-mpi4py
 cache:
    directory:
      - $HOME/.cache
