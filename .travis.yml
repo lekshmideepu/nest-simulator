@@ -96,7 +96,8 @@ jobs:
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 
 #    include:
-    - language: cpp
+    - stage: gcc8
+      language: cpp
       compiler: gcc-8
       env:
         - C_COMPILER=gcc-8
@@ -155,7 +156,8 @@ jobs:
        # terminaltables is required by parse_travis_log.py to create
        # the build summary.
         - pip install cython scipy matplotlib terminaltables mpi4py
-    - language: cpp
+    - stage: clang7
+      language: cpp
       compiler: clang-7.0
       env:
         - C_COMPILER=clang-7
