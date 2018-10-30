@@ -30,12 +30,10 @@ dist: trusty
 
 stages:
    - staticcheck
-   - MPI
-   - Python3.4.4_full
-   - Python2.7.13_full
-   - GCC8.1.0
-   - Clang7.0
- #  - OSX
+   - MPI-Threading-Python
+   - Python-Full-build
+   - GCC8.1.0-Clang7.0
+   - OSX
 
 # list of build stages to run. Stages with the same name get run in parallel.
 jobs:
@@ -43,31 +41,31 @@ jobs:
     - stage: staticcheck
       python: 3.4.4
       env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=1 CACHE_NAME=JOB   # static code analysis
-    - stage: MPI
+    - stage: MPI-Threading-Python
       python: 3.4.4
       env: xTHREADING=0 xMPI=1 xGSL=0 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # only MPI
-    - stage: MPI
+    - stage: MPI-Threading-Python
       python: 3.4.4
       env: xTHREADING=1 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # only threading 
-    - stage: MPI
+    - stage: MPI-Threading-Python
       python: 3.4.4
       env:  xTHREADING=1 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB  # Python & Threading
-    - stage: MPI
+    - stage: MPI-Threading-Python
       python: 3.4.4
       env: xTHREADING=0 xMPI=1 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # Python & MPI
-    - stage: MPI
+    - stage: MPI-Threading-Python
       python: 3.4.4
       env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # only Python
-    - stage: python3.4.4_full
+    - stage: Python-Full-build
       python: 3.4.4
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # full  
-    - stage: python2.7.13_full
+    - stage: Python-Full-build
       python: 2.7.13
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # full
-    - stage: GCC8.1.0
+    - stage: GCC8.1.0-Clang7.0
       language: cpp
       env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-    - stage: Clang7.0
+    - stage: GCC8.1.0-Clang7.0
       language: cpp
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
