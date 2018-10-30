@@ -69,6 +69,7 @@ jobs:
       language: cpp
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
+      language: generic
       os: osx
       osx_image: xcode9.4
       env: xTHREADING=0 xMPI=1 xGSL=0 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # only MPI
