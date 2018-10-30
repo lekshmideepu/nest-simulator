@@ -149,9 +149,9 @@ install:
    - which python
    - python --version
    - which pip
-   - which nosetests
-   - nosetests --version
-   - nosetests --plugins
+#   - which nosetests
+#   - nosetests --version
+#   - nosetests --plugins
    - which cmake
    - cmake --version
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-8" CC="gcc-8"; ${CXX} --version; fi
