@@ -80,7 +80,7 @@ addons:
      - llvm-toolchain-trusty-7
     packages:
      - g++-8
-     - clang-7.0
+     - clang-7
      - build-essential
      - cmake
      - libltdl-dev
@@ -182,4 +182,5 @@ deploy:
   local-dir: "$TRAVIS_BUILD_DIR/build/artefacts_upload"
   upload-dir: "$TRAVIS_REPO_SLUG/$TRAVIS_BUILD_NUMBER/$TRAVIS_JOB_NUMBER"
   acl: bucket_owner_full_control
+
 
