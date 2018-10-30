@@ -124,7 +124,7 @@ before_install:
      # Warning: the Homebrew addon will not run brew update before installing packages.
      # brew update can take a long time and slow down the builds.
      - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update          ; fi
-     - if env( MATRIX_EVAL) IS NOT blank; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+     - if env(${MATRIX_EVAL} IS NOT blank; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
      #- if [[stage == GCC8.1.0] || [stage == Clang7.0]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
      - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
