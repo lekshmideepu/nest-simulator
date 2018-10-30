@@ -64,10 +64,10 @@ jobs:
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # full
     - stage: GCC8.1.0-Clang7.0
       language: cpp
-      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" PYTHON=2.7 CPP=11
     - stage: GCC8.1.0-Clang7.0
-      language: cpp
-      env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      #language: cpp
+      env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7" PYTHON=2.7 CPP=11
     - stage: OSX
       language: generic
       os: osx
@@ -123,8 +123,8 @@ before_install:
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
      # Warning: the Homebrew addon will not run brew update before installing packages.
      # brew update can take a long time and slow down the builds.
-     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew info nest; brew install nest; fi
-     - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8.1.0-Clang7.0"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install matplotlib; brew info nest; brew install nest; fi
+     #- if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8.1.0-Clang7.0"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
      - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
      - export SOURCEDIR=$PWD
