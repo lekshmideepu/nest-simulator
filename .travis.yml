@@ -35,6 +35,7 @@ stages:
    - Python2.7.13_full
    - GCC8.1.0
    - Clang7.0
+ #  - OSX
 
 # list of build stages to run. Stages with the same name get run in parallel.
 jobs:
@@ -69,7 +70,9 @@ jobs:
     - stage: Clang7.0
       language: cpp
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
-
+  #  - stage: OSX
+  #    os: osx
+  #    osx_image: xcode10
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
@@ -106,6 +109,10 @@ addons:
      - libboost-program-options-dev
      - libboost-test-dev
      - python-mpi4py
+#   homebrew:
+#    packages:
+#    - beanstalk
+#    update: true  # To get more up-to-date versions of packages than the snapshot on the build VM.
 cache:
    directory:
      - $HOME/.cache
@@ -114,6 +121,11 @@ before_install:
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
      - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+     # Warning: the Homebrew addon will not run brew update before installing packages.
+     # brew update can take a long time and slow down the builds.
+     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update          ; fi
+     - if env( MATRIX_EVAL) IS present; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+     #- if [[stage == GCC8.1.0] || [stage == Clang7.0]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
      - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
      - export SOURCEDIR=$PWD
