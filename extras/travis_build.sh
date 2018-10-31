@@ -97,7 +97,15 @@ fi
 
 NEST_VPATH=build
 NEST_RESULT=result
+if [ "$(uname -s)" = 'Linux' ]; then
 NEST_RESULT=$(readlink -f $NEST_RESULT)
+#basedir=$(dirname "$(readlink -f "$0" || echo "$(echo "$0" | sed -e 's,\\,/,g')")")
+else
+#basedir=$(dirname "$(readlink "$0" || echo "$(echo "$0" | sed -e 's,\\,/,g')")")
+NEST_RESULT=$(readlink  $NEST_RESULT)
+fi
+
+#NEST_RESULT=$(readlink -f $NEST_RESULT)
 
 mkdir "$NEST_VPATH" "$NEST_RESULT"
 mkdir "$NEST_VPATH/reports"
