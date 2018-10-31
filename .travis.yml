@@ -22,6 +22,8 @@
 # This is the Travis CI top-level script to setup and run the NEST
 # build and test environment.
 
+# After changing this file, please check it on:
+#   http://lint.travis-ci.org/
 language: python
 
 # Using the Sudo-enabled Ubuntu Trusty (14.04 LTS).
@@ -127,7 +129,8 @@ before_install:
      # Warning: the Homebrew addon will not run brew update before installing packages.
      # brew update can take a long time and slow down the builds.
      - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install matplotlib; brew info nest; brew install nest; fi
-     #- if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8.1.0-Clang7.0"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+    #- if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8.1.0-Clang7.0"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+   # - brew outdated pyenv || brew upgrade pyenv
      - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
      - export SOURCEDIR=$PWD
@@ -137,13 +140,14 @@ before_install:
      - cd $HOME/build
      - echo $PATH
    # Upgrade pip and setuptools
-    # - pip install -U pip
-    # - pip install -U setuptools
+     - pip install -U pip
+     - pip install -U setuptools
   
    # Installing additional packages using pip as they only have
    # outdated versions in the Travis package whitelist.
    # terminaltables is required by parse_travis_log.py to create
    # the build summary.
+     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install nose; fi
      - pip install cython scipy matplotlib terminaltables
 
 install:
