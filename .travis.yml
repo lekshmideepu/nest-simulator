@@ -63,14 +63,14 @@ jobs:
       python: 2.7.13
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # full
     - stage: GCC8.1.0-Clang7.0
-      #language: cpp
-      python: 3.4.4
-      #env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
-      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+      language: cpp
+      #python: 3.4.4
+      env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
+      #env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
     - stage: GCC8.1.0-Clang7.0
-      language: generic
-      #env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
-      env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      language: cpp
+      env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      #env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
       language: generic
       os: osx
@@ -137,8 +137,8 @@ before_install:
      - cd $HOME/build
      - echo $PATH
    # Upgrade pip and setuptools
-     - pip install -U pip
-     - pip install -U setuptools
+    # - pip install -U pip
+    # - pip install -U setuptools
   
    # Installing additional packages using pip as they only have
    # outdated versions in the Travis package whitelist.
