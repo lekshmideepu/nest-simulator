@@ -64,16 +64,16 @@ jobs:
     - stage: Python-Full-build
       python: 2.7.13
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # full
-    - stage: GCC8.1.0-Clang7.0
+    - stage: GCC8Clang7
       language: cpp
-      env: PYTHON=3.4.4 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+      #env: PYTHON=3.4.4 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
       #env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
-#      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-    - stage: GCC8.1.0-Clang7.0
+      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+    - stage: GCC8Clang7
       language: cpp
-      env: PYTHON=3.4.4 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+     # env: PYTHON=3.4.4 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
       #env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
- #     env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
       language: generic
       env: PYTHON=3.4.4
@@ -130,8 +130,20 @@ before_install:
      - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
      # Warning: the Homebrew addon will not run brew update before installing packages.
      # brew update can take a long time and slow down the builds.
-     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install matplotlib; brew info nest; brew install nest; fi
-    #- if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8.1.0-Clang7.0"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+     #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install matplotlib; brew info nest; brew install nest; fi
+     - |
+       if [[ $(uname -s) == 'Darwin' ]]; then
+         brew --version
+         brew update
+         brew tap brewsci/science
+         brew tap brewsci/bio
+         brew install matplotlib
+         brew info nest
+         brew install nest
+         true
+       fi
+#     - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
+     - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv versions; pyenv global 2.7.14; pip install -U pip; fi
    # - brew outdated pyenv || brew upgrade pyenv
      - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
