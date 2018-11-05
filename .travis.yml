@@ -172,7 +172,7 @@ before_install:
    # terminaltables is required by parse_travis_log.py to create
    # the build summary.
      #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install nose; fi
-     - if [[ $(uname -s) == 'Darwin' ]]; then pip install $NUMPYSPEC; pip install nose; fi  # Set numpy version first, other packages link against it
+     - if [[ $(uname -s) == 'Darwin' ]]; then pip install $NUMPYSPEC; pip install nosetests; fi  # Set numpy version first, other packages link against it
      - pip install cython scipy matplotlib terminaltables
 
 install:
