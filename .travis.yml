@@ -67,13 +67,13 @@ jobs:
     - stage: GCC8Clang7
       language: cpp
       #env: PYTHON=3.4.4 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-      env: pyenv install -s 2.7.14 pyenv global 2.7.14 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
-      #env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+     # env: pyenv install -s 2.7.14 pyenv global 2.7.14 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
+      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
     - stage: GCC8Clang7
       language: cpp
      # env: PYTHON=3.4.4 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
-      env: pyenv install -s 2.7.14  pyenv global 2.7.14 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
-     # env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      #env: pyenv install -s 2.7.14  pyenv global 2.7.14 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
       language: generic
       env: PYTHON=3.4.4
@@ -155,16 +155,17 @@ before_install:
      - cd $HOME/build
      - echo $PATH
    # Upgrade pip and setuptools
-     - |
-       if [[ "$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7" ]]; then
-         pyenv versions
-         pyenv global 2.7.14
-         pip install -U pip
-       else
-         pip install -U pip setuptools
-       fi
-     #- pip install -U pip
-     #- pip install -U setuptools
+    # - |
+    #   if [[ "$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7" ]]; then
+    #     pyenv versions
+    #     pyenv global 2.7.14
+    #     pip install -U pip
+    #   else
+    #     pip install -U pip setuptools
+    #   fi
+     - pyenv global 2.7.14
+     - pip install -U pip
+     - pip install -U setuptools
   
    # Installing additional packages using pip as they only have
    # outdated versions in the Travis package whitelist.
