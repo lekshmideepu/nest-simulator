@@ -143,7 +143,7 @@ before_install:
          true
        fi
 #     - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
-     - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv versions; pyenv global 2.7.14; pip install -U pip; fi
+   #  - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv versions; pyenv global 2.7.14; pip install -U pip; fi
    # - brew outdated pyenv || brew upgrade pyenv
      - echo ${MATRIX_EVAL}
      - eval "${MATRIX_EVAL}"
@@ -154,8 +154,16 @@ before_install:
      - cd $HOME/build
      - echo $PATH
    # Upgrade pip and setuptools
-     - pip install -U pip
-     - pip install -U setuptools
+     - |
+       if [[ "$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7" ]]; then
+         pyenv versions
+         pyenv global 2.7.14
+         pip install -U pip
+       else
+         pip install -U pip setuptools
+       fi
+     #- pip install -U pip
+     #- pip install -U setuptools
   
    # Installing additional packages using pip as they only have
    # outdated versions in the Travis package whitelist.
