@@ -34,7 +34,7 @@ stages:
    - staticcheck
    - MPI-Threading-Python
    - Python-Full-build
-   - GCC8.1.0-Clang7.0
+   - GCC8Clang7
    - OSX
 
 # list of build stages to run. Stages with the same name get run in parallel.
