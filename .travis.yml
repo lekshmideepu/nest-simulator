@@ -143,6 +143,7 @@ before_install:
          brew outdated pyenv || brew upgrade pyenv
          brew install pyenv-virtualenv
          pyenv install $PYTHON
+         pyenv global $PYTHON
          export PYENV_VERSION=$PYTHON
          export PATH="/Users/travis/.pyenv/shims:${PATH}"
          pyenv-virtualenv venv
@@ -184,7 +185,7 @@ before_install:
    # the build summary.
      #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install nose; fi
      #- if [[ $(uname -s) == 'Darwin' ]]; then pip install $NUMPYSPEC; pip install nosetests; fi  # Set numpy version first, other packages link against it
-     - if [[ $(uname -s) == 'Darwin' ]]; then pip3 install  python-nose; fi
+     #- if [[ $(uname -s) == 'Darwin' ]]; then pip3 install  python-nose; fi
      - pip install cython scipy matplotlib terminaltables
 
 install:
@@ -195,7 +196,7 @@ install:
    - which pip
 #   - which nosetests
 #   - nosetests --version
-   - nosetests --plugins
+#   - nosetests --plugins
    - which cmake
    - cmake --version
   # - if [ "$CXX" = "g++" ]; then export CXX="g++-8" CC="gcc-8"; ${CXX} --version; fi
