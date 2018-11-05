@@ -67,13 +67,13 @@ jobs:
     - stage: GCC8Clang7
       language: cpp
       #env: PYTHON=3.4.4 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
-      #env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
-      env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
+      env: pyenv install -s 2.7.14 pyenv global 2.7.14 MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" 
+      #env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8"
     - stage: GCC8Clang7
       language: cpp
      # env: PYTHON=3.4.4 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
-      #env: pyenv install -s 2.7.13 pyenv global 2.7.13 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
-      env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+      env: pyenv install -s 2.7.14  pyenv global 2.7.14 MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+     # env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
       language: generic
       env: PYTHON=3.4.4
@@ -142,6 +142,7 @@ before_install:
          brew install nest
          true
        fi
+     - pyenv versions
 #     - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv install -s 2.7.13; pyenv global 2.7.13; fi
    #  - if [["$TRAVIS_BUILD_STAGE_NAME" == "GCC8Clang7"]]; then pyenv versions; pyenv global 2.7.14; pip install -U pip; fi
    # - brew outdated pyenv || brew upgrade pyenv
