@@ -163,7 +163,7 @@ before_install:
     #   else
     #     pip install -U pip setuptools
     #   fi
-     - pyenv global 2.7.14
+     - if [[ $(uname -s) == 'Linux' ]]; then pyenv global 2.7.14; fi
      - pip install -U pip
      - pip install -U setuptools
   
