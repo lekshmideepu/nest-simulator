@@ -76,7 +76,7 @@ jobs:
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OSX
       language: generic
-      env: PYTHON=3.4.4
+      env: PYTHON=3.4.4 NUMPYSPEC=numpy
       os: osx
       osx_image: xcode9.4
       env: xTHREADING=0 xMPI=1 xGSL=0 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=0 CACHE_NAME=JOB   # only MPI
@@ -172,6 +172,7 @@ before_install:
    # terminaltables is required by parse_travis_log.py to create
    # the build summary.
      #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install nose; fi
+     - if [[ $(uname -s) == 'Darwin' ]]; then pip install $NUMPYSPEC; pip install nose; fi  # Set numpy version first, other packages link against it
      - pip install cython scipy matplotlib terminaltables
 
 install:
