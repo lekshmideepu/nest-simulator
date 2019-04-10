@@ -71,7 +71,8 @@ jobs:
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
     - stage: OsX
       os: osx
-      osx_image: xcode7.2 
+      osx_image: xcode10.2
+      python: 3.4.4 
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
@@ -126,7 +127,7 @@ before_install:
    - echo $PATH
   # Upgrade pip and setuptools
    - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
-   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew info nest; brew install nest; fi
    - pip install -U pip
    - pip install -U setuptools
   
