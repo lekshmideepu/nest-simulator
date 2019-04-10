@@ -72,8 +72,9 @@ jobs:
     - stage: OsX
       os: osx
       osx_image: xcode10.2
-      python: 3.4.4 
-
+      language: generic
+      env: PYTHON=3.4.4
+      
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
    apt:
