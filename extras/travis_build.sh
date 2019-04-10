@@ -97,8 +97,13 @@ fi
 
 NEST_VPATH=build
 NEST_RESULT=result
-if [[ $OSTYPE == darwin* ]]; then NEST_RESULT=$(greadlink -f $NEST_RESULT);fi
-NEST_RESULT=$(readlink -f $NEST_RESULT)
+if [ "$(uname -s)" = 'Linux' ]; then
+    NEST_RESULT=$(readlink -f $NEST_RESULT)
+else
+    NEST_RESULT=$(readlink $NEST_RESULT)
+fi
+#if [[ $OSTYPE == darwin* ]]; then NEST_RESULT=$(greadlink -f $NEST_RESULT);fi
+#NEST_RESULT=$(readlink -f $NEST_RESULT)
 
 mkdir "$NEST_VPATH" "$NEST_RESULT"
 mkdir "$NEST_VPATH/reports"
