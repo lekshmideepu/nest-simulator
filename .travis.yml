@@ -28,9 +28,6 @@ language: python
 sudo: required
 dist: trusty
 
-os:
-   - osx
-
 stages:
    - Staticcheck
    - MPI-Threading-Python
