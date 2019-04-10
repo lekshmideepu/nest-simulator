@@ -28,11 +28,15 @@ language: python
 sudo: required
 dist: trusty
 
+os:
+   - osx
+
 stages:
    - Staticcheck
    - MPI-Threading-Python
    - Python-Full-build
    - GCC8Clang7
+   - OsX
 
 # list of build stages to run. Stages with the same name get run in parallel.
 
@@ -68,6 +72,9 @@ jobs:
     - stage: GCC8Clang7
       language: cpp
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7"
+    - stage: OsX
+      os: osx
+      osx_image: xcode7.2 
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
@@ -122,6 +129,7 @@ before_install:
    - echo $PATH
   # Upgrade pip and setuptools
    - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
    - pip install -U pip
    - pip install -U setuptools
   
