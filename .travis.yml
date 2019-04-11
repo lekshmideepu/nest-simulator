@@ -80,7 +80,7 @@ jobs:
       osx_image: xcode10.2
       language: generic
       #python: 3.6.6
-      env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=1 xRUN_TESTSUITE=0 CACHE_NAME=JOB
+      env: xTHREADING=0 xMPI=1 xGSL=0 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB
       
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
