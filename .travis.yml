@@ -77,7 +77,7 @@ jobs:
       env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB   # full
     - stage: OsX
       os: osx
-      osx_image: xcode9.4
+      osx_image: xcode8.3
       language: generic
       #python: 3.6.6
       env: xTHREADING=1 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB   # only threading
@@ -137,7 +137,8 @@ before_install:
   # Upgrade pip and setuptools
    - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
    #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew info nest; brew install nest; fi
-   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 3.6.3; brew --version; brew update; brew install gsl open-mpi automake autoconf; fi
+   #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 3.6.3; brew --version; brew update; brew install gsl open-mpi automake autoconf; fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew install gsl open-mpi automake autoconf; fi
    - pip install -U pip
    - pip install -U setuptools
   
