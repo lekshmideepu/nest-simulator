@@ -74,7 +74,7 @@ jobs:
       osx_image: xcode10.2
       language: generic
       python: 3.4.4
-      env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB
+      env: xTHREADING=1 xMPI=1 xGSL=1 xLIBNEUROSIM=1 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=1 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
@@ -130,7 +130,7 @@ before_install:
   # Upgrade pip and setuptools
    - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
    #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew info nest; brew install nest; fi
-   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew install libtool; fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew install gcc cmake gsl open-mpi libtool; fi
    - pip install -U pip
    - pip install -U setuptools
   
