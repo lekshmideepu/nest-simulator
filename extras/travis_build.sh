@@ -225,9 +225,11 @@ if [[ "$OSTYPE" == "darwin"* ]] ; then
       -Dwith-optimize=ON \
       -Dwith-warning=ON \
       -Dwith-boost=ON \
+      -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 \
       -DOpenMP_C_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
       -DOpenMP_C_LIB_NAMES="omp" \
       -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp \
+      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 \
       -DOpenMP_CXX_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
       -DOpenMP_CXX_LIB_NAMES="omp" \
       $CONFIGURE_THREADING \
