@@ -219,7 +219,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 echo "+               C O N F I G U R E   N E S T   B U I L D                       +"
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 echo "MSGBLD0230: Configuring CMake."
-if[[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]] ; then
     cmake \
       -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
       -Dwith-optimize=ON \
