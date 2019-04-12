@@ -138,7 +138,8 @@ before_install:
    - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
    #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew info nest; brew install nest; fi
    #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global 3.6.3; brew --version; brew update; brew install gsl open-mpi automake autoconf; fi
-   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install gsl open-mpi automake autoconf matplotlib scipy nest; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install gsl open-mpi automake autoconf matplotlib scipy nest; fi
+   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install gsl open-mpi automake autoconf; fi
    - pip install -U pip
    - pip install -U setuptools
   
