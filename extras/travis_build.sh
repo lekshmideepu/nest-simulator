@@ -100,13 +100,18 @@ fi
 NEST_VPATH=build
 NEST_RESULT=result
 if [ "$(uname -s)" = 'Linux' ]; then
+    echo "I am Linux"
     NEST_RESULT=$(readlink -f $NEST_RESULT)
+    echo $NEST_RESULT
 else
+    echo "I am an Apple"
     NEST_RESULT=$(readlink $NEST_RESULT)
+    echo $NEST_RESULT
 fi
 #if [[ $OSTYPE == darwin* ]]; then NEST_RESULT=$(greadlink -f $NEST_RESULT);fi
 #NEST_RESULT=$(readlink -f $NEST_RESULT)
 
+echo $NEST_VPATH
 mkdir "$NEST_VPATH" "$NEST_RESULT"
 mkdir "$NEST_VPATH/reports"
 
