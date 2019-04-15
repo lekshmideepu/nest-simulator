@@ -237,6 +237,7 @@ if [[ "$OSTYPE" == "darwin"* ]] ; then
       -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 \
       -DOpenMP_CXX_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
       -DOpenMP_CXX_LIB_NAMES="omp" \
+      -D_GLIBCXX_USE_CXX11_ABI=0 \
       $CONFIGURE_THREADING \
       $CONFIGURE_MPI \
       $CONFIGURE_PYTHON \
