@@ -105,7 +105,7 @@ if [ "$(uname -s)" = 'Linux' ]; then
     echo $NEST_RESULT
 else
     echo "I am an Apple"
-    NEST_RESULT=$(readlink $NEST_RESULT)
+    NEST_RESULT=$(greadlink -f $NEST_RESULT)
     echo $NEST_RESULT
 fi
 #if [[ $OSTYPE == darwin* ]]; then NEST_RESULT=$(greadlink -f $NEST_RESULT);fi
