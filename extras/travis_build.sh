@@ -30,7 +30,7 @@
 
 
 # Exit shell if any subcommand or pipline returns a non-zero status.
-set -e
+#set -e
 
 mkdir -p $HOME/.matplotlib
 cat > $HOME/.matplotlib/matplotlibrc <<EOF
