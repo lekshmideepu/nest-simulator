@@ -535,6 +535,7 @@ function( NEST_PROCESS_WITH_BOOST )
       set( HAVE_BOOST ON PARENT_SCOPE )
       # Boost uses lower case in variable names
       set( BOOST_FOUND "${Boost_FOUND}" PARENT_SCOPE )
+      set( Boost_LIBRARY_DIRS "${Boost_LIBRARY_DIRS}" PARENT_SCOPE )
       set( BOOST_LIBRARIES "${Boost_LIBRARIES}" PARENT_SCOPE )
       set( BOOST_INCLUDE_DIR "${Boost_INCLUDE_DIR}" PARENT_SCOPE )
       set( BOOST_VERSION "${Boost_MAJOR_VERSION}.${Boost_MINOR_VERSION}.${Boost_SUBMINOR_VERSION}" PARENT_SCOPE )
