@@ -229,7 +229,7 @@ if [[ "$OSTYPE" == "darwin"* ]] ; then
       -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
       -Dwith-optimize=ON \
       -Dwith-warning=ON \
-      -Dwith-boost=ON \
+      -Dwith-boost=OFF \
       -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 \
       -DOpenMP_C_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
       -DOpenMP_C_LIB_NAMES="omp" \
