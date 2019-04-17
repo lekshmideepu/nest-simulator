@@ -89,6 +89,7 @@ jobs:
     - stage: Osx
       os: osx
       osx_image: xcode10.2
+      language: generic
       env: xTHREADING=0 xMPI=0 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB
       
 
