@@ -60,6 +60,9 @@ if [ "$xPYTHON" = "1" ] ; then
    elif [ "$TRAVIS_PYTHON_VERSION" == "3.7.3" ]; then
       CONFIGURE_PYTHON="-DPYTHON-LIBRARY= /usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python/3.7.3/Frameworks/Python.framework/Versions/3.7/include/python3.7m/"
    fi
+   if [[ $OSTYPE == darwin* ]]; then
+      CONFIGURE_PYTHON="-DPYTHON-LIBRARY= /usr/lib/libpython2.7.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@2/2.7.16/Frameworks/Python.framework/Versions/2.7/include/python2.7"
+   fi
 else
     CONFIGURE_PYTHON="-Dwith-python=OFF"
 fi

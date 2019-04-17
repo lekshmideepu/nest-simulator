@@ -165,7 +165,7 @@ install:
    - which python
    - python --version
    - which pip
-   - find / -type f -name 'nosetests*' -perm +111 -print -quit
+  # - find / -type f -name 'nosetests*' -perm +111 -print -quit
   # - which nosetests
   # - nosetests --version
   # - nosetests --plugins
