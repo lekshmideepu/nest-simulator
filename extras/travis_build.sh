@@ -222,6 +222,9 @@ fi  # End of Static code analysis.
 
 cd "$NEST_VPATH"
 cp ../examples/sli/nestrc.sli ~/.nestrc
+if [[ "$OSTYPE" == "darwin"* ]] ; then
+    sed -i -e 's/mpirun -np/mpirun --oversubscribe -np/g' ~/.nestrc
+fi
 
 echo
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
