@@ -86,6 +86,10 @@ jobs:
       osx_image: xcode10.2
       language: generic
       env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=0 xMUSIC=0 xSTATIC_ANALYSIS=1 xRUN_TESTSUITE=0 CACHE_NAME=JOB
+    - stage: Osx
+      os: osx
+      osx_image: xcode10.2
+      env: xTHREADING=0 xMPI=0 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB
       
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
@@ -160,6 +164,7 @@ install:
    - which python
    - python --version
    - which pip
+   - find / -type f -name 'nosetests*' -perm +111 -print -quit
   # - which nosetests
   # - nosetests --version
   # - nosetests --plugins
