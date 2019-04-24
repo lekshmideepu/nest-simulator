@@ -101,6 +101,14 @@ else
     CONFIGURE_LIBNEUROSIM="-Dwith-libneurosim=OFF"
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+    CONFIGURE_MISC="-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 -DOpenMP_C_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_C_LIB_NAMES=\"omp\" -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 -DOpenMP_CXX\
+_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_CXX_LIB_NAMES=\"omp\" "
+    echo $CONFIGURE_MISC
+    CONFIGURE_BOOST="-Dwith-boost=OFF"
+else
+    CONFIGURE_BOOST="-Dwith-boost=ON"
+fi
 #if [[ $OSTYPE == darwin* ]]; then
 #    CONFIGURE_MISC='-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 -DOpenMP_C_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_C_LIB_NAMES="omp" -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 -DOpenMP_CXX_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" -DOpenMP_CXX_LIB_NAMES="omp" '
 #    echo $CONFIGURE_MISC
@@ -241,19 +249,50 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 echo "+               C O N F I G U R E   N E S T   B U I L D                       +"
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 echo "MSGBLD0230: Configuring CMake."
-if [[ "$OSTYPE" == "darwin"* ]] ; then
-    cmake \
+#if [[ "$OSTYPE" == "darwin"* ]] ; then
+#    cmake \
+#      -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
+#      -Dwith-optimize=ON \
+#      -Dwith-warning=ON \
+#       -Dwith-boost=OFF \
+#      -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 \
+#      -DOpenMP_C_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
+#      -DOpenMP_C_LIB_NAMES="omp" \
+#      -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp \
+#      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 \
+#      -DOpenMP_CXX_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
+#      -DOpenMP_CXX_LIB_NAMES="omp" \
+#      $CONFIGURE_THREADING \
+#      $CONFIGURE_MPI \
+#      $CONFIGURE_PYTHON \
+#      $CONFIGURE_MUSIC \
+#      $CONFIGURE_GSL \
+#      $CONFIGURE_LTDL \
+#      $CONFIGURE_READLINE \
+#      $CONFIGURE_LIBNEUROSIM \
+#      ..
+#else
+#    cmake \
+#      -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
+#      -Dwith-optimize=ON \
+#      -Dwith-warning=ON \
+#      -Dwith-boost=OFF \
+#      $CONFIGURE_THREADING \
+#      $CONFIGURE_MPI \
+#      $CONFIGURE_PYTHON \
+#      $CONFIGURE_MUSIC \
+#      $CONFIGURE_GSL \
+#      $CONFIGURE_LTDL \
+#      $CONFIGURE_READLINE \
+#      $CONFIGURE_LIBNEUROSIM \
+#      ..
+#fi
+cmake \
       -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
       -Dwith-optimize=ON \
       -Dwith-warning=ON \
-      -Dwith-boost=OFF \
-      -DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 \
-      -DOpenMP_C_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
-      -DOpenMP_C_LIB_NAMES="omp" \
-      -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp \
-      -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 \
-      -DOpenMP_CXX_FLAGS="-fopenmp -I/usr/local/opt/libomp/include" \
-      -DOpenMP_CXX_LIB_NAMES="omp" \
+      $CONFIGURE_BOOST \
+      $CONFIGURE_MISC \
       $CONFIGURE_THREADING \
       $CONFIGURE_MPI \
       $CONFIGURE_PYTHON \
@@ -263,22 +302,7 @@ if [[ "$OSTYPE" == "darwin"* ]] ; then
       $CONFIGURE_READLINE \
       $CONFIGURE_LIBNEUROSIM \
       ..
-else
-    cmake \
-      -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
-      -Dwith-optimize=ON \
-      -Dwith-warning=ON \
-      -Dwith-boost=OFF \
-      $CONFIGURE_THREADING \
-      $CONFIGURE_MPI \
-      $CONFIGURE_PYTHON \
-      $CONFIGURE_MUSIC \
-      $CONFIGURE_GSL \
-      $CONFIGURE_LTDL \
-      $CONFIGURE_READLINE \
-      $CONFIGURE_LIBNEUROSIM \
-      ..
-fi
+
 echo "MSGBLD0240: CMake configure completed."
 
 echo
