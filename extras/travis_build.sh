@@ -102,7 +102,7 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-    CONFIGURE_MISC="-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 -DOpenMP_C_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_C_LIB_NAMES=\"omp\" -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 -DOpenMP_CXX_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_CXX_LIB_NAMES=\"omp\" "
+    CONFIGURE_MISC="-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 -DOpenMP_C_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_C_LIB_NAMES=\"omp\" -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 -DOpenMP_CXX_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_CXX_LIB_NAMES=\"omp\""
     echo $CONFIGURE_MISC
     CONFIGURE_BOOST="-Dwith-boost=OFF"
 else
@@ -248,6 +248,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 echo "+               C O N F I G U R E   N E S T   B U I L D                       +"
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 echo "MSGBLD0230: Configuring CMake."
+echo $CONFIGURE_MISC
 #if [[ "$OSTYPE" == "darwin"* ]] ; then
 #    cmake \
 #      -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
@@ -291,7 +292,6 @@ cmake \
       -Dwith-optimize=ON \
       -Dwith-warning=ON \
       $CONFIGURE_BOOST \
-      $CONFIGURE_MISC \
       $CONFIGURE_THREADING \
       $CONFIGURE_MPI \
       $CONFIGURE_PYTHON \
@@ -300,6 +300,7 @@ cmake \
       $CONFIGURE_LTDL \
       $CONFIGURE_READLINE \
       $CONFIGURE_LIBNEUROSIM \
+      $CONFIGURE_MISC \
       ..
 
 echo "MSGBLD0240: CMake configure completed."
