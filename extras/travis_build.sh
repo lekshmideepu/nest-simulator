@@ -30,7 +30,7 @@
 
 
 # Exit shell if any subcommand or pipline returns a non-zero status.
-#set -e
+set -e
 
 mkdir -p $HOME/.matplotlib
 cat > $HOME/.matplotlib/matplotlibrc <<EOF
@@ -102,8 +102,7 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-    CONFIGURE_MISC="-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 -DOpenMP_C_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_C_LIB_NAMES=\"omp\" -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 -DOpenMP_CXX\
-_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_CXX_LIB_NAMES=\"omp\" "
+    CONFIGURE_MISC="-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 -DOpenMP_C_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_C_LIB_NAMES=\"omp\" -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 -DOpenMP_CXX_FLAGS=\"-fopenmp -I/usr/local/opt/libomp/include\" -DOpenMP_CXX_LIB_NAMES=\"omp\" "
     echo $CONFIGURE_MISC
     CONFIGURE_BOOST="-Dwith-boost=OFF"
 else
