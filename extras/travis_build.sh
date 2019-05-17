@@ -102,13 +102,15 @@ else
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-    CONFIGURE_MISC='-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 \
-                    -DOpenMP_C_FLAGS=-fopenmp -I/usr/local/opt/libomp/include \
-                    -DOpenMP_C_LIB_NAMES=omp \
-                    -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp \
-                    -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 \
-                    -DOpenMP_CXX_FLAGS=-fopenmp -I/usr/local/opt/libomp/include \
-                    -DOpenMP_CXX_LIB_NAMES=omp '
+    export CC=$(ls /usr/local/bin/gcc-* | grep '^/usr/local/bin/gcc-\d$')
+    export CXX=$(ls /usr/local/bin/g++-* | grep '^/usr/local/bin/g++-\d$')
+    #CONFIGURE_MISC='-DCMAKE_C_COMPILER=/usr/local/opt/gcc/bin/gcc-8 \
+    #                -DOpenMP_C_FLAGS=-fopenmp -I/usr/local/opt/libomp/include \
+    #                -DOpenMP_C_LIB_NAMES=omp \
+    #                -DOpenMP_omp_LIBRARY=/usr/local/opt/libomp \
+    #                -DCMAKE_CXX_COMPILER=/usr/local/opt/gcc/bin/g++-8 \
+    #                -DOpenMP_CXX_FLAGS=-fopenmp -I/usr/local/opt/libomp/include \
+    #                 -DOpenMP_CXX_LIB_NAMES=omp '
     CONFIGURE_BOOST="-Dwith-boost=OFF"
 else
     CONFIGURE_BOOST="-Dwith-boost=ON"
@@ -255,7 +257,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 echo "+               C O N F I G U R E   N E S T   B U I L D                       +"
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 echo "MSGBLD0230: Configuring CMake."
-echo $CONFIGURE_MISC
+#echo $CONFIGURE_MISC
 #if [[ "$OSTYPE" == "darwin"* ]] ; then
 #    cmake \
 #      -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
@@ -307,7 +309,7 @@ cmake \
       $CONFIGURE_LTDL \
       $CONFIGURE_READLINE \
       $CONFIGURE_LIBNEUROSIM \
-      $CONFIGURE_MISC \
+     # $CONFIGURE_MISC \
       ..
 
 echo "MSGBLD0240: CMake configure completed."
