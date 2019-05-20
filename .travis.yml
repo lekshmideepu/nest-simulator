@@ -135,7 +135,7 @@ before_install:
         brew tap brewsci/science;
         brew tap brewsci/bio;
         brew install coreutils gsl open-mpi automake autoconf libtool;
-        brew install numpy;
+        pip install numpy;
      fi
    - pip install -U pip
    - pip install -U setuptools
