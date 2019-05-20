@@ -133,6 +133,7 @@ before_install:
      if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
         brew --version;
         brew update;
+        brew install openssl readline;
         brew tap brewsci/science;
         brew tap brewsci/bio;
         brew install coreutils gsl open-mpi automake autoconf libtool;
