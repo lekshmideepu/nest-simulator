@@ -73,7 +73,7 @@ jobs:
       os: osx
       osx_image: xcode10.2
       language: generic
-      env: xTHREADING=1 xMPI=0 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB PYTHON=3.4.4  # Without MUSIC, MPI and Libneurosim
+      env: xTHREADING=1 xMPI=0 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_TESTSUITE=1 CACHE_NAME=JOB PYTHON=3.6.3  # Without MUSIC, MPI and Libneurosim
     
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
@@ -143,6 +143,8 @@ before_install:
         brew install coreutils gsl open-mpi automake autoconf libtool;
         brew outdated pyenv || brew upgrade pyenv
         brew install pyenv-virtualenv
+        pip install -U pip
+        pip install -U setuptools
         pyenv install $PYTHON
         export PYENV_VERSION=$PYTHON
         export PATH="/Users/travis/.pyenv/shims:${PATH}"
