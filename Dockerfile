@@ -29,6 +29,6 @@ RUN wget https://github.com/nest/nest-simulator/archive/v2.16.0.tar.gz && \
         -Dwith-python=3 \
         ../nest-simulator-2.16.0 && \
   make && \
-  make install
+  make install && \
   make installcheck
 
