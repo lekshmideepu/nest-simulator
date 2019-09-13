@@ -122,6 +122,7 @@ before_install:
          echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
          echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
          echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+         pyenv versions
          echo ${MATRIX_EVAL}
          eval "${MATRIX_EVAL}"
          cp extras/install_music.sh extras/install_csa-libneurosim.sh $HOME
@@ -150,7 +151,6 @@ install:
          which pip
          pip list
          if [ "$TRAVIS_OS_NAME" = "linux" ]; then which nosetests; nosetests --version; nosetests --plugins; fi
-         pyenv versions
          which cmake
          cmake --version
          echo ${CC}
