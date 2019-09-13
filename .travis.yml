@@ -150,6 +150,7 @@ install:
          which pip
          pip list
          if [ "$TRAVIS_OS_NAME" = "linux" ]; then which nosetests; nosetests --version; nosetests --plugins; fi
+         pyenv versions
          which cmake
          cmake --version
          echo ${CC}
