@@ -163,10 +163,7 @@ before_script:
 script:
    - set -o pipefail
    - ./extras/travis_build.sh 2>&1 | tee travis_build.sh.log
-   - |
-     if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
-        python extras/parse_travis_log.py travis_build.sh.log ;
-     fi
+   - python extras/parse_travis_log.py travis_build.sh.log ;
 
 before_deploy:
    - cd $TRAVIS_BUILD_DIR/build
