@@ -133,11 +133,11 @@ before_install:
          pip install -U setuptools
          # Installing additional packages using pip as they only have
          # outdated versions in the Travis package whitelist.
-         # terminaltables is required by parse_travis_log.py to create
-         # the build summary.
          pip install cython scipy matplotlib terminaltables
          pip install numpy==1.16.5
      fi
+   # terminaltables is required by parse_travis_log.py to create the build summary.
+   - pip install terminaltables
 
 install:
    - |
