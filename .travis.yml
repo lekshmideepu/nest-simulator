@@ -34,6 +34,7 @@ stages:
    - Python-Full-build
    - GCC8Clang7
    - OsX
+   - ARM64
 
 # list of build stages to run. Stages with the same name get run in parallel.
 
@@ -74,7 +75,9 @@ jobs:
       osx_image: xcode10.2
       language: generic
       env: xTHREADING=1 xMPI=0 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_BUILD_AND_TESTSUITE=1 CACHE_NAME=JOB   # Without MUSIC, MPI and Libneurosim
-    
+    - stage: ARM64
+      os: linux
+      arch: arm64
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
    apt:
