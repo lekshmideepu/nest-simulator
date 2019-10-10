@@ -82,7 +82,7 @@ jobs:
       env: MATRIX_EVAL="CC=gcc-8 && CXX=g++-8" xRUN_BUILD_AND_TESTSUITE=1
     - stage: ARM64
       os: linux
-      python: 2.7.11
+      python: 2.7.11-1
       arch: arm64
       env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_BUILD_AND_TESTSUITE=1 CACHE_NAME=JOB   # only Python
 
