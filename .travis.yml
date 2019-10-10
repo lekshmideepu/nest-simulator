@@ -84,12 +84,13 @@ jobs:
       os: linux
       python: 2.7.11
       arch: arm64
+      env: xTHREADING=0 xMPI=0 xGSL=0 xLIBNEUROSIM=0 xLTDL=0 xREADLINE=0 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_BUILD_AND_TESTSUITE=1 CACHE_NAME=JOB   # only Python
 
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
    apt:
     sources:
-     - r-packages-xenial
+     - r-packages-trusty
      - ubuntu-toolchain-r-test
      - llvm-toolchain-xenial-7
     packages:
