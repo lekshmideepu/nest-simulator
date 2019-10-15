@@ -94,7 +94,8 @@ addons:
      #- r-packages-trusty
      #- ubuntu-toolchain-r-test
      - sourceline: "ppa:ubuntu-toolchain-r/test"
-     - llvm-toolchain-xenial-7
+     - llvm-toolchain-bionic-7
+     #- llvm-toolchain-xenial-7
     packages:
      - gcc-8
      - g++-8
