@@ -93,6 +93,7 @@ addons:
      #- r-packages-trusty
      #- ubuntu-toolchain-r-test
      - sourceline: "ppa:ubuntu-toolchain-r/test"
+     - apt-get update
      - llvm-toolchain-xenial-7
     packages:
      - gcc-8
