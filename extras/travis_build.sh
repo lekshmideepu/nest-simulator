@@ -98,7 +98,6 @@ else
 fi
 
 if [[ $OSTYPE = darwin* ]]; then
-    ls /usr/local/bin/
     export CC=$(ls /usr/local/bin/gcc-* | grep '^/usr/local/bin/gcc-\d$')
     export CXX=$(ls /usr/local/bin/g++-* | grep '^/usr/local/bin/g++-\d$')
     CONFIGURE_BOOST="-Dwith-boost=OFF"
