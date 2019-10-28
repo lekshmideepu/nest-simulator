@@ -37,6 +37,10 @@ stages:
 
 # list of build stages to run. Stages with the same name get run in parallel.
 
+env:
+  global:
+    - CXXFLAGS: "-Wall -Wextra -Woverloaded-virtual -Wshadow"
+
 jobs:
   include:
     - stage: Staticcheck
