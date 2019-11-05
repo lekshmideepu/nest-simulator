@@ -68,8 +68,8 @@ jobs:
       env: MATRIX_EVAL="CC=clang-7 && CXX=clang++-7" xRUN_BUILD_AND_TESTSUITE=1
     - stage: OsX
       os: osx
-      osx_image: xcode10.2
-      language: generic
+      osx_image: xcode11.2  # Python 3.7.4 running on macOS 10.14.4
+      language: shell  # 'language: python' is an error on Travis CI macOS
       #python: 3.7  #xcode10.2 — Comes pre-installed with Python 3.7.3
       env: xTHREADING=1 xMPI=0 xGSL=1 xLIBNEUROSIM=0 xLTDL=1 xREADLINE=1 xPYTHON=1 xMUSIC=0 xSTATIC_ANALYSIS=0 xRUN_BUILD_AND_TESTSUITE=1 CACHE_NAME=JOB   # Without MUSIC, MPI and Libneurosim
     
@@ -154,6 +154,7 @@ before_install:
            brew list | grep python 
            brew install python@3  
            brew info python
+           alias python=/usr/local/bin/python3
            brew tap brewsci/science
            brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
