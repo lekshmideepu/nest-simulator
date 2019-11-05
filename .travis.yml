@@ -165,6 +165,7 @@ before_install:
            brew leaves
            brew cask list
          fi
+         if [ "$TRAVIS_OS_NAME" = "osx" ]; then alias pip=pip3; alias python=/usr/local/bin/python3; fi
          pip install --upgrade pip
          pip install --upgrade setuptools
          # Installing additional packages using pip as they only have
@@ -186,7 +187,8 @@ install:
          which python3
          which pip
          pip list
-         if [ "$TRAVIS_OS_NAME" = "osx" ]; then pip3 install -U pip; alias python=/usr/local/bin/python3; fi
+         pip3 list
+         #if [ "$TRAVIS_OS_NAME" = "osx" ]; then pip3 install -U pip; alias python=/usr/local/bin/python3; fi
          if [ "$TRAVIS_OS_NAME" = "linux" ]; then which nosetests; nosetests --version; nosetests --plugins; fi
          which cmake
          cmake --version
