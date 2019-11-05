@@ -178,8 +178,11 @@ install:
          cython --version
          which python
          python --version
+         python3 --version
+         which python3
          which pip
          pip list
+         if [ "$TRAVIS_OS_NAME" = "osx" ]; then pip3 install -U pip; fi
          if [ "$TRAVIS_OS_NAME" = "linux" ]; then which nosetests; nosetests --version; nosetests --plugins; fi
          which cmake
          cmake --version
