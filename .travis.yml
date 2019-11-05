@@ -155,6 +155,9 @@ before_install:
            brew install python@3  
            brew info python
            alias python=/usr/local/bin/python3
+           brew unlink python
+           brew switch python 3.7.3
+           brew link python@3
            brew tap brewsci/science
            brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
@@ -165,7 +168,7 @@ before_install:
            brew leaves
            brew cask list
          fi
-         if [ "$TRAVIS_OS_NAME" = "osx" ]; then alias pip=pip3; alias python=/usr/local/bin/python3; fi
+         #if [ "$TRAVIS_OS_NAME" = "osx" ]; then alias pip=pip3; alias python=/usr/local/bin/python3; fi
          pip install --upgrade pip
          pip install --upgrade setuptools
          # Installing additional packages using pip as they only have
