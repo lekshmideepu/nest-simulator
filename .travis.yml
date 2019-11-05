@@ -152,11 +152,11 @@ before_install:
            brew --version
            brew update
            brew list | grep python 
-           brew install python@3  
+           #brew install python@3  
            brew info python
            alias python=/usr/local/bin/python3
            brew unlink python
-           brew switch python 3.7.3
+           brew switch python 3.7.4
            brew link python@3
            brew tap brewsci/science
            brew tap brewsci/bio
