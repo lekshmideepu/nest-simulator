@@ -164,14 +164,21 @@ before_install:
            brew cask list
          fi
          #python3 -m pip install -U --force-reinstall pip
-         python -m pip install --upgrade pip
-         python -m pip install --upgrade setuptools
+         if [ "$TRAVIS_OS_NAME" = "osx" ]; then
+           #python3 -m pip install --upgrade pip setuptools
+           pip3 install --upgrade pip setuptools
+           pip3 install cython scipy matplotlib terminaltables
+           pip3 install numpy==1.16.5
+         else
+           #python -m pip install --upgrade setuptools
+           pip install --upgrade pip setuptools
          # Installing additional packages using pip as they only have
          # outdated versions in the Travis package whitelist.
          # terminaltables is required by parse_travis_log.py to create
          # the build summary.
-         pip install cython scipy matplotlib terminaltables
-         pip install numpy==1.16.5
+           pip install cython scipy matplotlib terminaltables
+           pip install numpy==1.16.5
+         fi
      fi
 
 install:
