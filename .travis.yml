@@ -153,6 +153,7 @@ before_install:
            brew list | grep python
            brew info python
            export PATH="/usr/local/opt/python/libexec/bin:$PATH" #To use homebrew's python, just put its directory in PATH.
+           export PATH="/usr/local/opt/python/libexec/bin/pip:$PATH"
            brew tap brewsci/science
            brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
@@ -191,6 +192,7 @@ install:
          python --version
          python3 --version
          which pip
+         which pip3
          pip --version
          pip3 --version
          pip list
