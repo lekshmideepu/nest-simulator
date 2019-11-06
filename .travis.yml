@@ -163,6 +163,7 @@ before_install:
            brew leaves
            brew cask list
          fi
+         #python3 -m pip install -U --force-reinstall pip
          pip install --upgrade pip
          pip install --upgrade setuptools
          # Installing additional packages using pip as they only have
@@ -183,6 +184,8 @@ install:
          python --version
          python3 --version
          which pip
+         pip --version
+         pip3 --version
          pip list
          if [ "$TRAVIS_OS_NAME" = "linux" ]; then which nosetests; nosetests --version; nosetests --plugins; fi
          which cmake
