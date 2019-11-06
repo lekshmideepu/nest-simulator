@@ -152,8 +152,10 @@ before_install:
            brew update
            brew list | grep python
            brew info python
-           brew unlink python
-           brew link python3
+           #brew unlink python
+           #brew link python3
+           #unlink /usr/local/bin/python
+           ln -s /usr/local/bin/python3.7 /usr/local/bin/python           
            brew tap brewsci/science
            brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
@@ -180,7 +182,9 @@ install:
          which cython
          cython --version
          which python
+         which python3
          python --version
+         python3 --version
          which pip
          pip list
          if [ "$TRAVIS_OS_NAME" = "linux" ]; then which nosetests; nosetests --version; nosetests --plugins; fi
