@@ -58,7 +58,7 @@ if [ "$xPYTHON" = "1" ] ; then
    fi
    if [[ $OSTYPE = darwin* ]]; then
       #CONFIGURE_PYTHON="-DPYTHON_LIBRARY=/usr/lib/libpython3.7.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python@3/3.7.4/Frameworks/Python.framework/Versions/3.7/include/python3.7"
-      CONFIGURE_PYTHON="-DPYTHON_LIBRARY=/usr/lib/libpython3.7.dylib -DPYTHON_INCLUDE_DIR=/usr/local/include/python3.7"
+      CONFIGURE_PYTHON="-DPYTHON_LIBRARY=/usr/local/Cellar/python/3.7.4/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7.dylib -DPYTHON_INCLUDE_DIR=/usr/local/Cellar/python/3.7.4/Frameworks/Python.framework/Versions/3.7/include//python3.7m/"
    fi
 else
     CONFIGURE_PYTHON="-Dwith-python=OFF"
