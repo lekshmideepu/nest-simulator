@@ -166,9 +166,12 @@ before_install:
          fi
          #python3 -m pip install -U --force-reinstall pip
          echo "alias pip=/usr/local/bin/pip3" >> ~/.bashrc
-         pip install --upgrade pip setuptools
+         if [ "$TRAVIS_OS_NAME" = "linux" ]; then
+            pip install --upgrade pip setuptools
+         fi
          pip install cython scipy matplotlib terminaltables
          pip install numpy==1.16.5
+         
          #if [ "$TRAVIS_OS_NAME" = "osx" ]; then
            #python3 -m pip install --upgrade pip setuptools
            #pip3 install --upgrade pip setuptools
