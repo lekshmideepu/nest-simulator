@@ -203,7 +203,8 @@ script:
    - |
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
         python extras/parse_travis_log.py travis_build.sh.log ;
-        coverage run --source=extras/parse_travis_log.py travis_build.sh.log ;
+        #coverage run --source=extras/parse_travis_log.py travis_build.sh.log ;
+        coverage run 
      fi
 
 before_deploy:
