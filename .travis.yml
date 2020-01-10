@@ -188,7 +188,7 @@ install:
          cmake --version
          echo ${CC}
          echo ${CXX}
-         pip install coveralls --use-mirrors
+         pip install coveralls
      fi
 
 before_script:
