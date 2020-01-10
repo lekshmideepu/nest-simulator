@@ -188,6 +188,7 @@ install:
          cmake --version
          echo ${CC}
          echo ${CXX}
+         pip install coveralls --use-mirrors
      fi
 
 before_script:
@@ -201,6 +202,7 @@ script:
    - |
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
         python extras/parse_travis_log.py travis_build.sh.log ;
+        coverage run --source=extras/parse_travis_log.py
      fi
 
 before_deploy:
@@ -213,6 +215,9 @@ before_deploy:
          mv docs.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
          mv reports.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
      fi
+
+after_success: 
+   - coveralls
 
 # S3 Deployment (Uploading the Travis CI build artefacts to Amazon S3).
 deploy:
