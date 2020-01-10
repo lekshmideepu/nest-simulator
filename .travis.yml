@@ -172,6 +172,7 @@ before_install:
          # the build summary.
          pip install cython scipy matplotlib terminaltables
          pip install numpy==1.16.5
+         pip install coveralls
      fi
 
 install:
@@ -188,7 +189,7 @@ install:
          cmake --version
          echo ${CC}
          echo ${CXX}
-         pip install coveralls
+         coverage --version
      fi
 
 before_script:
@@ -202,7 +203,7 @@ script:
    - |
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
         python extras/parse_travis_log.py travis_build.sh.log ;
-        coverage run --source=extras/parse_travis_log.py
+        coverage run --source=extras/parse_travis_log.py travis_build.sh.log ;
      fi
 
 before_deploy:
