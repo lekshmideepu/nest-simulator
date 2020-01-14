@@ -177,6 +177,9 @@ before_install:
          pip install cython scipy matplotlib terminaltables
          pip install numpy==1.16.5
          pip install coveralls
+         pip install pytest==4.5.0
+         pip install codecov==2.0.15
+         pip install pytest-cov==2.7.1
      fi
 
 install:
@@ -208,7 +211,8 @@ script:
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
         python extras/parse_travis_log.py travis_build.sh.log ;
         #coverage run --source=extras/parse_travis_log.py travis_build.sh.log ;
-        coverage run -m --source=pynest/nest/tests/test_sp test_mpitests.py
+        #coverage run -m --source=pynest/nest/tests/test_sp test_mpitests.py
+        pytest --cov-report term --cov=investpy pynest/nest/tests
      fi
 
 before_deploy:
@@ -223,7 +227,8 @@ before_deploy:
      fi
 
 after_success: 
-   - coveralls
+   #- coveralls
+   - codecov
 
 # S3 Deployment (Uploading the Travis CI build artefacts to Amazon S3).
 deploy:
