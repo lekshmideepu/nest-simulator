@@ -212,7 +212,7 @@ script:
         python extras/parse_travis_log.py travis_build.sh.log ;
         #coverage run --source=extras/parse_travis_log.py travis_build.sh.log ;
         #coverage run -m --source=pynest/nest/tests/test_sp test_mpitests.py
-        pytest --cov-report term --cov=investpy pynest/nest/tests
+        py.test --cov-report term --cov=pynest/nest/tests
      fi
 
 before_deploy:
