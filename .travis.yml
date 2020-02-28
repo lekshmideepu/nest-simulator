@@ -28,8 +28,9 @@ services:
   - docker
 
 before_install:
-  - docker pull nestsim/nest:builder
-  - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+  - docker images
+  - docker ps -a
 
 script:
-  - docker images
+  - docker pull nestsim/nest:builder
+  - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
