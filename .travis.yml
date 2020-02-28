@@ -30,7 +30,7 @@ services:
 before_install:
   - docker images
   - docker ps -a
+  - docker pull nestsim/nest:builder
 
 script:
-  - docker pull nestsim/nest:builder
   - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
