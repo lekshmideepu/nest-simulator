@@ -32,5 +32,11 @@ before_install:
   - docker ps -a
   - docker pull nestsim/nest:builder
 
-script:
-  - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+jobs:
+  include:
+    - stage: Stage with parallel jobs
+      script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+    - # stage name not required, will continue to use `test`
+      script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+    - stage: After all job
+      script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
