@@ -32,18 +32,17 @@ before_install:
   - docker ps -a
   - docker pull nestsim/nest:builder
 
-env:
-  - FOO=foo
-  - FOO=bar
+#env:
+#  - FOO=foo
+#  - FOO=bar
 
 jobs:
   include:
     - stage: "Tests"                # naming the Tests stage
       name: "Unit Tests"            # names the first Tests stage job
       script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
-    #  env: FOO=foo
-    #- script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
-    #  name: "Integration Tests"     # names the second Tests stage job
+    - script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+      name: "Integration Tests"     # names the second Tests stage job
     - stage: linear
       name: "Not parallel"
       script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
