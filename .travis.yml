@@ -41,7 +41,7 @@ jobs:
     - stage: "Tests"                # naming the Tests stage
       name: "Unit Tests"            # names the first Tests stage job
       script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
-      env: FOO=foo
+    #  env: FOO=foo
     #- script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
     #  name: "Integration Tests"     # names the second Tests stage job
     - stage: linear
