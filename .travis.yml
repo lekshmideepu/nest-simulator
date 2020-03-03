@@ -31,7 +31,7 @@ env:
   global:
     - NAME=nest-simulator
     - CACHE_FOLDER=$HOME/docker-images
-    - CACHE_FILE=${CACHE_FOLDER}/${NAME}.tgz
+    - CACHE_FILE=${CACHE_FOLDER}/${NAME}.tar
 
 
 jobs:
@@ -41,7 +41,7 @@ jobs:
       script:
         - docker pull nestsim/nest:builder
         - mkdir -p ${CACHE_FOLDER}
-        - docker save nestsim/nest:builder | gzip -c > ${CACHE_FILE}
+        - docker save nestsim/nest:builder > ${CACHE_FILE}
         #- docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
     - stage: Second
       name: "In parallel - read from cache 1"
