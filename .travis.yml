@@ -27,11 +27,16 @@ language: python
 services:
   - docker
 
-before_script:
-  - docker images
-  - docker ps -a
-  - docker pull nestsim/nest:builder
+cache:
+  directories:
+  - docker-image
 
+install:
+  - docker pull nestsim/nest:builder
+  - docker save nestsim/nest:builder | gzip docker-image/nest-builder.tar.gz
+
+before_script:
+- gzip -dc docker-image/nest-builder.tar.gz | docker load
 #env:
 #  - FOO=foo
 #  - FOO=bar
