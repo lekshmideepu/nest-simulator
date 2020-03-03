@@ -27,27 +27,35 @@ language: python
 services:
   - docker
 
-cache:
-  directories:
-  - docker_image
+env:
+  global:
+    - NAME=nest-simulator
+    - CACHE_FOLDER=$HOME/docker-images
+    - CACHE_FILE=${CACHE_FOLDER}/${NAME}.tgz
 
-install:
-  - docker pull nestsim/nest:builder
-  - docker save nestsim/nest:builder | gzip > docker_image/nest-builder.tar.gz
-
-before_script:
-- gzip -dc docker_image/nest-builder.tar.gz | docker load
-#env:
-#  - FOO=foo
-#  - FOO=bar
 
 jobs:
   include:
-    - stage: "Tests"                # naming the Tests stage
-      name: "Unit Tests"            # names the first Tests stage job
-      script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
-    - script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
-      name: "Integration Tests"     # names the second Tests stage job
-    - stage: linear
-      name: "Not parallel"
-      script: docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+    - stage: "First"                # naming the Tests stage
+      name: "With Caching"            # names the first Tests stage job
+      script:
+        - docker pull nestsim/nest:builder
+        - mkdir -p ${CACHE_FOLDER}
+        - docker save nestsim/nest:builder | gzip -c > ${CACHE_FILE}
+        - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+
+    - stage: "Second"
+      name: "In parallel - read from cache"
+      script: 
+        - ls -la ${CACHE_FOLDER}
+        - if [[ -f ${CACHE_FILE} ]]; then docker load -i ${CACHE_FILE}; fi
+        - docker images
+        - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+
+    - stage: Second
+      name: "In parallel - read from cache"
+      script:
+        - ls -la ${CACHE_FOLDER}
+        - if [[ -f ${CACHE_FILE} ]]; then docker load -i ${CACHE_FILE}; fi
+        - docker images
+        - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
