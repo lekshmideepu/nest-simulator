@@ -27,7 +27,7 @@ language: python
 services:
   - docker
 
-before_install:
+before_script:
   - docker images
   - docker ps -a
   - docker pull nestsim/nest:builder
