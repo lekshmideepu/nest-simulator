@@ -44,16 +44,19 @@ jobs:
         - docker save nestsim/nest:builder | gzip -c > ${CACHE_FILE}
         #- docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
     - stage: Second
-      name: "In parallel - read from cache"
+      name: "In parallel - read from cache 1"
       script:
         - ls -la ${CACHE_FOLDER}
         - if [[ -f ${CACHE_FILE} ]]; then docker load -i ${CACHE_FILE}; fi
         - docker images
         - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
     - stage: Second
-      name: "In parallel - read from cache"
+      name: "In parallel - read from cache 2"
       script:
         - ls -la ${CACHE_FOLDER}
         - if [[ -f ${CACHE_FILE} ]]; then docker load -i ${CACHE_FILE}; fi
         - docker images
         - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+cache:
+  directories:
+  - $HOME/docker-images
