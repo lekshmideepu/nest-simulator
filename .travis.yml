@@ -73,7 +73,7 @@ jobs:
 addons:
    apt:
     sources:
-     - sourceline:'ppa:mhier/libboost-latest'
+     - sourceline: 'ppa:mhier/libboost-latest'
      - r-packages-trusty
      - ubuntu-toolchain-r-test
      - llvm-toolchain-trusty-7
