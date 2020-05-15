@@ -191,6 +191,7 @@ install:
      fi
 
 before_script:
+   - export PYTHONPATH=$PYTHONPATH:$(pwd)
    # Change directory back to the NEST source code directory.
    - cd $SOURCEDIR
    - chmod +x extras/travis_build.sh
