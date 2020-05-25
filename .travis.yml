@@ -111,6 +111,11 @@ cache:
 
 before_install:
    - export SOURCEDIR=$PWD
+   - export PYTHONPATH=$PYTHONPATH:$(pwd)
+   - export PYTHONPATH=$PYTHONPATH:/home/travis/virtualenv/
+   - export PATH=$PATH:/opt/python/
+   - echo $PYTHONPATH
+   - echo $PATH
    # select the right C++ compiler version (gcc8) -- note that update-alternatives is not available on MacOS
    - |
      if [ "$TRAVIS_OS_NAME" = "linux" ]; then
@@ -192,8 +197,8 @@ install:
      fi
 
 before_script:
-   - export PYTHONPATH=$PYTHONPATH:/home/travis/virtualenv/
-   - export PATH=$PATH:/opt/python/
+   #- export PYTHONPATH=$PYTHONPATH:/home/travis/virtualenv/
+   #- export PATH=$PATH:/opt/python/
    # Change directory back to the NEST source code directory.
    - cd $SOURCEDIR
    - chmod +x extras/travis_build.sh
