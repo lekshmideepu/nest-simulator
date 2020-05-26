@@ -308,4 +308,3 @@ fi
 
 echo "MSGBLD0340: Build completed."
 fi
-:q!
