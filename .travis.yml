@@ -111,8 +111,8 @@ cache:
 
 before_install:
    - export SOURCEDIR=$PWD
-   - export PYTHONPATH=$PYTHONPATH:$(pwd)
-   - export PYTHONPATH=$PYTHONPATH:/home/travis/virtualenv/
+   #- export PYTHONPATH=$PYTHONPATH:$(pwd)
+   - export PYTHONPATH=$PYTHONPATH:/opt/python/
    - export PATH=$PATH:/opt/python/
    - echo $PYTHONPATH
    - echo $PATH
