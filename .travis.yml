@@ -85,7 +85,7 @@ addons:
      - libltdl-dev
      - libreadline6-dev
      - libncurses5-dev
-     - libgsl0-dev
+     #- libgsl0-dev
      - python3-all-dev
      - ipython3
      - pkg-config
