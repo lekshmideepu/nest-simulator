@@ -23,7 +23,7 @@
 # build and test environment.
 
 language: python
-cache: pip
+#cache: pip
 
 # Using the Sudo-enabled Ubuntu Bionic (18.04 LTS).
 sudo: required
