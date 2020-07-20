@@ -106,9 +106,9 @@ addons:
      - libboost-program-options-dev
      - libboost-test-dev
      - python3-mpi4py
-cache:
-   directory:
-     - $HOME/.cache
+#cache:
+#   directory:
+#     - $HOME/.cache
 
 before_install:
    - export SOURCEDIR=$PWD
