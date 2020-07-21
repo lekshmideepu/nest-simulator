@@ -1,4 +1,3 @@
-
 # .travis.yaml
 #
 # This file is part of NEST.
@@ -145,19 +144,17 @@ before_install:
          cp extras/install_libboost.sh $HOME
          cd $HOME/build
          echo $PATH
-
          if [ MATRIX_EVAL="CC=clang-7 && CXX=clang++-7" ]; then
            pyenv install --list
            pyenv global 3.6.10
          fi
-
          if [ "$TRAVIS_OS_NAME" = "osx" ]; then
            brew --version
            brew update
            brew info python
-	   brew install ccache
-	   export PATH="/usr/local/opt/ccache/libexec:$PATH"
-	   export PATH="/usr/local/opt/python/libexec/bin:$PATH"  # To use homebrew's Python
+           brew install ccache
+           export PATH="/usr/local/opt/ccache/libexec:$PATH"
+           export PATH="/usr/local/opt/python/libexec/bin:$PATH"  # To use homebrew's Python
            brew tap brewsci/science
            brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
@@ -167,7 +164,6 @@ before_install:
            find /usr/local/Cellar/ -name Python\.h
            find /usr/local/Cellar/ -name \*python\*dylib
          fi
-
          if [ "$TRAVIS_OS_NAME" != "osx" ]; then
            # Upgrade pip and setuptools
            pip install --upgrade pip setuptools
@@ -185,7 +181,6 @@ before_install:
          pip install numpy==1.16.5
          pip list
      fi
-
 install:
    - |
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
@@ -203,7 +198,6 @@ install:
          echo ${CC}
          echo ${CXX}
      fi
-
 before_script:
    # Change directory back to the NEST source code directory.
    - cd $SOURCEDIR
@@ -216,7 +210,6 @@ script:
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
         python extras/parse_travis_log.py travis_build.sh.log ;
      fi
-
 before_deploy:
    - |
      if [ "$xRUN_BUILD_AND_TESTSUITE" = "1" ]; then
@@ -227,7 +220,6 @@ before_deploy:
          mv docs.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
          mv reports.tar.gz $TRAVIS_BUILD_DIR/build/artefacts_upload
      fi
-
 # S3 Deployment (Uploading the Travis CI build artefacts to Amazon S3).
 deploy:
   provider: s3
