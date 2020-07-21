@@ -157,7 +157,7 @@ before_install:
            brew info python
 	   brew install ccache
 	   export PATH="/usr/local/opt/ccache/libexec:$PATH"
-           export PATH="/usr/local/opt/python/libexec/bin:$PATH"  # To use homebrew's Python
+	   export PATH="/usr/local/opt/python/libexec/bin:$PATH"  # To use homebrew's Python
            brew tap brewsci/science
            brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
