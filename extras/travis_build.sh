@@ -48,8 +48,12 @@ fi
 if [ "$xPYTHON" = "1" ] ; then
     if [ "$TRAVIS_PYTHON_VERSION" = "3.8.2" ]; then
         PYTHON_LIB_DIR=`python3 -c "import sysconfig; print(sysconfig.get_path('platstdlib'))"`
+        echo $PYTHON_LIB_DIR
+        ls $PYTHON_LIB_DIR 
         PYTHON_LIBRARY=`find $PYTHON_LIB_DIR -name "libpython3*.so"`
         PYTHON_INCLUDE_DIR=`python3 -c "import sysconfig; print(sysconfig.get_path('include'))"`
+        echo $PYTHON_INCLUDE_DIR
+        ls $PYTHON_INCLUDE_DIR
 	CONFIGURE_PYTHON="\
             -DPYTHON_LIBRARY=$PYTHON_LIBRARY
             -DPYTHON_INCLUDE_DIR=$PYTHON_INCLUDE_DIR"
@@ -57,8 +61,12 @@ if [ "$xPYTHON" = "1" ] ; then
     if [[ $OSTYPE = darwin* ]]; then
 	#PYPREFIX="/usr/local/Cellar/python@3.8/3.8.3_2/Frameworks/Python.framework/Versions/3.8"
         PYTHON_LIB_DIR=`python3 -c "import sysconfig; print(sysconfig.get_path('platstdlib'))"`
+        echo $PYTHON_LIB_DIR
+        ls $PYTHON_LIB_DIR
         PYTHON_LIBRARY=`find $PYTHON_LIB_DIR -name "libpython3.8.dylib"`
         PYTHON_INCLUDE_DIR=`python3 -c "import sysconfig; print(sysconfig.get_path('include'))"`
+        echo $PYTHON_INCLUDE_DIR
+        ls $PYTHON_INCLUDE_DIR
 	CONFIGURE_PYTHON="\
             -DPYTHON_LIBRARY=$PYTHON_LIBRARY
             -DPYTHON_INCLUDE_DIR=$PYTHON_INCLUDE_DIR"
