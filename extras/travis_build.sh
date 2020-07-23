@@ -49,7 +49,13 @@ if [ "$xPYTHON" = "1" ] ; then
     if [ "$TRAVIS_PYTHON_VERSION" = "3.8.2" ]; then
         PYTHON_LIB_DIR=`python3 -c "import sysconfig; print(sysconfig.get_path('platstdlib'))"`
         echo $PYTHON_LIB_DIR
-        ls $PYTHON_LIB_DIR 
+        ls $PYTHON_LIB_DIR
+        echo "output of site-packages"
+        ls /home/travis/virtualenv/python3.8.2/lib/python3.8/site-packages
+        echo "output of /usr/lib.."
+        ls /usr/lib/x86_64-linux-gnu/
+        echo "output of /opt/python.."
+        ls /opt/python/3.6.10/lib/
         PYTHON_LIBRARY=`find $PYTHON_LIB_DIR -name "libpython3*.so"`
         PYTHON_INCLUDE_DIR=`python3 -c "import sysconfig; print(sysconfig.get_path('include'))"`
         echo $PYTHON_INCLUDE_DIR
