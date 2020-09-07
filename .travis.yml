@@ -192,6 +192,8 @@ install:
          cython --version
          which python
          python --version
+         pip --version
+         sudo pip --version
          which pip
          pip list
          which nosetests
