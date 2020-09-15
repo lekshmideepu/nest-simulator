@@ -253,7 +253,7 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 echo "MSGBLD0230: Configuring CMake."
 
 export NEST_VERSION=2.18.0
-sudo apt-get install -y python3-rtree python3.8-dev build-essential cmake cython libgsl-dev libltdl-dev libncurses-dev libreadline-dev openmpi-bin libopenmpi-dev
+sudo apt-get install -y python3-rtree libpython3.8-dev build-essential cmake cython libgsl-dev libltdl-dev libncurses-dev libreadline-dev openmpi-bin libopenmpi-dev
 cd /home/travis
 wget https://github.com/nest/nest-simulator/archive/v$NEST_VERSION.tar.gz -O nest-simulator-$NEST_VERSION.tar.gz
 tar -xzf nest-simulator-$NEST_VERSION.tar.gz
@@ -267,8 +267,8 @@ cmake \
   -DPYTHON_INCLUDE_DIR=/opt/python/3.8.1/include/python3.8m/ \
   -DCMAKE_INSTALL_PREFIX:PATH=/home/travis/nest-$NEST_VERSION \
   /home/travis/nest-simulator-$NEST_VERSION
-make
-make install
+#make
+#make install
 
 
 #cmake \
