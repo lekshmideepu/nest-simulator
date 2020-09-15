@@ -251,21 +251,41 @@ echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + 
 echo "+               C O N F I G U R E   N E S T   B U I L D                       +"
 echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
 echo "MSGBLD0230: Configuring CMake."
+
+export NEST_VERSION=2.18.0
+sudo apt-get install -y python3-rtree python3.8-dev build-essential cmake cython libgsl-dev libltdl-dev libncurses-dev libreadline-dev openmpi-bin libopenmpi-dev
+cd /home/travis
+wget https://github.com/nest/nest-simulator/archive/v$NEST_VERSION.tar.gz -O nest-simulator-$NEST_VERSION.tar.gz
+tar -xzf nest-simulator-$NEST_VERSION.tar.gz
+mkdir nest-simulator-$NEST_VERSION-build
+mkdir nest-install-$NEST_VERSION
+cd nest-simulator-$NEST_VERSION-build
 cmake \
-    -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
-    -Dwith-optimize=ON \
-    -Dwith-warning=ON \
-    $CONFIGURE_BOOST \
-    $CONFIGURE_THREADING \
-    $CONFIGURE_MPI \
-    $CONFIGURE_PYTHON \
-    $CONFIGURE_MUSIC \
-    $CONFIGURE_GSL \
-    $CONFIGURE_LTDL \
-    $CONFIGURE_READLINE \
-    $CONFIGURE_SIONLIB \
-    $CONFIGURE_LIBNEUROSIM \
-    ..
+  -Dwith-python=3 \
+  -DPYTHON_EXECUTABLE=/home/travis/virtualenv/python3.8.1/bin/python3 \
+  -DPYTHON_LIBRARY=/opt/python/3.8.1/lib/libpython3.8m.so \
+  -DPYTHON_INCLUDE_DIR=/opt/python/3.8.1/include/python3.8m/ \
+  -DCMAKE_INSTALL_PREFIX:PATH=/home/travis/nest-$NEST_VERSION \
+  /home/travis/nest-simulator-$NEST_VERSION
+make
+make install
+
+
+#cmake \
+#    -DCMAKE_INSTALL_PREFIX="$NEST_RESULT" \
+#    -Dwith-optimize=ON \
+#    -Dwith-warning=ON \
+#    $CONFIGURE_BOOST \
+#    $CONFIGURE_THREADING \
+#    $CONFIGURE_MPI \
+#    $CONFIGURE_PYTHON \
+#    $CONFIGURE_MUSIC \
+#    $CONFIGURE_GSL \
+#    $CONFIGURE_LTDL \
+#    $CONFIGURE_READLINE \
+#    $CONFIGURE_SIONLIB \
+#    $CONFIGURE_LIBNEUROSIM \
+#    ..
 
 echo "MSGBLD0240: CMake configure completed."
 
