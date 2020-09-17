@@ -1,4 +1,4 @@
-
+\1;95;0c
 # .travis.yaml
 #
 # This file is part of NEST.
@@ -28,7 +28,7 @@ services:
   - docker
 
 before_install:
-- docker build  -t nest/docker-nest:2.16.0 .
+- docker build  -t nest/docker-nest:2.18.0 .
 
 script:
 - docker images
