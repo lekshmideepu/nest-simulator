@@ -157,9 +157,9 @@ before_install:
            #brew update
            brew info python
            export PATH="/usr/local/opt/python/libexec/bin:$PATH"  # To use homebrew's Python
-           brew tap brewsci/science
-           brew tap brewsci/bio
-           #brew install coreutils gsl open-mpi automake autoconf libtool
+           #brew tap brewsci/science
+           #brew tap brewsci/bio
+           brew install coreutils gsl open-mpi automake autoconf libtool
            brew unlink gcc
            brew install gcc@8
            brew link gcc@8
