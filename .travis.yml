@@ -27,9 +27,45 @@ language: python
 services:
   - docker
 
+
 before_install:
 - docker build  -t nest/docker-nest:2.18.0 .
 
 script:
 - docker images
+
+
+env:
+  global:
+    - NAME=nest-simulator
+    - CACHE_FOLDER=$HOME/docker-images
+    - CACHE_FILE=${CACHE_FOLDER}/${NAME}.tar
+
+
+jobs:
+  include:
+    - stage: "First"                # naming the Tests stage
+      name: "With Caching"            # names the first Tests stage job
+      script:
+        - docker pull nestsim/nest:builder
+        - mkdir -p ${CACHE_FOLDER}
+        - docker save nestsim/nest:builder > ${CACHE_FILE}
+        #- docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+    - stage: Second
+      name: "In parallel - read from cache 1"
+      script:
+        - ls -la ${CACHE_FOLDER}
+        - if [[ -f ${CACHE_FILE} ]]; then docker load -i ${CACHE_FILE}; fi
+        - docker images
+        - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+    - stage: Second
+      name: "In parallel - read from cache 2"
+      script:
+        - ls -la ${CACHE_FOLDER}
+        - if [[ -f ${CACHE_FILE} ]]; then docker load -i ${CACHE_FILE}; fi
+        - docker images
+        - docker run -it --rm -v $(pwd):/opt/data nestsim/nest:builder build
+cache:
+  directories:
+  - $HOME/docker-images
 
