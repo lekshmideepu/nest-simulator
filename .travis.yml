@@ -27,10 +27,6 @@ language: python
 services:
   - docker
 
-
-before_install:
-- docker build  -t nest/docker-nest:2.18.0 .
-
 script:
 - docker images
 
