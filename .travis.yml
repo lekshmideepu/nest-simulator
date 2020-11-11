@@ -175,7 +175,11 @@ before_install:
          # terminaltables is required by parse_travis_log.py to create
          # the build summary.
          pip install cython scipy matplotlib terminaltables junitparser mpi4py
-         pip install numpy==1.16.5
+	 if [ "$TRAVIS_OS_NAME" != "osx" ]; then
+           pip install numpy==1.16.5
+	 else
+	   pip3 install numpy
+	 fi  
          pip list
      fi
 
