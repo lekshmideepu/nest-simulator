@@ -182,7 +182,7 @@ before_install:
          else
            #pip install --only-binary :all: numpy
            pip install --upgrade pip setuptools
-           pip3 install numpy cython matplotlib terminaltables
+           pip3 install numpy==1.16.5 cython matplotlib terminaltables
          fi  
          pip list
      fi
