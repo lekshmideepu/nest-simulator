@@ -174,13 +174,15 @@ before_install:
          # outdated versions in the Travis package whitelist.
          # terminaltables is required by parse_travis_log.py to create
          # the build summary.
-         pip install cython scipy matplotlib terminaltables junitparser mpi4py
+         #pip install cython scipy matplotlib terminaltables junitparser mpi4py
+         pip install scipy junitparser mpi4py
          if [ "$TRAVIS_OS_NAME" != "osx" ]; then
            pip install numpy==1.16.5
+           pip install cython matplotlib terminaltables
          else
-           pip install --only-binary :all: numpy
-           #pip install --upgrade pip setuptools
-           #pip3 install numpy
+           #pip install --only-binary :all: numpy
+           pip install --upgrade pip setuptools
+           pip3 install numpy cython matplotlib terminaltables
          fi  
          pip list
      fi
