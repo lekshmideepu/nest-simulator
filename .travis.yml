@@ -152,6 +152,7 @@ before_install:
            brew install gcc@8
            brew link gcc@8
            brew uninstall numpy
+           brew unlink python3
            find /usr/local/Cellar/ -name Python\.h
            find /usr/local/Cellar/ -name \*python\*dylib
          fi
