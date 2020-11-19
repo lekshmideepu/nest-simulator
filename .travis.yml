@@ -1,4 +1,4 @@
-\1;95;0c
+#
 # .travis.yaml
 
 # This file is part of NEST.
@@ -96,6 +96,7 @@ addons:
      - pep8
      - libboost-atomic-dev
      - libboost-chrono-dev
+     - libboost-date-time-dev
      - libboost-filesystem-dev
      - libboost-regex-dev
      - libboost-wave-dev
