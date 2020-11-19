@@ -72,7 +72,7 @@ addons:
    apt:
     sources:
      - *BASE_SOURCES
-     - sourceline: 'ppa:ubuntu-toolchain-r/test
+     - ubuntu-toolchain-r/test
     packages:
      - *BASE_PACKAGES
      - gcc-8
