@@ -71,8 +71,9 @@ jobs:
 addons:
    apt:
     sources:
+     - sourceline: "ppa:ubuntu-toolchain-r/test"
      - *BASE_SOURCES
-     - ubuntu-toolchain-r/test
+     #- ubuntu-toolchain-r/test
     packages:
      - *BASE_PACKAGES
      - gcc-8
@@ -94,15 +95,22 @@ addons:
      - llvm-9-dev
      - jq
      - pep8
+     - libboost-all-dev
      - libboost-atomic-dev
      - libboost-chrono-dev
      - libboost-date-time-dev
+     - libboost-thread-dev
      - libboost-filesystem-dev
      - libboost-regex-dev
      - libboost-wave-dev
      - libboost-python-dev
      - libboost-program-options-dev
      - libboost-test-dev
+   homebrew:
+    update: true
+    taps:
+    - brewsci/science
+    - brewsci/bio
 cache:
    directory:
      - $HOME/.cache
@@ -146,11 +154,11 @@ before_install:
 
          if [ "$TRAVIS_OS_NAME" = "osx" ]; then
            brew --version
-           brew update
+           #brew update
            brew info python
            export PATH="/usr/local/opt/python/libexec/bin:$PATH"  # To use homebrew's Python
-           brew tap brewsci/science
-           brew tap brewsci/bio
+           #brew tap brewsci/science
+           #brew tap brewsci/bio
            brew install coreutils gsl open-mpi automake autoconf libtool
            brew unlink gcc
            brew install gcc@8
