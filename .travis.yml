@@ -1,4 +1,4 @@
-
+\1;95;0c
 # .travis.yaml
 
 # This file is part of NEST.
@@ -72,7 +72,7 @@ addons:
    apt:
     sources:
      - *BASE_SOURCES
-     - ubuntu-toolchain-r-test
+     - sourceline: 'ppa:ubuntu-toolchain-r/test
     packages:
      - *BASE_PACKAGES
      - gcc-8
