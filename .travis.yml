@@ -95,6 +95,7 @@ addons:
      - jq
      - pep8
      - libboost-atomic-dev
+     - libboost-chrono-dev
      - libboost-filesystem-dev
      - libboost-regex-dev
      - libboost-wave-dev
