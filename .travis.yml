@@ -122,6 +122,7 @@ before_install:
        sudo update-alternatives --list gcc
        sudo update-alternatives --list c++
        sudo update-alternatives --auto c++
+       sudo apt-get install libboost-system1.71-dev
        g++ --version
        /usr/bin/c++ --version
      fi
