@@ -80,7 +80,7 @@ addons:
      - g++-8
      - clang-7
      - build-essential
-     - cmake
+     #- cmake
      - libltdl-dev
      - libreadline6-dev
      - libncurses5-dev
@@ -117,6 +117,7 @@ cache:
 
 before_install:
    - export SOURCEDIR=$PWD
+   - sudo apt-get install cmake
    # select the right C++ compiler version (gcc8) -- note that update-alternatives is not available on MacOS
    - |
      if [ "$TRAVIS_OS_NAME" = "linux" ]; then
