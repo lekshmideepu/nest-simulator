@@ -1,0 +1,65 @@
+name: CITest
+
+# Controls when the action will run. 
+on:
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Welcome to NEST build under Githubactions'
+        # Default value if no value is explicitly provided
+        default: 'World'
+        # Input has to be provided for the workflow to run
+        required: true
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  job_id:
+   # This workflow contains a single job called "staticcheck"
+  staticcheck:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+     # Runs a single command using the runners shell
+      - name: Send greeting
+        run: echo "Hello ${{ github.event.inputs.name }}"
+      - name: Checkout repo content 
+        uses: actions/checkout@v2 # checkout the repository content to github runner.
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+        # Semantic version range syntax or exact version of a Python version
+          python-version: 3.8 #Install the python needed ,'3.x' 0r 3.8
+        # Optional - x64 or x86 architecture, defaults to x64
+          #architecture: 'x64'
+      - name: Initialisation
+        run: echo "Welcome to the NEST static analysis build"
+        env:
+          key: xNEST_BUILD_TYPE= STATIC_CODE_ANALYSIS
+      #- name: execute py script # run the run.py to get the latest data  
+        #run: |
+          #python run.py
+        #env: 
+          #xNEST_BUILD_TYPE= STATIC_CODE_ANALYSIS
+        #run: python -c "import sys; print(sys.version)"
+        
+      - name: Install dependencies
+        run: |
+           python -m pip install --upgrade pip setuptools
+           python -m pip install scipy junitparser mpi4py numpy nose cython matplotlib terminaltables
+           pip list
+           g++ --version
+           chmod +x extras/travis_build.sh
+           set -o pipefail
+           #./extras/travis_build.sh 2>&1 | tee travis_build.sh.log
+
+#jobs:
+  #build:
+    #strategy:
+      #matrix:
+        #compiler: [gcc-6, gcc-7]
+    #env:
+      #CC: ${{ matrix.compiler }}
+    #steps:
+      #.....
