@@ -19,9 +19,9 @@ jobs:
       - name: Say Something
         run: |
            echo "Hello ${message}"
-           echo "Again Welsone"
+           echo "Again Welcome"
   my_job:
-    needs: my_build
+    runs-on: ubuntu-latest
       - name: Set up Python 3.x
         uses: actions/setup-python@v2
         with:
