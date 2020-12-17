@@ -25,6 +25,7 @@ jobs:
            ls /home/runner/work/nest-simulator/nest-simulator
         shell: bash
   my_job:
+    needs: [my_build]
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python 3.x
