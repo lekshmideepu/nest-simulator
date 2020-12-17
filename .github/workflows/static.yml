@@ -21,6 +21,7 @@ jobs:
            echo "Hello ${message}"
            echo "Again Welcome"
            echo $PATH
+           echo $PWD
         shell: bash
   my_job:
     runs-on: ubuntu-latest
