@@ -50,6 +50,8 @@ jobs:
            #chmod +x extras/travis_build.sh
            set -o pipefail
            #./extras/travis_build.sh 2>&1 | tee travis_build.sh.log
+	   pwd
+	   chmod +x extras/statisbuild.sh
 
 #jobs:
   #build:
