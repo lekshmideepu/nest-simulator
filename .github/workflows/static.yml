@@ -20,6 +20,8 @@ jobs:
         run: |
            echo "Hello ${message}"
            echo "Again Welcome"
+           echo $PATH
+        shell: bash
   my_job:
     runs-on: ubuntu-latest
     steps:
@@ -51,6 +53,7 @@ jobs:
            set -o pipefail
            #./extras/travis_build.sh 2>&1 | tee travis_build.sh.log
            chmod +x extras/staticbuild.sh
+        working-directory: /home/runner/work/nest-simulator/nest-simulator  
 
 #jobs:
   #build:
