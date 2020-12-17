@@ -25,6 +25,7 @@ jobs:
            echo $PATH
            echo $PWD
            ls /home/runner/work/nest-simulator/nest-simulator
+           ls /home/runner/work/nest-simulator/nest-simulator/extras
         shell: bash
   my_job:
     needs: [my_build]
