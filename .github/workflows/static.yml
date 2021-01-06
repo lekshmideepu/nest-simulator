@@ -16,7 +16,8 @@ jobs:
        # Steps represent a sequence of tasks that will be executed as part of the job
       - name: Checkout repo content 
         #uses: actions/checkout@v2 # checkout the repository content to github runner.
-        uses: actions/checkout@master
+        #uses: actions/checkout@master
+        uses: actions/checkout@githubaction-ci-2
       - name: Say Something
         run: |
            echo "Hello ${message}"
