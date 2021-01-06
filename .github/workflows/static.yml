@@ -58,6 +58,7 @@ jobs:
            #chmod +x extras/travis_build.sh
            set -o pipefail
            #./extras/travis_build.sh 2>&1 | tee travis_build.sh.log
+           echo "change permission"
            chmod +x /home/runner/work/nest-simulator/nest-simulator/extras/staticbuild.sh
            #./home/runner/work/nest-simulator/nest-simulator/extras/staticbuild.sh
            ./staticbuild.sh
