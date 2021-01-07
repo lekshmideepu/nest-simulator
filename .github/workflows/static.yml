@@ -32,7 +32,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-        run: echo "Welcome to the NEST static analysis build"
+        #run: echo "Welcome to the NEST static analysis build"
         env:
           key: xNEST_BUILD_TYPE= STATIC_CODE_ANALYSIS
       - name: Install dependencies
