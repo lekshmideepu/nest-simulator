@@ -63,7 +63,7 @@ jobs:
        - name: Checkout repo content 
          #uses: actions/checkout@v2 # checkout the repository content to github runner.
          uses: actions/checkout@master
-         
+                  
        - name: Check Python path
          run: echo $PYTHONPATH
        
@@ -77,7 +77,13 @@ jobs:
          uses: actions/setup-python@v2
          with:
            python-version: 3.9
-                     
+
+      - name: Changed Files
+        uses: actions/checkout@v2
+	with:
+	  fetch-depth: 0
+        run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV  
+     
        - name: Dependencies MacOS
          if: runner.os =='macOS'
          run: |
@@ -115,7 +121,7 @@ jobs:
            ./extras/gha_build.sh
          env:
            xNEST_BUILD_TYPE: "STATIC_CODE_ANALYSIS"  
-                       
+           CHANGED_FILES: $GITHUB_ENV             
            #GET CHANGED FILES
            # https://github.com/marketplace/actions/get-changed-files
                    
