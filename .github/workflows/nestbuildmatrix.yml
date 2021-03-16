@@ -85,7 +85,6 @@ jobs:
        - run: |
            echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
            echo ${CHANGED_FILES}
-           cat CHANGED_FILES
        - name: Dependencies MacOS
          if: runner.os =='macOS'
          run: |
