@@ -78,11 +78,11 @@ jobs:
          with:
            python-version: 3.9
 
-      - name: Changed Files
-        uses: actions/checkout@v2
-	with:
-	  fetch-depth: 0
-        run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV  
+       - name: Changed Files
+         uses: actions/checkout@v2
+         with:
+           fetch-depth: 0
+         run: echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV  
      
        - name: Dependencies MacOS
          if: runner.os =='macOS'
