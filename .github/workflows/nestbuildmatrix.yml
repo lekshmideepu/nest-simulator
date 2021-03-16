@@ -123,8 +123,7 @@ jobs:
          env:
            xNEST_BUILD_TYPE: "STATIC_CODE_ANALYSIS"  
            CHANGED_FILES: $GITHUB_ENV             
-           #GET CHANGED FILES
-           # https://github.com/marketplace/actions/get-changed-files
+           #GET CHANGED FILES: https://github.com/marketplace/actions/get-changed-files
                    
        - name: Minimal Build
          if: ${{ matrix.xNEST_BUILD_TYPE == 'MINIMAL' }}
