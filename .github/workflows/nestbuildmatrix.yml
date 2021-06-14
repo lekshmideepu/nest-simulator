@@ -71,11 +71,11 @@ jobs:
 
        - name: Changed Files
          uses: actions/checkout@v2
-	 with:
-	   fetch-depth: 0
+         with:
+           fetch-depth: 0
        - run: |
            echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
-	   echo ${CHANGED_FILES}
+           echo ${CHANGED_FILES}
 
        - name: Dependencies MacOS
          if: runner.os =='macOS'
