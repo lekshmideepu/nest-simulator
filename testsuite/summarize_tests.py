@@ -32,7 +32,6 @@ import glob
 import os
 import sys
 
-
 def parse_result_file(fname):
 
     results = jp.JUnitXml.fromfile(fname)
