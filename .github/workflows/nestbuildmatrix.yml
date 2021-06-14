@@ -124,7 +124,7 @@ jobs:
          env:
            xNEST_BUILD_TYPE: "STATIC_CODE_ANALYSIS"
            #CHANGED_FILES: ${CHANGED_FILES}
-           CHANGED_FILES: $GITHUB_ENV
+           CHANGED_FILES: ${GITHUB_ENV}
            #GET CHANGED FILES: https://github.com/marketplace/actions/get-changed-files
 
        - name: Minimal Build
