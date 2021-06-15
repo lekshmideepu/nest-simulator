@@ -1,5 +1,4 @@
-/*
- *  run_all.cpp
+
  *
  *  This file is part of NEST.
  *

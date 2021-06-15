@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-#
-# summarize_tests.py
-#
+
 # This file is part of NEST.
 #
 # Copyright (C) 2004 The NEST Initiative
