@@ -197,5 +197,5 @@ class TestVisualization:
         source_2_extracted = nest.raster_plot.extract_events(data, sel=[2])
         assert np.array_equal(all_extracted, data)
         assert np.all(times_30_to_40_extracted[:, 1] >= 30.0)
-        assert np.all(times_30_to_40_extracted[:, 1] = 40.0)
+        assert np.all(times_30_to_40_extracted[:, 1] == 40.0)
         assert len(source_2_extracted) == 0
