@@ -26,8 +26,8 @@ Tests for visualization functions.
 import os
 
 import nest
-import numpy as np
-import pytest
+#import numpy as np
+#import pytest
 
 try:
     import matplotlib.pyplot as plt
